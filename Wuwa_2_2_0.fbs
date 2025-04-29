@@ -1,0 +1,9171 @@
+namespace Wuwa;
+
+enum GiftType : byte {
+	Fixed = 0,
+	Optional = 1,
+	Random = 2,
+	RandomPhantom = 3,
+	CaptureMonster = 4,
+}
+
+enum SceneStepSaveType : byte {
+	Invalid = 0,
+	NotSave = 1,
+	New = 2,
+	Save = 3,
+}
+
+enum InstOnlineType : byte {
+	Mixture = 0,
+	Single = 1,
+	Multi = 2,
+}
+
+enum DropGroupType : byte {
+	FixRandom = 0,
+	WeigthRandom = 1,
+	PhantomWeight = 2,
+}
+
+enum FavorPropType : byte {
+	AllAdd = 0,
+	FightRole = 1,
+	SpecifiedRole = 2,
+}
+
+enum DropPackageType : byte {
+	Fixed = 0,
+	WeigthRandomBack = 1,
+	WeigthRandomNoBack = 2,
+	FixRandom = 3,
+}
+
+enum CronType : byte {
+	Daily = 1,
+	Weekly = 2,
+	Monthly = 3,
+}
+
+enum EEventName : short {
+	SetEntityCreatureDataRelation = 0,
+	KeyClick = 1,
+	UiSceneLoaded = 2,
+	UiSceneStartLoad = 3,
+	OpenView = 4,
+	StackPreOpenView = 5,
+	StackOpenView = 6,
+	StackCloseView = 7,
+	OpenViewBegined = 8,
+	OpenViewFail = 9,
+	CreateViewInstance = 10,
+	OnViewLoadCompleted = 11,
+	OnViewDone = 12,
+	OnViewHidden = 13,
+	CloseView = 14,
+	OpenTabView = 15,
+	TriggerUiTimeDilation = 16,
+	CloseTabView = 17,
+	ChangeChildView = 18,
+	SwitchAdventureGuideViewTab = 19,
+	UiManagerInit = 20,
+	UiManagerDestroy = 21,
+	HotKeyInput = 22,
+	ViewHotKeyInputPress = 23,
+	ViewHotKeyInputRelease = 24,
+	ResetNormalAction = 25,
+	UnBlockCharacterAction = 26,
+	ResetSystemAction = 27,
+	OnReduceDamageViewDepth = 28,
+	LoginSuccess = 29,
+	EnterGameSuccess = 30,
+	LoginStatusChange = 31,
+	LoginRequestResult = 32,
+	SdkLoginResult = 33,
+	OnGetLoginPlayerInfo = 34,
+	OnSelectServerItem = 35,
+	OnConfirmServerItem = 36,
+	OnNetworkDetectionSelectServerItem = 37,
+	OnConfirmNetworkDetectionItem = 38,
+	SendHeartbeat = 39,
+	SdkInitDone = 40,
+	SdkPayEnd = 41,
+	PlayStationJoinSessionEvent = 42,
+	SdkRefreshAccessToken = 43,
+	SdkRefreshNoticeRedDot = 44,
+	CharQteActive = 45,
+	CharQteConsume = 46,
+	CharInQteChanged = 47,
+	CharExecuteQte = 48,
+	CharExecuteMultiQte = 49,
+	CharQteTagRowNameChanged = 50,
+	CharHitLocal = 51,
+	CharHitRemote = 52,
+	CharBeHitLocal = 53,
+	CharHitIncludingVision = 54,
+	CharBeHitRemote = 55,
+	CharLimitDodge = 56,
+	CharBeHitAnim = 57,
+	CharBeHitTimeScale = 58,
+	CharShieldChange = 59,
+	CharAnimBreakPoint = 60,
+	CharBeforeSkillWithTarget = 61,
+	CharUseSkill = 62,
+	CharUseSkillRemote = 63,
+	OnSkillEnd = 64,
+	CharStopAllSkills = 65,
+	CharStopGroup1Skill = 66,
+	OnMultiSkillIdChanged = 67,
+	OnMultiSkillEnable = 68,
+	CharSwitchControl = 69,
+	CharSkillTargetChanged = 70,
+	CharDeleteSkill = 71,
+	CharResetSkill = 72,
+	CharInterruptSkill = 73,
+	CharSkillCountChanged = 74,
+	CharSkillRemainCdChanged = 75,
+	CharSkillCdPauseStateChanged = 76,
+	CharClearSkill = 77,
+	CharDamage = 78,
+	CharBeDamage = 79,
+	GlobalCharDamage = 80,
+	FormationPanelUIShowRoleHeal = 81,
+	CharPartDamage = 82,
+	CharClimbStartExit = 83,
+	CharActivateClimbInput = 84,
+	CharClimbJumpCheck = 85,
+	CustomMoveSwim = 86,
+	CustomMoveSlide = 87,
+	CustomMoveSki = 88,
+	CustomMoveWalkOnWater = 89,
+	CustomMoveClimb = 90,
+	CustomMoveGlide = 91,
+	CustomMovePendulum = 92,
+	CustomMoveCatapult = 93,
+	CustomMoveSoar = 94,
+	CustomMoveRoll = 95,
+	CharTurnBegin = 96,
+	CharTurnEnd = 97,
+	PerformMontageStop = 98,
+	CharMovementModeChanged = 99,
+	CharActivate = 100,
+	CharOnAttrChanged = 101,
+	CharGravityDirectChanged = 102,
+	AnyCharGravityDirectChanged = 103,
+	CharOnRoleDrown = 104,
+	CharOnRoleDrownInjure = 105,
+	CharOnEnergyChanged = 106,
+	CharOnHealthChanged = 107,
+	CharOnHealthMaxChanged = 108,
+	CharOnElementEnergyChanged = 109,
+	CharOnUnifiedMoveStateChanged = 110,
+	CharOnPositionStateChanged = 111,
+	CharOnDirectionStateChanged = 112,
+	CharOnPositionSubStateChanged = 113,
+	CharSwimStrengthChanged = 114,
+	RoleOnStateInherit = 115,
+	CharOnEndPlay = 116,
+	CharOnBuffAddUITexture = 117,
+	CharOnBuffAddUIPrefab = 118,
+	CharOnBuffAddUIDamage = 119,
+	CharOnAnimNotifyStateDurationChange = 120,
+	CharOnLand = 121,
+	CharPossessed = 122,
+	CharUnpossessed = 123,
+	CharChangeMeshAnim = 124,
+	CharRecordOperate = 125,
+	CharOnRoleDead = 126,
+	CharOnRoleDeadTargetSelf = 127,
+	OnRevive = 128,
+	CharOnRevive = 129,
+	OnTeamLivingStateChange = 130,
+	CharOnSetNewBeHit = 131,
+	OnBattleStateChanged = 132,
+	OnChangeWalkOrRun = 133,
+	CharOnFallInjure = 134,
+	ChangeAiTeamLevel = 135,
+	AiHateAddOrRemove = 136,
+	AiInFight = 137,
+	AiHateTargetChanged = 138,
+	AiTauntAddOrRemove = 139,
+	AiTaskWanderForResetEnd = 140,
+	OnRunBehaviorTree = 141,
+	OnAiEnable = 142,
+	OnAiDisable = 143,
+	CloseItemTips = 144,
+	CreateRoleForwardAnimEnd = 145,
+	CreateRoleShowInputName = 146,
+	GuideFinish = 147,
+	GuideGroupOpening = 148,
+	GuideGroupFinished = 149,
+	GuideGroupBreak = 150,
+	GuideGroupRest = 151,
+	GuideFocusNeedUiTabView = 152,
+	FinishGuideStepByEvent = 153,
+	GuideTouchIdInject = 154,
+	OnRefreshRoleHp = 155,
+	BeforeLoadMap = 156,
+	BeforeTravelMap = 157,
+	EndTravelMap = 158,
+	OnEnterTransitionMap = 159,
+	SeamlessTravelFinishBeforeShowUI = 160,
+	AfterLoadMap = 161,
+	ClearWorld = 162,
+	OnUiManagerClearAsync = 163,
+	WorldDone = 164,
+	WorldDoneAndCloseLoading = 165,
+	ChangeMode = 166,
+	ChangeModeFinish = 167,
+	ChangePerformanceLimitMode = 168,
+	PauseGame = 169,
+	OnChangeRole = 170,
+	OnOtherChangeRole = 171,
+	OnChangeRoleCoolDownChanged = 172,
+	OnRoleGoDown = 173,
+	OnRoleGoDownFinish = 174,
+	OnClearFollowData = 175,
+	InitArea = 176,
+	ChangeArea = 177,
+	UpdateAreaView = 178,
+	CreateEntity = 179,
+	CreateEntityFail = 180,
+	AddEntity = 181,
+	FixBornLocation = 182,
+	CharBornFinished = 183,
+	PreloadEntityFinished = 184,
+	RemoveEntity = 185,
+	RemoveEntityFromBindGroup = 186,
+	EntityOnLandedPush = 187,
+	EntityVarUpdate = 188,
+	SpawnPlayer = 189,
+	SpawnBoss = 190,
+	OnUpdateTeamGroupType = 191,
+	OnUpdateSceneTeam = 192,
+	OnItemDecompose = 193,
+	OnItemLock = 194,
+	OnItemFuncValueChange = 195,
+	OnGetReward = 196,
+	OnReceivePlayerVar = 197,
+	OpenItemInfo = 198,
+	CloseItemInfo = 199,
+	BoughtItem = 200,
+	ShopUpdate = 201,
+	OnShopInfoResponded = 202,
+	OnGoodUnlock = 203,
+	SelectedMail = 204,
+	PickingAttachment = 205,
+	DeletingMail = 206,
+	DeletingMailPassively = 207,
+	AddingNewMail = 208,
+	SwitchUnfinishedFlag = 209,
+	CloseMailView = 210,
+	OnlyCloseMailContentView = 211,
+	SceneBulletOwnerCreated = 212,
+	BulletCreate = 213,
+	BulletDestroy = 214,
+	BulletHit = 215,
+	BulletRebound = 216,
+	BulletHitSpecialCharacter = 217,
+	BulletHitAirWall = 218,
+	ScenePlayerChanged = 219,
+	ScenePlayerLocationChanged = 220,
+	ScenePlayerLeaveScene = 221,
+	ScenePlayerMarkItemStateChange = 222,
+	MatchTeamFlagChange = 223,
+	LoadingViewProgressSequenceEnd = 224,
+	LoadingViewOnAfterShow = 225,
+	DestroyAllUiCameraAnimationHandles = 226,
+	RoleSelectionListUpdate = 227,
+	SelectRole = 228,
+	SelectSkill = 229,
+	SelectLevelUpItemCount = 230,
+	SelectLevelUpItem = 231,
+	RoleInfoUpdate = 232,
+	RoleRefreshAttribute = 233,
+	RoleSkillLevelUp = 234,
+	RoleLevelUp = 235,
+	RoleLevelUpReceiveItem = 236,
+	RoleBreakUp = 237,
+	ActiveRole = 238,
+	RoleSkinRedDotRefresh = 239,
+	MainViewRoleButtonRefreshByRoleSkin = 240,
+	RoleResonUplevel = 241,
+	RoleResonActive = 242,
+	RoleResonAnimationSuccess = 243,
+	RoleResonPlayAnimation = 244,
+	CloseRoleView = 245,
+	SelectedResonanceTab = 246,
+	UnSelectedResonanceTab = 247,
+	SwitchRootTabState = 248,
+	RoleRefreshName = 249,
+	RoleSystemChangeRole = 250,
+	RoleSystemDeleteRole = 251,
+	OnSelectedRoleChanged = 252,
+	HideVisionTabRole = 253,
+	ChangeResonance = 254,
+	OnRoleInternalViewEnter = 255,
+	OnRoleInternalViewQuit = 256,
+	AttributeComponentEvent = 257,
+	UpdateRoleLevelUpViewData = 258,
+	UpdateRoleResonanceDetailView = 259,
+	UpdateRoleSkillView = 260,
+	UpdateRoleSkillLevelUpView = 261,
+	RefreshSkillTreeInfoTabView = 262,
+	SkillTreeRefresh = 263,
+	RefreshSkillTreeLeftSkillPoint = 264,
+	SkillTreeReset = 265,
+	SkillTreeClickEmpty = 266,
+	SkillTreeNodeActive = 267,
+	SkillTreeNodeLevelUp = 268,
+	UpdateSkillTreeInfoView = 269,
+	OnSkillTreeNodeToggleClick = 270,
+	UpdateRoleFavorData = 271,
+	UnLockRoleFavorItem = 272,
+	RoleFavorExpChange = 273,
+	UpdateRoleFavorHintView = 274,
+	RefreshFunctionOpenView = 275,
+	RoleFindFixHook = 276,
+	UpdateRoleBreachView = 277,
+	OnClickSkillLevelUp = 278,
+	OnClickSkillActive = 279,
+	OnEnterOrExitUltraSkill = 280,
+	OnRoleSkinChange = 281,
+	OnRoleSkinSubViewShow = 282,
+	OnInteractionWaterTypeChange = 283,
+	WeaponLevelUp = 284,
+	WeaponLevelUpReceiveItem = 285,
+	WeaponCanGoBreach = 286,
+	WeaponBreakUp = 287,
+	WeaponItemClick = 288,
+	WeaponEmptyClick = 289,
+	WeaponSortClick = 290,
+	WeaponMaterialPropClick = 291,
+	EquipWeapon = 292,
+	ContrastWeapon = 293,
+	WeaponResonanceSuccess = 294,
+	ReConnectBegin = 295,
+	ReConnectFail = 296,
+	CanNotReConnect = 297,
+	ReConnectSuccess = 298,
+	BackLoginView = 299,
+	LogOut = 300,
+	ExitGamePush = 301,
+	NetWorkMaskRpcAdd = 302,
+	NetWorkMaskRpcRemove = 303,
+	OnAimStateChanged = 304,
+	OnPhantomInputDataUpdate = 305,
+	OpenDragonPoolView = 306,
+	UpdateDragonPoolView = 307,
+	LoadMapTileFinish = 308,
+	MapOpenFogChange = 309,
+	MapOpenFogFullUpdate = 310,
+	MapAreaDarkShow = 311,
+	WorldMapSecondaryUiClosed = 312,
+	WorldMapSecondaryUiOpened = 313,
+	BlackScreenFadeOnPlotToWorldMap = 314,
+	MarkMenuClickItem = 315,
+	TrackMenuClickItem = 316,
+	RefreshMenuSetting = 317,
+	OnGameplaySettingsSet = 318,
+	ModelReady = 319,
+	MapReplaceMarkResponse = 320,
+	CreateMapMark = 321,
+	CreateTempMapMark = 322,
+	AddMapMark = 323,
+	RemoveMapMark = 324,
+	TrackMapMark = 325,
+	OnMapMarkTaskComplete = 326,
+	UnlockTeleport = 327,
+	TrackMark = 328,
+	UnTrackMark = 329,
+	OnMarkItemTrackStateChange = 330,
+	ClearTrackMark = 331,
+	MarkForceVisibleChanged = 332,
+	UpdateTrackTarget = 333,
+	SetTrackMarkOccupied = 334,
+	TeleportComplete = 335,
+	TeleportChangeLocation = 336,
+	BeforeTeleportComplete = 337,
+	TeleportStart = 338,
+	TeleportStartEntity = 339,
+	TeleportOpenLoadingEnd = 340,
+	OnEnterDailyQuestNotifyRange = 341,
+	OnEnterNearbyTrackRange = 342,
+	OnLeaveNearbyTrackRange = 343,
+	RemoveNearbyTrack = 344,
+	UpdateNearbyTrackTag = 345,
+	OnUpdateNearbyEnable = 346,
+	OnUpdateCompassActive = 347,
+	WorldMapViewOpened = 348,
+	WorldMapPointerDown = 349,
+	WorldMapPointerDrag = 350,
+	WorldMapJoystickMoveForward = 351,
+	WorldMapJoystickMoveRight = 352,
+	WorldMapFocusPlayer = 353,
+	WorldMapShowTrackList = 354,
+	WorldMapDragInertia = 355,
+	WorldMapPointerUp = 356,
+	WorldMapFingerExpandClose = 357,
+	WorldMapWheelAxisInput = 358,
+	WorldMapHandleTriggerAxisInput = 359,
+	WorldMapPositionChanged = 360,
+	WorldMapUpdateMultiMap = 361,
+	MoveWorldMapToPosition = 362,
+	TaskRangeTrackStateChange = 363,
+	RangeTrackStateChanged = 364,
+	GetAreaProgress = 365,
+	PlaySoundTrackEffect = 366,
+	WorldMapNavigate = 367,
+	WorldMapFirstNavigateSelect = 368,
+	WorldMapSecondNavigateSelect = 369,
+	WorldMapFocalMarkItem = 370,
+	ChangeWorldMap = 371,
+	WorldMapBeforeChangeMap = 372,
+	WorldMapAfterChangeMap = 373,
+	WorldMapOpenedForQuestMapFocus = 374,
+	MiniMapForceUpdate = 375,
+	MapAreaShowClickArea = 376,
+	MapExploreDetailItemClick = 377,
+	OnUpdateExploreProgressBar = 378,
+	UpdatePlotSubtitle = 379,
+	ShowPlotSubtitleOptions = 380,
+	UpdatePlotCenterText = 381,
+	UpdatePortraitVisible = 382,
+	OnStartFlow = 383,
+	PlotNetworkStart = 384,
+	PlotNetworkEnd = 385,
+	PlotConfigChanged = 386,
+	PlotDoingTextShow = 387,
+	ClearPlotSubtitle = 388,
+	HidePlotUi = 389,
+	PlotInteractViewOpen = 390,
+	TriggerPlotInteraction = 391,
+	TriggerBlackSequence = 392,
+	OnBlackFadeScreenStart = 393,
+	OnBlackFadeScreenFinish = 394,
+	EnableSkipPlot = 395,
+	PlotSequencePlay = 396,
+	HangPlotViewHud = 397,
+	UpdatePlotUiParam = 398,
+	PlotViewChange = 399,
+	PlotViewBgFadePhoto = 400,
+	PlotViewBgFadeBlackScreen = 401,
+	PlotStartShowTalk = 402,
+	PlotEndShowTalk = 403,
+	PlotShowTalk = 404,
+	PlotEnableControlView = 405,
+	PlotTeleportToPositionFinished = 406,
+	PlayPlotSpine = 407,
+	PrewarFormationChanged = 408,
+	PrewarReadyChanged = 409,
+	DissolvePrewar = 410,
+	SceneStepGroupChanged = 411,
+	InstanceStepChanged = 412,
+	InstanceEnterCountChanged = 413,
+	InstanceEntranceUnlock = 414,
+	EnterInstanceDungeon = 415,
+	EnterInstanceDungeonFail = 416,
+	LeaveInstanceDungeon = 417,
+	DungeonGuideChange = 418,
+	LeaveInstanceDungeonConfirm = 419,
+	LeaveInstanceExternalConfirm = 420,
+	LeaveInstanceExternalCancel = 421,
+	OnRefreshInstancedRecommendLevel = 422,
+	OnDungeonFinish = 423,
+	OnSelectInstance = 424,
+	OnSelectInstanceIdChallenge = 425,
+	OnChallengeInstanceRedDot = 426,
+	CloseInstanceEntrancePositively = 427,
+	OnRefreshEditBattleRoleSlotData = 428,
+	OnRefreshEditBattleRoleReady = 429,
+	EntityVisionSkillChanged = 430,
+	GetAllVisionSkill = 431,
+	ActivateAbilityVision = 432,
+	ExploreVisionSkill = 433,
+	VisionMorphBegin = 434,
+	VisionMorphEnd = 435,
+	VisionMorphInterrupt = 436,
+	AddExploreVisionSkill = 437,
+	ChangeVisionSkillByTab = 438,
+	ChangeVisionSimplyState = 439,
+	VisionSkinViewClose = 440,
+	ChangeCalabashCollectSimplyState = 441,
+	SelectedPhantom = 442,
+	CheckNewUnlock = 443,
+	PhantomEquip = 444,
+	PhantomEquipError = 445,
+	VisionFilterMonster = 446,
+	OnRolePropUpdate = 447,
+	RefreshVisionIntensifyViewBackBtnState = 448,
+	OnClickVisionIntensifyItemJump = 449,
+	VisionIntensifyTabOpen = 450,
+	OnVisionLevelUpMaterialPutInModeChange = 451,
+	PhantomPersonalSkillActive = 452,
+	PhantomEquipWithSourceAndTargetPos = 453,
+	PhantomCostInsufficient = 454,
+	PhantomExpPreviewChange = 455,
+	PhantomLevelUp = 456,
+	PhantomLevelUpWithId = 457,
+	PhantomLevelUpReceiveItem = 458,
+	CloseSubPhantomView = 459,
+	PhantomBreach = 460,
+	PhantomBreachPreview = 461,
+	PhantomDecomposePreview = 462,
+	PhantomDecompose = 463,
+	PhantomMaxLevelSkip = 464,
+	HideDelFettersText = 465,
+	PhantomRecommendResponse = 466,
+	ClosePhantomSkillTips = 467,
+	OnPhantomItemUpdate = 468,
+	OnPhantomSlotUpdate = 469,
+	OnPhantomEnableStateChange = 470,
+	OnVisionIdentify = 471,
+	OnVisionIdentifyWithId = 472,
+	OnVisionIdentifyDoAnimation = 473,
+	RefreshVisionIdentifyRedPoint = 474,
+	RefreshVisionLevelUpSettingRedPoint = 475,
+	RefreshVisionEquipRedPoint = 476,
+	JumpToCalabashCollect = 477,
+	JumpToPhantomBattleFettersTabView = 478,
+	OnVisionSkinEquip = 479,
+	RedDotRefreshCalabash = 480,
+	HasCalabashExp = 481,
+	CloseUpgradeCalabashView = 482,
+	CloseCalabashExpAddView = 483,
+	ShowCalabashControllerView = 484,
+	GetCalabashRewardSuccess = 485,
+	ShowCalabashUnlockItemTips = 486,
+	GetCalabashReward = 487,
+	CalabashLevelUpdate = 488,
+	CalabashEnterInternalView = 489,
+	CalabashQuitInternalView = 490,
+	OnVisionRecoveryResult = 491,
+	OnVisionRecoveryBatchResult = 492,
+	OnVisionRecoveryStorage = 493,
+	OnVisionGroupDataUpdate = 494,
+	OnVisionGroupDataAdd = 495,
+	OnVisionGroupDataToTop = 496,
+	OnVisionGroupDataDelete = 497,
+	OnVisionGroupDataChangeName = 498,
+	OnRefreshCalabashTabShowState = 499,
+	OnSetPartStateVisible = 500,
+	ShowHUD = 501,
+	HideHUD = 502,
+	OnGetPlayerBasicInfo = 503,
+	OnLoadedNewFlagConfig = 504,
+	OnPlayerLevelChanged = 505,
+	OnPlayerExpChanged = 506,
+	OnLevelUpLevelRefresh = 507,
+	OnLevelUpExpRefresh = 508,
+	OnLevelUpShowLevelOnly = 509,
+	SelectFilterMultiple = 510,
+	SelectFilterSingle = 511,
+	SelectSort = 512,
+	OnSceneItemHit = 513,
+	OnSceneItemHitByHitData = 514,
+	OnSceneItemEntityHit = 515,
+	OnSceneItemEntityHitAlways = 516,
+	OnAnySceneItemEntityHit = 517,
+	OnAnySceneItemDurabilityChange = 518,
+	OnSceneItemDurabilityChange = 519,
+	OnSceneItemSwitchMoveControl = 520,
+	UpdateSceneItemState = 521,
+	OnSceneItemDestroy = 522,
+	OnSceneItemStateChange = 523,
+	OnSceneItemStatePreChange = 524,
+	OnSceneItemStatePreChangeInSequence = 525,
+	OnSceneItemCameraAlertStateChange = 526,
+	OnEntityConcealedChange = 527,
+	OnTimeTrackControlUpdate = 528,
+	OnSceneInteractionLoadCompleted = 529,
+	OnSceneItemVisionCaptureAdd = 530,
+	OnSceneItemVisionCaptureRemove = 531,
+	OnInputDistributeTagChanged = 532,
+	OnDeviceLangChange = 533,
+	ForceReleaseInput = 534,
+	OnFormationPlayLevelUp = 535,
+	OnFormationPlayRevive = 536,
+	OnItemUse = 537,
+	OnSpecialItemUse = 538,
+	OnGameplayTagChanged = 539,
+	OnLevelTagChanged = 540,
+	OnGlobalGameplayTagChanged = 541,
+	LevelEventTriggerExit = 542,
+	OnLevelPlayStateChange = 543,
+	TodTimeChange = 544,
+	DayStateChange = 545,
+	CrossDay = 546,
+	CrossHour = 547,
+	ClickTimeItem = 548,
+	OnSelectTimeItem = 549,
+	AdjustTime = 550,
+	AdjustTimeInAnim = 551,
+	PowerShopReady = 552,
+	OnPowerChanged = 553,
+	OnPowerChangedWithId = 554,
+	OnGamePlayCdChanged = 555,
+	InsertFloatTips = 556,
+	OriginWorldLevelUp = 557,
+	CurWorldLevelChange = 558,
+	WorldLevelUpViewRefresh = 559,
+	OnShowMouseCursor = 560,
+	RefreshCursor = 561,
+	InputDistribute = 562,
+	OnRefreshJoinTeamRole = 563,
+	LoadLguiEventSystemActor = 564,
+	InitializeLguiEventSystemActor = 565,
+	DestroyLguiEventSystemActor = 566,
+	OnUseBuffItem = 567,
+	OnEquipBuffItemUpdate = 568,
+	UpdateQuestDetails = 569,
+	UpdateRoleQuestDetails = 570,
+	QuestUpdateInfoAdd = 571,
+	AddInteractOptionByAction = 572,
+	RemoveInteractOptionByAction = 573,
+	OnQuestStateChange = 574,
+	OnQuestFinishListNotify = 575,
+	OnQuestRedDotStateChange = 576,
+	OnQuestFinishProtocolEnd = 577,
+	OnRoleQuestAccept = 578,
+	OnRoleQuestPointChange = 579,
+	OnRoleQuestNewUnlock = 580,
+	OnAddNewQuest = 581,
+	OnNavigationQuest = 582,
+	ActivityQuestCountdownEnd = 583,
+	OnQuestStageNameChange = 584,
+	LevelGamePlayPrepareCountDownEnd = 585,
+	GeneralLogicTreeWakeUp = 586,
+	OnLogicTreeNodeStatusChange = 587,
+	OnLogicTreeChildQuestNodeStatusChange = 588,
+	AfterLogicTreeChildQuestNodeStatusChange = 589,
+	OnLogicTreeNodeProgressChange = 590,
+	GeneralLogicTreeTimerInfoChanged = 591,
+	OnLogicTreeTrackUpdate = 592,
+	CurTrackQuestUnTrackedCheck = 593,
+	OnLogicTreeTimerTick = 594,
+	GeneralLogicTreeStartShowTrackText = 595,
+	GeneralLogicTreeUpdateShowTrackText = 596,
+	GeneralLogicTreeEndShowTrackText = 597,
+	GeneralLogicTreeRemove = 598,
+	GeneralLogicTreeSuspend = 599,
+	GeneralLogicTreeCancelSuspend = 600,
+	GeneralLogicTreePrepareRollback = 601,
+	GeneralLogicTreePrepareRollbackFinish = 602,
+	GeneralLogicTreeRemovePrepareRollbackNode = 603,
+	GeneralLogicTreeRollbackWaitingUpdate = 604,
+	GeneralLogicTreeEntityInteractFinished = 605,
+	GeneralLogicTreeEntityKilled = 606,
+	GeneralLogicTreeAddTag = 607,
+	GeneralLogicTreeRemoveTag = 608,
+	GeneralLogicTreeViewForceRefresh = 609,
+	GeneralLogicTreeApplyExpressionOccupation = 610,
+	GeneralLogicTreeReleaseExpressionOccupation = 611,
+	QuestUpdateTipsClickTrack = 612,
+	QuestUpdateTipsEndSequenceStart = 613,
+	MissionPanelOut = 614,
+	MissionUpdate = 615,
+	MissionPanelStepTitleAnimStart = 616,
+	MissionPanelStepTitleAnimEnd = 617,
+	MissionPanelStepConditionIndexChange = 618,
+	FailRangeTimerStartShow = 619,
+	FailRangeTimerEndShow = 620,
+	CreateBehaviorTree = 621,
+	RemoveBehaviorTree = 622,
+	ParkourFinished = 623,
+	OnOpenDebugCommand = 624,
+	ResetToBattleView = 625,
+	ResetModuleByResetToBattleView = 626,
+	ResetModuleAfterResetToBattleView = 627,
+	ExitNormalQueueState = 628,
+	OnStartLoadingState = 629,
+	OnFinishLoadingState = 630,
+	OnOpenLoadingView = 631,
+	OnCloseLoadingView = 632,
+	OnLoadingNetDataDone = 633,
+	PlayUiComponentCloseTween = 634,
+	ChangeUiComponentMarkId = 635,
+	OnMenuDataEnableChanged = 636,
+	OnSelectMenuMainType = 637,
+	ChangeConfigValue = 638,
+	RestartFlag = 639,
+	SettingFrameRateChanged = 640,
+	TextLanguageChange = 641,
+	UiPureModeChangedForSettingSystem = 642,
+	ConfigLoadChange = 643,
+	AutoMovingSettingChanged = 644,
+	SneakResult = 645,
+	SneakMonsterStart = 646,
+	SneakMonsterStop = 647,
+	ChannelReset = 648,
+	OnShareResult = 649,
+	OnFirstShare = 650,
+	ShowVideo = 651,
+	VideoStart = 652,
+	PlayVideo = 653,
+	ScanTrackedStart = 654,
+	ScanTrackedEnd = 655,
+	OnScanStart = 656,
+	RedDotStart = 657,
+	RedDotRefreshItemData = 658,
+	RedDotRoleConfigList = 659,
+	RedDotRefreshPhantomEquip = 660,
+	RedDotRoleChange = 661,
+	RedDotUnLockPhantom = 662,
+	RedDotNewTutorial = 663,
+	RedDotNewTutorialType = 664,
+	RedDotAdventureManualUpdate = 665,
+	RedDotSilentFirstAward = 666,
+	RedDotSilentFirstAwardCategory = 667,
+	RedDotSilentFirstAwardResult = 668,
+	RedDotCreateRole = 669,
+	RouletteRefreshRedDot = 670,
+	RedDotFilter = 671,
+	SilentTipsRefresh = 672,
+	OnRefreshElementBallData = 673,
+	ShootTargetStateChanged = 674,
+	InteractNavigation = 675,
+	InteractionViewUpdate = 676,
+	HideInteractView = 677,
+	SceneItemInteractionEvent = 678,
+	OnFunctionOpenSet = 679,
+	OnFunctionOpenUpdate = 680,
+	OnFunctionOpenUpdateNotify = 681,
+	OnConcertoResponseOpen = 682,
+	OnFirstOpenShopChanged = 683,
+	OnSetHeadStateVisible = 684,
+	OnSetBossStateVisible = 685,
+	SdkKick = 686,
+	SdkPostWebViewRedPointRefresh = 687,
+	SdkCustomerRedPointRefresh = 688,
+	UpdateFriendViewShow = 689,
+	UpdateRecentlyTeamDataEvent = 690,
+	OnRemoveFriend = 691,
+	FriendApplicationListUpdate = 692,
+	UpdateBlackListShow = 693,
+	SearchPlayerInfo = 694,
+	FriendRemarkLengthLimit = 695,
+	FriendRemarkContainsDirtyWord = 696,
+	RefreshFriendApplicationRedDot = 697,
+	FriendApplyReceived = 698,
+	FriendAdded = 699,
+	LoadTestFriendsByGm = 700,
+	ApplicationHandled = 701,
+	ApplicationSent = 702,
+	OnGetFriendInitData = 703,
+	FriendOnMultiItemAction = 704,
+	UpdateNavigationListener = 705,
+	OnVisionAssembleNavigationRefresh = 706,
+	InputControllerChange = 707,
+	InputControllerMainTypeChange = 708,
+	ShowTypeChange = 709,
+	PointerInputTypeChange = 710,
+	ControllerConnectChange = 711,
+	ChangeScrollBarPosition = 712,
+	RefreshGuest = 713,
+	ShowGuestEffect = 714,
+	OnSelectChatFriend = 715,
+	OnCreatePrivateChatRoom = 716,
+	OnJoinChatRoom = 717,
+	OnAddChatContent = 718,
+	OnRefreshChatRedDot = 719,
+	OnRefreshChatRoomRedDot = 720,
+	OnAddHistoryChatContentCompleted = 721,
+	OnPushChatRowData = 722,
+	OnPopChatRowData = 723,
+	OnRefreshChatRowData = 724,
+	OnAddMutePlayer = 725,
+	OnRemoveMutePlayer = 726,
+	OnRemovePrivateChatRoom = 727,
+	OnClosePrivateChatRoom = 728,
+	OnOpenChatRoom = 729,
+	OnSelectExpression = 730,
+	OnServerAttributeChange = 731,
+	OnPayItemSuccess = 732,
+	RefreshPayItemList = 733,
+	RefreshPayGiftList = 734,
+	OnPlayerCurrencyChange = 735,
+	OnRefreshPermissionsSetting = 736,
+	OnRefreshApply = 737,
+	OnSearchWorld = 738,
+	OnRefreshWorldList = 739,
+	OnRefreshOnlineTeamList = 740,
+	OnWorldTeamPlayerInfoChanged = 741,
+	OnRefreshPlayerPing = 742,
+	OnRefreshPlayerUiState = 743,
+	OnRefreshOnlineChallengePlayer = 744,
+	OnRefreshSuggestChallengePlayerInfo = 745,
+	SwitchPayShopTabItem = 746,
+	PayShopGoodsBuy = 747,
+	GoodsRefreshDiscountTime = 748,
+	SwitchPayShopView = 749,
+	RefreshPayShop = 750,
+	RefreshAllPayShop = 751,
+	RefreshGoods = 752,
+	ShopVersionCodeChange = 753,
+	GoodsSoldOut = 754,
+	RefreshGoodsList = 755,
+	UnLockGoods = 756,
+	RefreshPayShopEntranceRedDot = 757,
+	RefreshPayShopInstanceRedDot = 758,
+	RefreshPayShopTabRedDot = 759,
+	DiscountShopTimerRefresh = 760,
+	OnOpenGachaChanged = 761,
+	RefreshGachaMainView = 762,
+	GachaPoolSelectResponse = 763,
+	GachaResponse = 764,
+	GachaHistoryResponse = 765,
+	CloseGachaSceneView = 766,
+	GachaNewNotify = 767,
+	EndGachaScene = 768,
+	GachaClick = 769,
+	GachaSelectionViewRefresh = 770,
+	AfterCloseGachaScene = 771,
+	PlaySequenceEventByStringParam = 772,
+	GachaInteractFinish = 773,
+	ItemExChangeResponse = 774,
+	ItemHintVisibilityChange = 775,
+	ShowAnimalsHeadInfo = 776,
+	OnAnimalDying = 777,
+	OnSkillButtonDataRefresh = 778,
+	OnSkillButtonDataClear = 779,
+	OnSkillButtonIndexRefresh = 780,
+	OnSkillButtonEnableRefresh = 781,
+	OnSkillButtonVisibleRefresh = 782,
+	OnSkillButtonSkillIdRefresh = 783,
+	OnSkillButtonDynamicEffectRefresh = 784,
+	OnSkillButtonCdRefresh = 785,
+	OnSkillButtonAttributeRefresh = 786,
+	OnSkillButtonIconPathRefresh = 787,
+	OnSkillButtonLongPressRefresh = 788,
+	OnBehaviorButtonVisibleRefresh = 789,
+	OnInputChangeForCond = 790,
+	OnGetNewItem = 791,
+	OnElementFusion = 792,
+	OnChangeSelectedExploreId = 793,
+	OnRouletteViewVisibleChanged = 794,
+	OnRouletteItemSelect = 795,
+	OnRouletteItemUnlock = 796,
+	OnRouletteSaveDataChange = 797,
+	OpenRouletteSetView = 798,
+	OnAggroAdd = 799,
+}
+
+enum EDirectTrainStartCondition : byte {
+	WorldDone = 0,
+	ActivateBattle = 1,
+	ServerConditionDone = 2,
+	ActivityOpen = 3,
+}
+
+enum ETabType : byte {
+	Single = 0,
+	Online = 1,
+}
+
+enum ETriggerEvent : byte {
+	BeHitTrigger = 0,
+	HitTrigger = 1,
+	AttributeChangedTrigger = 2,
+	TeamAttributeChangeTrigger = 3,
+	TagTrigger = 4,
+	LimitDodgeTrigger = 5,
+	SkillTrigger = 6,
+	DamageTrigger = 7,
+	BeDamageTrigger = 8,
+	GameplayEventTrigger = 9,
+	GlobalDamageTrigger = 11,
+	QteGoBattleTrigger = 12,
+	QteGoDownTrigger = 13,
+	DeathTrigger = 14,
+	KillTrigger = 15,
+	BuffInstigatorTrigger = 16,
+	BuffVictimTrigger = 17,
+	TagStackTrigger = 18,
+	VisionTrigger = 19,
+}
+
+enum ELayerType : short {
+	HUD = 1,
+	Normal = 2,
+	Plot = 4,
+	NormalMask = 8,
+	BattleFloat = 16,
+	Pop = 32,
+	Float = 64,
+	Guide = 128,
+	Loading = 256,
+	NetWork = 512,
+	CG = 1024,
+	Mask = 2048,
+	WaterMask = 4096,
+	Pool = 8192,
+	Debug = 16384,
+}
+
+enum EDownloadState : byte {
+	None = 0,
+	HttpError = 1,
+	FileRenameError = 2,
+	ValidateError = 3,
+	OpenToWriteError = 4,
+	NotEnoughSpace = 5,
+	DownloadCanceled = 6,
+	Success = 7,
+}
+
+table BabelTowerActivity {
+	activityId: int;
+	itemId: int;
+	shareId: int;
+}
+
+table CharacterPreload {
+	id: int;
+	aiId: int;
+	actorClass: [string];
+	animations: [string];
+	effects: [string];
+	audios: [string];
+	meshes: [string];
+	materials: [string];
+	animationBlueprints: [string];
+	others: [string];
+}
+
+table AiPatrol {
+	id: int;
+	circlePatrol: bool;
+	pathSpline: string;
+	isNavigation: bool;
+	startIndex: int;
+	limitNpcDistance: float = 1000.0;
+	turnSpeed: float = 180.0;
+	loop: bool;
+	endDistance: float = 50.0;
+	sampling: float;
+	containZ: bool;
+}
+
+table BroadcastImage {
+	id: int;
+	icon: string;
+	image: string;
+	umgIcon: string;
+}
+
+table AreaMpc {
+	id: int;
+	regionId: int;
+	mpcData: string;
+}
+
+table BattlePassUnlockPop {
+	tpyeID: int;
+	unlockTitle: string;
+	unlockText: string;
+	unlockReward: [DicIntInt];
+}
+
+table Chat {
+	id: int;
+	name: string;
+	buildLimit: int;
+	saveMsgLimit: int;
+	localSaveMsgLimit: int;
+	saveMsgTime: int;
+	chatCd: int;
+}
+
+table AxisRevert {
+	id: int;
+	revertType: int;
+	axisName: string;
+	revertInfo: [DicStringInt];
+}
+
+table CommonRewardViewDisplay {
+	id: int;
+	title: string;
+	continueText: string;
+	isItemVisible: bool = true;
+	isSuccess: bool = true;
+	audioId: string;
+}
+
+table AiSkillPrecondition {
+	id: int;
+	distanceRange: FloatRange;
+	angleRange: FloatRange;
+	targetAngleRange: FloatRange;
+	heightRange: FloatRange;
+	needTag: string;
+	needTarget: bool = true;
+}
+
+table Contrast {
+	id: int;
+	baseString: string;
+	targetInt: int;
+}
+
+table AchievementCategory {
+	id: int;
+	name: string;
+	functionType: int;
+	spritePath: string;
+	texturePath: string;
+}
+
+table AreaReport {
+	id: int;
+	areaId: int;
+	stage: int;
+	content: string;
+	unlock: int;
+	lockText: string;
+	picResource: string;
+	stageTitle: string;
+}
+
+table Country {
+	id: int;
+	influences: [int];
+	title: string;
+	desc: string;
+	logo: string;
+	dailyTaskShow: int = 1;
+	audioName: string;
+	icon: string;
+	sortIndex: int;
+}
+
+table BulletPreload {
+	id: int;
+	bulletId: long;
+	actorBlueprint: string;
+	actorClass: [string];
+	animations: [string];
+	effects: [string];
+	audios: [string];
+	meshes: [string];
+	materials: [string];
+	animationBlueprints: [string];
+	others: [string];
+}
+
+table AiFlee {
+	id: int;
+	fleeDistance: FloatRange;
+	fleeAngle: FloatRange;
+	fleeHeight: float;
+	timeMilliseconds: float = 1000.0;
+}
+
+table CircumScoreReward {
+	id: int;
+	needScore: int;
+	dropGroup: int;
+}
+
+table Climb {
+	id: string;
+	climbDetectPoints: [Vector];
+	detectRadius: float = 20.0;
+	climbRadius: float = 40.0;
+	climbFromTop: Vector;
+	climbVault: Vector;
+	climbOnTop: Vector;
+	vaultRange: FloatRange;
+	upArriveRange: FloatRange;
+	climbSprintVault: Vector;
+	sprintVaultRange: FloatRange;
+	forwardBlockHeight: float = 50.0;
+	forwardBlockRadius: float = 30.0;
+	forwardBlockDistance: FloatRange;
+	sprintVaultLongNeedDistance: float = 48.0;
+	sprintVaultLongHeight: float = 75.0;
+	sprintVaultLongRange: FloatRange;
+	blockUpOffset: Vector;
+	blockUpDetectRadius: float = 20.0;
+	blockUpDetectDistance: float = 250.0;
+	blockUpBackDistance: float = 100.0;
+	blockUpBackMinDist: float = 50.0;
+	blockUpFinalMove: Vector;
+	blockUpVerticalRange: FloatRange;
+}
+
+table ChatExpression {
+	id: int;
+	groupId: int;
+	name: string;
+	expressionTexturePath: string;
+}
+
+table AreaTaskExplore {
+	id: int;
+	area: int;
+	sortIndex: int;
+}
+
+table AreaQuestTracking {
+	id: string;
+	areaList: [int];
+}
+
+table AxisMapping {
+	id: int;
+	axisName: string;
+	axisType: int;
+	pcKeys: [DicStringFloat];
+	francePcKeys: [DicStringFloat];
+	gamepadKeys: [DicStringFloat];
+	displayName: string;
+	keyboardVersion: int;
+	gamepadVersion: int;
+}
+
+table Activity {
+	id: int;
+	type: int;
+	openType: int;
+	sort: int = 10;
+	timeIsDisplay: int;
+	showPermanentTips: bool;
+	showTabTime: bool = true;
+	showTabFinish: bool;
+	sinkTabFinish: bool = true;
+	preConditionGroupId: int;
+	preOpenCondition: int;
+	preOpenText: string;
+	showUnlockTip: bool;
+	preShowGuideQuest: [int];
+	ifShowQuestLeftTime: bool = true;
+	closeGiveUpGuideQuest: bool = true;
+	tabResource: string;
+	tabResource2: string;
+	tabTexture: [string];
+	name: string;
+	title: string;
+	descTheme: string;
+	desc: string;
+	bgResource: string;
+	previewDrop: int;
+	helpId: int;
+}
+
+table CircumFluenceTask {
+	id: int;
+	taskType: int = 2;
+	targetName: string;
+	taskSubType: int;
+	exploreType: int;
+	targetReward: int;
+	targetFunc: int;
+}
+
+table ChatExpressionGroup {
+	id: int;
+	name: string;
+	groupTexturePath: string;
+}
+
+table DailyTaskGroup {
+	id: int;
+	taskIds: [int];
+	typeId: int;
+	countryId: int;
+}
+
+table CalabashDevelopCondition {
+	id: int;
+	condition: int;
+	conditionParam: [int];
+	description: string;
+	rewardExp: [DicIntInt];
+}
+
+table BuffItem {
+	id: int;
+	publicCdGroup: int;
+	buffs: [double];
+	cd: int;
+	share: bool;
+}
+
+table ChildUiCameraMapping {
+	id: int;
+	viewName: string;
+	defaultUiCameraSettingsName: string;
+	isCheckSpecialState: bool;
+	specialStateCameraSettingName: string;
+	bPlayLoadingCameraAnimation: bool;
+	bodyTargetType: int;
+	bodyCameraSettingsNameMap: [DicStringString];
+	defaultCameraBlendName: string;
+	uiCameraBlendNameMap: [DicStringString];
+	uiCameraDelayTime: int;
+}
+
+table BossRushTaskTab {
+	tabId: int;
+	activityId: int;
+	texture: string;
+	tabTitle: string;
+}
+
+table AiTeamAreaNew {
+	id: int;
+	maxCharacter: int = 1;
+	reactionTime: FloatRange;
+	charTypes: [float];
+	areaAngle: float = 75.0;
+	areaDistance: FloatRange;
+	attackWeightId: int = 1;
+}
+
+table CatchSignalDifficulty {
+	id: int;
+	name: string;
+	speedRate: float = 1.0;
+	tapTimeWindow: int = 100;
+	pressTimeWindow: int = 100;
+	releaseTimeWindow: int = 100;
+	targetCompletion: int = 80;
+}
+
+table CalabashTransform {
+	id: int;
+	location: Vector;
+	rotation: Vector;
+	size: Vector;
+	rotateTime: int;
+}
+
+table AdviceSentence {
+	id: int;
+	text: string;
+}
+
+table Achievement {
+	id: int;
+	groupId: int;
+	level: int;
+	name: string;
+	desc: string;
+	iconPath: string;
+	overrideDropId: int;
+	hidden: bool;
+	nextLink: int = -1;
+	clientTrigger: bool;
+	thirdPartyTrophyId: int = -1;
+}
+
+table CatchSignalGameplay {
+	id: string;
+	name: string;
+	type: int = 1;
+	morseCode: string;
+	difficulty: int;
+}
+
+table AiHate {
+	id: int;
+	baseHatred: float = 1.0;
+	decreaseRate: float = 0.8;
+	decreaseTimeLength: float = 5000.0;
+	decreaseTimeCd: float = 10000.0;
+	increaseRateWhenDecreasing: float = 1.0;
+	minClearTime: float = 1000.0;
+	disengageDistanceRange: FloatRange;
+	disengageTimeRange: FloatRange;
+	disengageHeightRange: FloatRange;
+	disengageHeightRangeMax: FloatRange;
+	disengageBornDistance: FloatRange;
+	maxMoveFromBorn: float = -1.0;
+	excludeTag: string;
+	swornHatredTag: string;
+}
+
+table BossRushTimer {
+	id: int;
+}
+
+table Character {
+	id: int;
+	name: string;
+	scoreName: string;
+	color: string;
+	barSprite: string;
+}
+
+table AccessPath {
+	id: int;
+	type: int;
+	skipName: int = -1;
+	val1: string;
+	val2: string;
+	val3: string;
+	functionOpenCheckMap: [DicIntString];
+	sortIndex: int;
+	description: string;
+	clientCondition: [int];
+	pathValue: string;
+}
+
+table BossRushBuff {
+	id: int;
+	buffId: [long];
+	passiveSkill: [long];
+	texture: string;
+	name: string;
+	popDescIdList: [int];
+	buffTitle: string;
+	buffDesc: string;
+	buffDescParam: [string];
+	description: string;
+	descriptionParam: [string];
+}
+
+table CalabashLevel {
+	level: int;
+	levelUpExp: int;
+	levelUpCondition: int;
+	tempCatchGain: int;
+	buffIds: [int];
+	buffDescription: string;
+	levelUpDescription: string;
+	qualityDescription: string;
+	buffDescriptionMap: [DicIntInt];
+	cost: int;
+	rewardId: int = 4301;
+	qualityDropWeight: [DicIntInt];
+}
+
+table BoxType {
+	id: int;
+	mark: string;
+	startState: int;
+	idleState: [int];
+	idleStartState: [int];
+	deathState: int;
+	openTime: float;
+}
+
+table AiSkillInfos {
+	id: int;
+	skillWeight: int = 1;
+	skillPreconditionId: int;
+	skillId: string;
+	skillCdRange: FloatRange;
+	skillType: int = -1;
+}
+
+table BlockSwitch {
+	id: int;
+	block: string;
+	mapTilePath: string;
+	miniMapTilePath: string;
+	mapConfigId: int = 8;
+	gravityFlip: int = 1;
+}
+
+table Buff {
+	id: double;
+	geDesc: string;
+	durationPolicy: int;
+	durationCalculationPolicy: [int];
+	durationMagnitude: [float];
+	durationMagnitude2: [float];
+	bDurationAffectedByBulletTime: bool;
+	formationPolicy: int;
+	probability: int = 10000;
+	period: float;
+	bExecutePeriodicEffectOnApplication: bool = true;
+	periodicInhibitionPolicy: int;
+	gameAttributeID: int;
+	calculationPolicy: [int];
+	modifierMagnitude: [int];
+	modifierMagnitude2: [int];
+	stackingType: int = 2;
+	defaultStackCount: int = 1;
+	stackAppendCount: int;
+	stackLimitCount: int = 1;
+	stackDurationRefreshPolicy: int;
+	stackPeriodResetPolicy: int;
+	stackExpirationRemoveNumber: int = 1;
+	bDenyOverflowApplication: bool;
+	bClearStackOnOverflow: bool;
+	bRequireModifierSuccessToTriggerCues: bool = true;
+	bSuppressStackingCues: bool = true;
+	gameplayCueIds: [double];
+	grantedTags: [string];
+	applicationSourceTagRequirements: [string];
+	applicationSourceTagIgnores: [string];
+	applicationTagRequirements: [string];
+	applicationTagIgnores: [string];
+	ongoingTagRequirements: [string];
+	ongoingTagIgnores: [string];
+	removalTagRequirements: [string];
+	removalTagIgnores: [string];
+	removeBuffWithTags: [string];
+	grantedApplicationImmunityTags: [string];
+	grantedApplicationImmunityTagIgnores: [string];
+	prematureExpirationEffects: [double];
+	routineExpirationEffects: [double];
+	overflowEffects: [double];
+	relatedExtraEffectBuffId: [double];
+	extraEffectID: int;
+	extraEffectParameters: [string];
+	extraEffectParametersGrow1: [int];
+	extraEffectParametersGrow2: [int];
+	extraEffectRequirements: [int];
+	extraEffectReqPara: [string];
+	extraEffectReqSetting: int;
+	extraEffectCD: [float];
+	extraEffectRemoveStackNum: int;
+	extraEffectProbability: [int];
+	buffAction: [string];
+	tagLogic: [IntArray];
+}
+
+table AvignonStage {
+	id: int;
+	title: string;
+	openConditionId: int;
+	icon: string;
+	femaleIcon: string;
+	romaIcon: string;
+	questionId: int;
+}
+
+table AiWanderRadiusConfig {
+	id: int;
+	randomRadius: float = 600.0;
+	minWanderDistance: float = 400.0;
+}
+
+table BackgroundCard {
+	id: int;
+	qualityId: int = 1;
+	itemAccess: [int];
+	sortIndex: int;
+	longCardPath: string;
+	cardPath: string;
+	functionViewCardPath: string;
+	icon: string;
+	iconMiddle: string;
+	iconSmall: string;
+	title: string;
+	attributesDescription: string;
+	obtainedShowDescription: string;
+	typeDescription: string;
+	bgDescription: string;
+	tips: string;
+	showInBag: bool;
+	redDotDisableRule: int;
+}
+
+table ComboTeaching {
+	id: int;
+	nextRoleGuideID: int;
+	keyID: [string];
+	iconText: [string];
+	iconTagText: [string];
+	descriptionTitle: string;
+	descriptionContent: string;
+	commandID: [int];
+	guideID: [int];
+	inputEnums: [string];
+	addBuffID: [double];
+}
+
+table BrokenRockRing {
+	id: int;
+	invalidBox: [IntArray];
+	randomBox: [int];
+	perfectBox: int = 1;
+	bonusRate: [DicIntInt];
+	goodScore: int = 10;
+	perfectScore: int = 30;
+	bonusScore: int = 10;
+	speed: [DicIntInt];
+	coldTime: int = 500;
+	multiBoxGroup: int = 1;
+	offset: [int];
+	isAnticlockwise: bool;
+}
+
+table ConditionGroup {
+	id: int;
+	groupId: [int];
+	relation: int;
+	hintText: string;
+}
+
+table BabelTowerBuff {
+	id: int;
+	star: int;
+	difficultPreLevel: [int];
+	difficultLimitTime: int;
+	texture: string;
+	nameText: string;
+	desText: string;
+}
+
+table Audio {
+	id: string;
+	path: string;
+}
+
+table CalabashDevelopReward {
+	monsterId: int;
+	developCondition: [int];
+	monsterInfoId: int;
+	allExp: int;
+	sortId: int;
+	monsterProbeId: int;
+	handBookBp: string;
+	monsterBodyType: int;
+	handBookCamera: string;
+	monsterNumber: string;
+	interactionRadius: int;
+	isShow: bool = true;
+}
+
+table BattlePassTask {
+	taskId: int;
+	taskName: string;
+	updateType: int;
+	taskReward: [DicIntInt];
+}
+
+table BossRushTaskConfig {
+	taskId: int;
+	activityId: int;
+	tabId: int;
+	title: string;
+	dropId: int;
+}
+
+table BossRushMapMark {
+	activityId: int;
+	markId: int;
+}
+
+table BrokenRockConfig {
+	id: int;
+	entityUid: string;
+	rings: [int];
+	scoreMax: int = 100;
+	scoreUp: int;
+	scoreDown: int = 20;
+	globalTime: int;
+	normalSkill: int;
+	finishSkill: int;
+}
+
+table DaySelectPreset {
+	id: int;
+	title: string;
+	changeDayNum: int;
+}
+
+table BlackCoastThemeStageRe {
+	id: int;
+	activityId: int;
+	title: string;
+	titleDetail: string;
+	openConditionId: int;
+	questionId: int;
+	videoSource: string;
+	textureSmall: string;
+	textureNormal: string;
+}
+
+table AchievementStarLevel {
+	level: int;
+	dropId: int;
+}
+
+table BabelTowerDailyTask {
+	taskId: int;
+	activityId: int;
+	groupId: int;
+	weight: int;
+	dropId: int;
+	title: string;
+	showDeTerm: [int];
+	showBuff: [int];
+	jumpToLevelId: int;
+}
+
+table DebugEntranceConfig {
+	id: int;
+	type: int;
+	name: string;
+	desc: string;
+	keywords: string;
+	commands: [int];
+	uiEssential: bool;
+}
+
+table BoxState {
+	id: int;
+	tagId: int;
+	name: string;
+	effect: string;
+	isInteraction: bool;
+	interval: float;
+	nextState: int;
+}
+
+table BabelTowerTask {
+	taskId: int;
+	activityId: int;
+	dropId: int;
+	levelId: int;
+	title: string;
+}
+
+table AlertAreaConfig {
+	id: int;
+	description: string;
+	creatorId: int;
+	minValue: float;
+	maxValue: float = 100.0;
+}
+
+table CommonSkillPreload {
+	id: int;
+	isCommon: bool;
+	hasMontagePath: bool;
+	actorClass: [string];
+	animations: [string];
+	effects: [string];
+	audios: [string];
+	meshes: [string];
+	materials: [string];
+	animationBlueprints: [string];
+	others: [string];
+}
+
+table BlackCoastThemeTaskRe {
+	taskId: int;
+	stageId: int;
+	taskName: string;
+	sortId: int;
+	dropId: int;
+	jumpId: int;
+}
+
+table BattlePass {
+	id: int;
+	initialLevel: int;
+	levelLimit: int;
+	levelUpExp: int;
+	consumeId: int;
+	consumeCount: int;
+	isRecurringLevel: bool = true;
+	freeRecurringReward: [DicIntInt];
+	payRecurringReward: [DicIntInt];
+	recurringLevelExp: int;
+	weekExpLimit: int;
+	exclusiveRewardPath: string;
+}
+
+table AiTeamLevelNew {
+	id: int = 1;
+	positionId: [int];
+	allocationPeriodic: FloatRange;
+	attackerNum: int = 2;
+	attackCountDown: FloatRange;
+	noAttackCountDown: FloatRange;
+	beAttackCountDown: FloatRange;
+	eliteRatio: [float];
+	rangeRatio: [float];
+}
+
+table BattleLinkCharacter {
+	id: int;
+	needLoadMesh: int;
+	characterDataAsset: string;
+	seq: string;
+	pose: string;
+	rogueSkillIcon: string;
+	rogueSkillDesc: string;
+	rogueSkillDescParam: [string];
+	rogueSkillTitle: string;
+	roleLinkAudio: string;
+	formationSkillList: [int];
+	isShowInTeamView: bool = true;
+}
+
+table AkiMapSource {
+	mapId: int;
+	pakRule: int;
+	mapPath: string;
+}
+
+table Communicate {
+	id: int;
+	descText: string;
+	talker: int;
+}
+
+table AdviceConjunction {
+	id: int;
+	text: string;
+}
+
+table AiWander {
+	id: int;
+	turnSpeed: float = 180.0;
+	wanderMoveState: int = 2;
+	resetMoveState: int = 2;
+	moveStateGA: int;
+	completeDistance: float = 10.0;
+	showEffectDaPath: string;
+	hideEffectDaPath: string;
+	showMaterialDaPath: string;
+	hideMaterialDaPath: string;
+}
+
+table CompositeRewardDisplay {
+	id: int;
+	title: string;
+	continueText: string;
+	titleIconPath: string;
+	isProgressVisible: bool = true;
+	progressBarTitle: string;
+	progressBarAnimationTime: int = 500;
+	isItemVisible: bool = true;
+	isSuccess: bool = true;
+	audioId: string;
+}
+
+table DailyTaskCountryUnlock {
+	id: int;
+}
+
+table CookLevel {
+	id: int;
+	name: string;
+	completeness: int;
+	effect: int;
+	attributesDescription: string;
+	dropIds: int;
+}
+
+table Community {
+	id: int;
+	packageType: int;
+	language: [string];
+	packageId: [string];
+	channel: [int];
+	adress: string;
+}
+
+table CookFormula {
+	id: int;
+	formulaItemId: int;
+	foodItemId: int;
+	typeId: int;
+	unlock: bool;
+	name: string;
+	consumeItems: [OneItemConfig];
+	proficiency: int;
+	maxProficiencyCount: int;
+	foodContent: string;
+	foodBackground: string;
+	roleList: [int];
+}
+
+table ClueContent {
+	id: int;
+	groupId: int;
+	texture: string;
+	desc: string;
+}
+
+table CombinationAxis {
+	id: int;
+	axisName: string;
+	axisType: int;
+	pcKeyMap: [DicStringString];
+	gamepadKeyMap: [DicStringString];
+	secondaryKeyScaleMap: [DicStringFloat];
+	mobileIconPath: string;
+	displayName: string;
+	keyboardVersion: int;
+	gamepadVersion: int;
+}
+
+table CharacterAudioConfig {
+	id: int;
+	name: string;
+	hpLost: [DicIntString];
+	chest: string;
+	effort: string;
+	effortLow: string;
+	effortCd: float;
+	rankup: [DicIntString];
+	joinTeam: string;
+	firstGet: string;
+	mutantTransform: string;
+	mutantSummon: string;
+}
+
+table Area {
+	areaId: int;
+	level: int;
+	countryId: int;
+	deliveryMarkId: int;
+	areaName: string;
+	mapConfigId: int = 8;
+	dungeonId: int = 8;
+	title: string;
+	father: int;
+	tag: [int];
+	record: int;
+	tips: int;
+	isInitActived: bool = true;
+	worldMonsterLevelMax: [DicIntInt];
+	wuYinQuID: int;
+	stateId: int;
+	atmosphereId: int;
+	edgeWallName: string;
+	deliveryMarkType: int;
+	sortIndex: int;
+	enterAreaTags: [DicIntInt];
+	leaveAreaTags: [DicIntInt];
+}
+
+table AdviceWordType {
+	id: int;
+	name: string;
+}
+
+table AiBattleWanderGroup {
+	id: int;
+	distanceRange: [float];
+	nearActionRates: [float];
+	middleActionRates: [float];
+	farActionRates: [float];
+	turnSpeeds: [float];
+	runTurnSpeed: float = 360.0;
+	wanderTime: FloatRange;
+	sumWanderTime: FloatRange;
+	onlyForward: bool;
+}
+
+table CipherGameplay {
+	id: string;
+	password: int;
+}
+
+table AnimalHandBook {
+	id: int;
+	meshId: int;
+	name: string;
+	scale: [float];
+	position: [float];
+	rotator: [float];
+	standAnim: string;
+	icon: string;
+	typeDescrtption: string;
+	place: string;
+	descrtption: string;
+	dropItemId: [int];
+}
+
+table AutoRole {
+	id: int;
+	modelId: int;
+	aiId: int;
+}
+
+table AvignonTask {
+	taskId: int;
+	step: int;
+	taskName: string;
+	taskReward: int;
+	jumpId: int;
+}
+
+table BranchLine {
+	id: int;
+	taskId: int;
+	jumpBuildingId: int;
+	associateRole: int;
+}
+
+table AiBattleWander {
+	id: int;
+	groupIds: [int];
+}
+
+table CircumBase {
+	id: int;
+	entryType: int;
+	argId: [int];
+	title: string;
+	gachaId: int;
+	subTitle: string;
+	bgPathF: string;
+	bgPath: string;
+	description: string;
+	rewardPreview: int;
+	showCondition: bool = true;
+}
+
+table AiBase {
+	id: int;
+	stateMachine: string;
+	aiController: string;
+	behaviorTree: string;
+	subBehaviorConfigs: [DicStringString];
+	team: bool = true;
+	monsterType: int = 4;
+}
+
+table CookFixTool {
+	id: int;
+	description: string;
+	items: [DicIntInt];
+}
+
+table ComboTeachingCondition {
+	id: int;
+	completeCondition: int;
+	completeParam: string;
+	failedCondition: [int];
+	failedParam: [string];
+}
+
+table ClueEntrance {
+	id: int;
+	contentGroupId: int;
+	title: string;
+}
+
+table ActionMapping {
+	id: int;
+	actionName: string;
+	actionType: int;
+	pcKeys: [string];
+	francePcKeys: [string];
+	gamepadKeys: [string];
+	mobileIconPath: string;
+	displayName: string;
+	isIdleAction: bool;
+	keyboardVersion: int;
+	gamepadVersion: int;
+}
+
+table AiBaseSkill {
+	id: int;
+	randomSkills: [IntArray];
+}
+
+table CustomerService {
+	id: int;
+	packageType: int;
+	language: [string];
+	packageId: [string];
+	channel: [int];
+}
+
+table BattlePassReward {
+	battlePassId: int;
+	level: int;
+	freeReward: [DicIntInt];
+	payReward: [DicIntInt];
+	isMilestone: bool;
+}
+
+table BattleTag {
+	id: int;
+	desc: string;
+	addTag: string;
+	finishTag: string;
+}
+
+table CombinationAction {
+	id: int;
+	actionName: string;
+	actionType: int;
+	pcKeys: [DicStringString];
+	gamepadKeys: [DicStringString];
+	secondaryKeyValidTime: int = -1;
+	mobileIconPath: string;
+	displayName: string;
+	keyboardVersion: int;
+	gamepadVersion: int;
+}
+
+table CircumEntry {
+	id: int;
+	entryType: int;
+	title: string;
+	iconPathF: string;
+	iconPath: string;
+	gachaId: int;
+}
+
+table ChipType {
+	id: int;
+	typeDescription: string;
+	icon: string;
+}
+
+table BattleScoreLevelConf {
+	id: int;
+	groupId: int;
+	level: int;
+	lowerUpperLimits: [int];
+	bgm: string;
+}
+
+table CookProcessMsg {
+	id: int;
+	description: string;
+	introduce: string;
+}
+
+table ActivitySign {
+	id: int;
+	type: int;
+	prefabResource: string;
+	signRewards: [OneItemConfig];
+	importantRewardIndex: int = -1;
+	importantRewardIcon: string;
+	importantRewardType: int;
+	previewList: [int];
+}
+
+table BonusSceneConfig {
+	id: int;
+	cD: int;
+}
+
+table CustomSequence {
+	id: int;
+	name: int;
+	seqDataPath: string;
+	binderType: string;
+}
+
+table BeginnerGuide {
+	id: int;
+	playerId: int = 1;
+	worldLevel: int = 1;
+	playerLevel: int = 1;
+	region: int = 1;
+	clientPlatform: int = 1;
+	netStatus: int = 1;
+	deviceId: int = 1;
+	guideId: int;
+	gameDuration: int;
+}
+
+table BlackCoastThemeRewardRe {
+	id: int;
+	activityId: int;
+	itemId: int;
+	active: int;
+	dropId: int;
+}
+
+table CorniceChallenge {
+	id: int;
+	markId: int;
+	sortId: int;
+	activityId: int;
+	rewardList: [IntPair];
+	maxScore: int;
+	backgroundTexture: string;
+	title: string;
+}
+
+table BabelTowerLevel {
+	id: int;
+	activityId: int;
+	instId: int;
+	isDifficult: bool;
+	nameText: string;
+	desText: string;
+	texture: string;
+	openDay: int;
+	fixBabelDeTermds: [int];
+	optionalBabelBuff: [int];
+	optionalBabelBuffNum: int;
+	passStar: int;
+	reviveStar: int;
+	reviveBuffId: int;
+	babelTowerDeTermMutexArray: [int];
+}
+
+table CookProcessed {
+	id: int;
+	finalItemId: int;
+	unlock: bool;
+	name: string;
+	consumeItemsId: [OneItemConfig];
+	leastItemId: [DicIntInt];
+	interationId: [int];
+}
+
+table BlackboardWhiteList {
+	key: string;
+}
+
+table BlueprintConfig {
+	id: int;
+	blueprintType: string;
+	entityType: string;
+	entityLogic: string;
+	modelId: int;
+	halfHeight: int;
+	trackHeight: int;
+}
+
+table BaseProperty {
+	id: int;
+	lv: int;
+	lifeMax: int = 1;
+	life: int;
+	sheild: int;
+	sheildDamageChange: int;
+	sheildDamageReduce: int;
+	atk: int;
+	crit: int;
+	critDamage: int = 10000;
+	def: int;
+	energyEfficiency: int = 10000;
+	cdReduse: int = 10000;
+	damageChangeNormalSkill: int;
+	damageChange: int;
+	damageReduce: int;
+	damageChangeAuto: int;
+	damageChangeCast: int;
+	damageChangeUltra: int;
+	damageChangeQte: int;
+	damageChangePhys: int;
+	damageChangeElement1: int;
+	damageChangeElement2: int;
+	damageChangeElement3: int;
+	damageChangeElement4: int;
+	damageChangeElement5: int;
+	damageChangeElement6: int;
+	damageResistancePhys: int;
+	damageResistanceElement1: int;
+	damageResistanceElement2: int;
+	damageResistanceElement3: int;
+	damageResistanceElement4: int;
+	damageResistanceElement5: int;
+	damageResistanceElement6: int;
+	healChange: int;
+	healedChange: int;
+	damageReducePhys: int;
+	damageReduceElement1: int;
+	damageReduceElement2: int;
+	damageReduceElement3: int;
+	damageReduceElement4: int;
+	damageReduceElement5: int;
+	damageReduceElement6: int;
+	reactionChange1: int;
+	reactionChange2: int;
+	reactionChange3: int;
+	reactionChange4: int;
+	reactionChange5: int;
+	reactionChange6: int;
+	reactionChange7: int;
+	reactionChange8: int;
+	reactionChange9: int;
+	reactionChange10: int;
+	reactionChange11: int;
+	reactionChange12: int;
+	reactionChange13: int;
+	reactionChange14: int;
+	reactionChange15: int;
+	energyMax: int = 10000;
+	energy: int;
+	specialEnergy1Max: int = 100;
+	specialEnergy1: int;
+	specialEnergy2Max: int = 100;
+	specialEnergy2: int;
+	specialEnergy3Max: int = 100;
+	specialEnergy3: int;
+	specialEnergy4Max: int = 10000;
+	specialEnergy4: int;
+	strengthMax: int = 14000;
+	strength: int = 14000;
+	strengthRecover: int = 250;
+	strengthPunishTime: int = 2000;
+	strengthRun: int = 100;
+	strengthSwim: int = 26;
+	strengthFastSwim: int = 66;
+	hardnessMax: int;
+	hardness: int;
+	hardnessRecover: int;
+	hardnessPunishTime: int;
+	hardnessChange: int;
+	hardnessReduce: int;
+	rageMax: int;
+	rage: int;
+	rageRecover: int;
+	ragePunishTime: int;
+	rageChange: int;
+	rageReduce: int;
+	toughMax: int;
+	tough: int;
+	toughRecover: int;
+	toughChange: int = 10000;
+	toughReduce: int = 10000;
+	toughRecoverDelayTime: int;
+	elementPower1: int;
+	elementPower2: int;
+	elementPower3: int;
+	elementPower4: int;
+	elementPower5: int;
+	elementPower6: int;
+	specialDamageChange: int;
+	strengthFastClimbCost: int = 242;
+	elementPropertyType: int;
+	weakTime: int;
+	ignoreDefRate: int;
+	ignoreDamageResistancePhys: int;
+	ignoreDamageResistanceElement1: int;
+	ignoreDamageResistanceElement2: int;
+	ignoreDamageResistanceElement3: int;
+	ignoreDamageResistanceElement4: int;
+	ignoreDamageResistanceElement5: int;
+	ignoreDamageResistanceElement6: int;
+	skillToughRatio: int = 10000;
+	strengthClimbJump: int = 1220;
+	strengthGliding: int = 30;
+	mass: int = 100;
+	brakingFrictionFactor: int = 10000;
+	gravityScale: int = 20000;
+	speedRatio: int = 10000;
+	damageChangePhantom: int;
+	autoAttackSpeed: int = 10000;
+	castAttackSpeed: int = 10000;
+	statusBuildUp1Max: int = 100;
+	statusBuildUp1: int;
+	statusBuildUp2Max: int = 100;
+	statusBuildUp2: int;
+	statusBuildUp3Max: int = 100;
+	statusBuildUp3: int;
+	statusBuildUp4Max: int = 100;
+	statusBuildUp4: int;
+	statusBuildUp5Max: int = 100;
+	statusBuildUp5: int;
+	paralysisTimeMax: int;
+	paralysisTime: int;
+	paralysisTimeRecover: int;
+	elementEnergyMax: int = 10000;
+	elementEnergy: int;
+	elementEfficiency: int = 10000;
+}
+
+table CustomMark {
+	markId: int;
+	markPic: string;
+	showRange: [int];
+	showPriority: int;
+	scale: float = 1.0;
+	trackHudEnable: int;
+	trackAutoCancelDistance: float = -1.0;
+}
+
+table BossRushBuffDesc {
+	id: int;
+	soundAreaInfoConfigId: int;
+}
+
+table AdventureTaskChapter {
+	id: int;
+	name: string;
+	dropIds: int;
+}
+
+table CorniceQuest {
+	id: int;
+	questId: int;
+}
+
+table AdviceWord {
+	id: int;
+	type: int;
+	text: string;
+}
+
+table DarkCoastDelivery {
+	id: int;
+	icon: string;
+	levelTexture: string;
+	levelIcon: string;
+	levelSelectIcon: string;
+	tipIcon: string;
+	tipLockIcon: string;
+	tipName: string;
+	tipDesc: string;
+	rewardCount: int;
+	unlockCondition: string;
+	visionTexture: string;
+	jumpId: int;
+	levelPlayId: int;
+}
+
+table AdviceParams {
+	id: int;
+	title: string;
+	content: string;
+	motionImg: string;
+}
+
+table AiSenseGroup {
+	id: int;
+	loseDelay: FloatRange;
+	aiSenseIds: [int];
+	shareDis: float;
+}
+
+table AiAlert {
+	id: int;
+	baseIncrease: float = 500.0;
+	decreaseByDist: float = 0.25;
+	maxDist: float = -1.0;
+	forwardAngle: float = 45.0;
+	backwardRate: float = 0.25;
+	baseDecrease: float = 25.0;
+	alertnessType: int;
+	showDist: int = 3000;
+}
+
+table AiSense {
+	id: int;
+	senseType: int = 1;
+	defaultEnabled: bool = true;
+	senseDistanceRange: FloatRange;
+	horizontalAngle: FloatRange;
+	verticalAngle: FloatRange;
+	cantBeBlock: bool;
+	blockType: int;
+	walkSenseRate: float = 1.0;
+	airSenseRate: float = 1.0;
+	senseTarget: int;
+}
+
+table DailyTaskSeriesType {
+	seriesType: int;
+}
+
+table DailyAdventureActivity {
+	activityId: int;
+	areaTitle: string;
+	areaDescription: string;
+	areaPic: string;
+	areaDefaultMarkId: int;
+	taskList: [int];
+	rewardList: [int];
+	taskRefreshNum: int = 2;
+}
+
+table BubbleData {
+	actionGuid: string;
+	name: string;
+	async: bool;
+	params: string;
+	actionId: int;
+}
+
+table AchievementGroup {
+	id: int;
+	category: int;
+	sort: int;
+	name: string;
+	smallIcon: string;
+	icon: string;
+	backgroundIcon: string;
+	dropId: int;
+	enable: bool = true;
+}
+
+table AbpMontageData {
+	id: int;
+	montage: string;
+	maleVariant: string;
+}
+
+table CloudTime {
+	id: int;
+	day: int;
+	amount: float;
+	timeout: int;
+	stageImage: string;
+	icon: string;
+	desc: string;
+}
+
+table BuildingUpGradeCurve {
+	id: int;
+	groupId: int;
+	level: int;
+	upGradePrice: int;
+	heatAddition: int;
+	goldAddition: int;
+	goldAdditionFix: int;
+	wishAddition: int;
+	wishAdditionFix: int;
+	energyAddition: int;
+	modelId: int;
+	ideaRatioAddition: int;
+	successAddition: int;
+}
+
+table AiStateMachineConfig {
+	id: string;
+	stateMachineJson: string;
+}
+
+table BlackCoastThemeConfig {
+	activityId: int;
+	itemId: int;
+	weaponPreviewId: [int];
+}
+
+table AbnormalDamageConfig {
+	level: int;
+	abnormal1001: int;
+	abnormal1002: int;
+	abnormal1003: int;
+	abnormal1004: int;
+	abnormal1005: int;
+	abnormal1006: int;
+}
+
+table Damage {
+	id: double;
+	calculateType: int;
+	element: int;
+	damageTextType: int;
+	payloadId: double;
+	type: int;
+	subType: [int];
+	smashType: int = 1;
+	cureBaseValue: [int];
+	relatedProperty: int = 7;
+	rateLv: [int];
+	hardnessLv: [int];
+	toughLv: [int];
+	energy: [int];
+	specialEnergy1: [int];
+	specialEnergy2: [int];
+	specialEnergy3: [int];
+	specialEnergy4: [int];
+	elementPowerType: int;
+	elementPower: [int];
+	formulaType: int;
+	formulaParam1: [int];
+	formulaParam2: [int];
+	formulaParam3: [int];
+	formulaParam4: [int];
+	formulaParam5: [int];
+	formulaParam6: [int];
+	formulaParam7: [int];
+	formulaParam8: [int];
+	formulaParam9: [int];
+	formulaParam10: [int];
+	immuneType: int;
+	percent0: [int];
+	percent1: [int];
+	fluctuationLower: [int];
+	fluctuationUpper: [int];
+}
+
+table AkiMap {
+	mapId: int;
+	mapName: string;
+	fatherMap: int;
+	groupMark: int;
+	floor: int;
+	switchCondition: string;
+	mapPic3d: string;
+	mapPic2d: string;
+	bigMapDefaultScale: int;
+	bigMapMinScale: int;
+	bigMapMaxScale: int;
+	littleMapDefaultScale: int;
+	limitContent: string;
+	isGravityMap: bool;
+}
+
+table BossRushActivity {
+	id: int;
+	activityId: int;
+	instId: int;
+	groupId: int;
+	sortId: int;
+	buffCount: int;
+	defaultBuff: [int];
+	optionalBuff: [int];
+	unlockBuff: [int];
+	openDay: int;
+	condition: int;
+	preLevel: int;
+	rewardScore: int;
+	levelRewardDesc: string;
+	levelDesc: string;
+	rewardId: int;
+	bossInfo: int;
+	previewTexture: string;
+	stageTexture: string;
+	bossCount: int;
+	scoreBuffCount: int;
+	scoreBuff: [int];
+	levelScoreRewardList: [IntPair];
+	rewardName: string;
+	rewardTexture: string;
+}
+
+table AreaAtmosphereInfo {
+	id: int;
+	dAPath: string;
+	isTOD: bool = true;
+	priority: int;
+	fadeTime: int = 3;
+}
+
+table BuffEquipItem {
+	id: int;
+	itemId: int;
+	roleId: int;
+	buffs: [double];
+	equipTips: string;
+	unEquipTips: string;
+	enableInUI: bool = true;
+}
+
+table DailyAdventureTask {
+	taskId: int;
+	taskTitle: string;
+	taskDescription: string;
+	taskReward: [DicIntInt];
+	taskFunc: [string];
+}
+
+table BossRushScore {
+	id: int;
+	score: int;
+	rewardId: int;
+}
+
+table AiTeamAttack {
+	id: int;
+	extraWeight: float = 3000.0;
+	distanceCoefficient: float = 1.0;
+	angleCoefficient: float = 100.0;
+}
+
+table AdventureTask {
+	id: int;
+	chapterId: int;
+	taskText: string;
+	recordId: [int];
+	needProgress: int = 1;
+	dropIds: int;
+	pathId: int;
+	jumpTo: [DicIntString];
+}
+
+table BabelTowerDeEffect {
+	id: int;
+}
+
+table CookingSkill {
+	id: int;
+	extraItemId: int;
+	effectiveProbability: int;
+	typeld: int;
+	skillDescription: int;
+}
+
+table Condition {
+	id: int;
+	type: string;
+	needNum: int = 1;
+	limitParams: [DicStringString];
+	limitParamsOpe: [DicStringString];
+	isClient: bool = true;
+	description: string;
+	accessId: int;
+}
+
+table ActivityQuestConfig {
+	id: int;
+	questId: int;
+	activityId: int;
+	conditionId: int;
+	openDay: int;
+	isDisplay: bool;
+}
+
+table BuffItemCdGroup {
+	id: int;
+	coolDownTime: int;
+}
+
+table DamagePayload {
+	id: double;
+	a: int;
+	b: int;
+	c: int;
+	d: int;
+	e: int;
+	f: int;
+	g: int;
+}
+
+table BanInfo {
+	id: int;
+	banType: int;
+	banReason: int;
+	banDescribe: string;
+}
+
+table ChipHandBook {
+	id: int;
+	type: int;
+	voiceDescrtption: string;
+}
+
+table DamageText {
+	id: int;
+	commonIcon: string;
+	critIcon: string;
+	critNiagaraPath: string;
+	textColor: string;
+	strokeColor: string;
+	critTextColor: string;
+	critStrokeColor: string;
+	minDeviationX: int;
+	minDeviationY: int;
+	maxDeviationX: int;
+	maxDeviationY: int;
+	ownDamageSequence: string;
+	ownCriticalDamageSequence: string;
+	monsterDamageSequence: string;
+	monsterCriticalDamageSequence: string;
+	damageTextSequence: string;
+	isPreload: bool = true;
+	ownCommonDamageCurvePath: [string];
+	ownCriticalDamageCurvePath: [string];
+	monsterCommonDamageCurvePath: [string];
+	monsterCriticalDamageCurvePath: [string];
+}
+
+table ConditionType {
+	type: string;
+	isClientTrigger: bool;
+	subType: int;
+	registerPlaces: [int];
+	param1: [DicStringString];
+	defaultParam1: string;
+	param2: [DicStringString];
+	defaultParam2: string;
+	param3: [DicStringString];
+	defaultParam3: string;
+	param4: [DicStringString];
+	defaultParam4: string;
+	param5: [DicStringString];
+	defaultParam5: string;
+	param6: [DicStringString];
+	defaultParam6: string;
+	param7: [DicStringString];
+	defaultParam7: string;
+	param8: [DicStringString];
+	defaultParam8: string;
+	param9: [DicStringString];
+	defaultParam9: string;
+	param10: [DicStringString];
+	defaultParam10: string;
+	param11: [DicStringString];
+	defaultParam11: string;
+	param12: [DicStringString];
+	defaultParam12: string;
+	param13: [DicStringString];
+	defaultParam13: string;
+	param14: [DicStringString];
+	defaultParam14: string;
+	param15: [DicStringString];
+	defaultParam15: string;
+	param16: [DicStringString];
+	defaultParam16: string;
+}
+
+table BattleScoreConf {
+	id: int;
+	type: int;
+	levelGroupId: int;
+}
+
+table BabelTowerDeTerm {
+	id: int;
+	groupId: int;
+	difficultPreLevel: [int];
+	star: int;
+	line: int = 1;
+	texture: string;
+	nameText: string;
+	desText: string;
+}
+
+table BabelTowerDeTermMutex {
+	id: int;
+	mutexDeTermGroup: [int];
+}
+
+table DailyAdventurePoint {
+	id: int;
+	needPt: int;
+	drop: int;
+}
+
+table ActivityViewName {
+	id: int;
+	type: int;
+	viewName: string;
+}
+
+table DataLayer {
+	id: int;
+	dataLayer: string;
+	cnName: string;
+	levelId: int;
+	initLoad: bool;
+}
+
+table DailyTask {
+	id: int;
+}
+
+table Building {
+	id: int;
+	name: string;
+	sort: int;
+	desc: string;
+	associateRole: int;
+	roleTips: string;
+	buildingTexture: string;
+	tipsSprite: string;
+	mapMarkId: int;
+	unLockPrice: int;
+	unlockCondition: int;
+	jumpType: int;
+	jumpParam: int;
+	upGradeCurve: int;
+	flowListName: string;
+	flowId: int;
+	stateId: int;
+	triggerEntityId: int;
+}
+
+table BabelTowerDifficulty {
+	id: int;
+	activityId: int;
+	difficultyId: int;
+	starNum: int;
+	textBgColor: string;
+	difficultyTextKey: string;
+}
+
+table ConfirmBox {
+	id: int;
+	title: string;
+	content: string;
+	secondaryContent: string;
+	buttonText: [string];
+	delayTime: int;
+	delayButtonIndex: int;
+	needMaskClose: bool = true;
+	uiShowType: int;
+	needClose: bool = true;
+}
+
+table DebugCommandConfig {
+	id: int;
+	getTargetStage: int;
+	paramGetTarget: [string];
+	effectStage: int;
+	paramEffect: [string];
+}
+
+table DebugEntranceTypeConfig {
+	id: int;
+	name: string;
+}
+
+table DevicePlatform {
+	id: int;
+	pidAndVid: string;
+	platformType: int;
+}
+
+table DigitalScreen {
+	id: int;
+	backgroundPicture: string;
+	prefab: int;
+	existTime: int;
+	textId: [int];
+	textFactor: float;
+	logoIconPath: string;
+}
+
+table DigitalScreenText {
+	id: int;
+	textContentId: string;
+	alignment: int;
+	fontSize: int;
+	showStartFrame: float;
+	showEndFrame: float;
+	hideFrame: float;
+	effect: int;
+}
+
+table DoubleRewardActivity {
+	id: int;
+	type: int;
+	count: int = 3;
+	upRate: int = 2;
+	prefab: string;
+}
+
+table DragonPool {
+	id: int;
+	coreId: int;
+	goal: [int];
+	dropIds: [int];
+	darkCoastDeliveryList: [int];
+	autoTake: bool = true;
+}
+
+table DetectionText {
+	id: int;
+	text: string;
+	subText: string;
+	icon: string;
+	helpGroupId: int;
+}
+
+table DropGroup {
+	unitId: int;
+	groupId: int;
+	minNum: int;
+	maxNum: int;
+	interval: int;
+	dropShowPlan: int = 1;
+}
+
+table DreamLinkRoleDungeon {
+	id: int;
+	roleId: int;
+	animationPath: string;
+	addProgress: int;
+	indexTexturePath: string;
+	weaponShowConfig: [DicStringString];
+	weaponShowCase: [DicStringString];
+}
+
+table DreamLinkWorldRun {
+	id: int;
+	activityId: int;
+	markId: int;
+	markRange: int;
+	conditionGroupId: int;
+	title: string;
+	rewardId: int;
+}
+
+table DeviceRenderFeature {
+	id: int;
+	deviceId: int;
+	qualityType: int;
+	defaultQuality: int;
+	fPS: int = 30;
+	shadowQuality: int = 2;
+	fxQuality: int = 1;
+	imageDetail: int = 2;
+	antiAliasing: int = 1;
+	aO: int = 1;
+	volumeFog: int = 1;
+	volumeLight: int = 1;
+	motionBlur: int = 1;
+	streamLevel: int = 1;
+	vSync: int = 1;
+	screenPercentage: int = 3;
+	superResolution: int = 2;
+	npcDensity: int = 2;
+	bloom: int = 1;
+	otherCommand: string;
+}
+
+table DirectTrainActivity {
+	id: int;
+	skipQuestId: int;
+	forceRemindCond: int;
+	skipQuestCondition: int;
+	recommendQuestId: int;
+	recommendQuestLinkList: [int];
+	recommendQuestLabel: string;
+}
+
+table DropPackage {
+	id: int;
+	showBg: bool;
+	title: string;
+	dropPlan: int;
+	dropPreview: [DicIntInt];
+}
+
+table DungeonDetection {
+	id: int;
+	dungeonId: int;
+	name: string;
+	roleId: int;
+	guideId: int;
+	levelPlayList: [int];
+	instanceSubTypeDescription: string;
+	typeDescription1: int;
+	secondary: int;
+	matType: int;
+	typeDescription2: string;
+	attributesDescriptionLock: string;
+	attributesDescriptionUnlock: string;
+	bigIcon: string;
+	icon: string;
+	lockBigIcon: string;
+	temporaryIconUnLock: string;
+	temporaryIconlock: string;
+	showReward: int;
+	showRewardMap: [DicIntInt];
+	beginTimeStamp: int;
+	preOpenId: int;
+	lockCon: int;
+	phantomId: [int];
+	subDungeonId: int;
+	sortId: int;
+	newContent: string;
+}
+
+table EffectConfig {
+	id: string;
+	path: string;
+}
+
+table DropPlan {
+	id: int;
+}
+
+table EffectSpecData {
+	id: int;
+	specType: int;
+	effectRegularType: int;
+	lifeTime: int;
+	children: [int];
+}
+
+table DynamicMapMark {
+	markId: int;
+	instanceDungeonId: int;
+	mapId: int = 8;
+	relativeSubType: int;
+	fogHide: int;
+	relativeType: int;
+	relativeId: int;
+	markVector: IntVector;
+	entityConfigId: int;
+	objectType: int;
+	markTitle: string;
+	markDesc: string;
+	toBeDiscovered: int;
+	isMonster: int;
+	showPriority: int;
+	showRange: [int];
+	lockMarkPic: string;
+	unlockMarkPic: string;
+	showCondition: int;
+	fogShow: int;
+	mapShow: int;
+	scale: float = 1.0;
+	firstReward: float;
+	reward: float;
+	trackHudEnable: int;
+	trackAutoCancelDistance: float = -1.0;
+}
+
+table EffectCsvConfig {
+	id: int;
+	name: string;
+	type: int;
+	data: string;
+}
+
+table EntityAudioConfig {
+	id: string;
+	name: string;
+	enableVb: bool;
+	rtpcName: string;
+	triggerDistance: float = 500.0;
+	boneHiddenSwitch: [string];
+}
+
+table ElementLevel {
+	level: int;
+	buffId: double;
+	addBuffs: [double];
+	textId: string;
+	textIdArgs: [string];
+}
+
+table ElementIconTag {
+	id: string;
+	configParam: string;
+}
+
+table DropShowPlan {
+	id: int;
+	force: [int];
+	angle: [int];
+	verticalAngle: [int];
+	showBg: int;
+	showTime: int = 3000;
+	showCout: int = 7;
+	adsorption: int;
+}
+
+table ElementInfo {
+	id: int;
+	describe: string;
+	name: string;
+	icon: string;
+	icon2: string;
+	icon3: string;
+	icon4: string;
+	icon4Pure: string;
+	icon5: string;
+	icon6: string;
+	icon7: string;
+	elementChangeTexture: string;
+	elementEffectColor: string;
+	elementColor: string;
+	skillTreeEffectColor: string;
+	skillTreeIconColor: string;
+	skillTreeLineColor: string;
+	effect: string;
+	effectTexturePath: string;
+	gachaElementBgSpritePath: string;
+	gachaSpritePath: string;
+	ultimateSkillColor: string;
+	skillEffectColor: string;
+	skillButtonEffectPath: string;
+	elementBallEffectPath: string;
+	audioEvent: string;
+}
+
+table EntityCommonTagInfo {
+	id: int;
+	uglyTagName: string;
+}
+
+table EntityFsmSkill {
+	id: int;
+	configId: int;
+	skillName: string;
+	skillId: int;
+}
+
+table ElementalReaction {
+	id: int;
+	reactionId: int;
+	reactionName: string;
+	sortIndex: int;
+	reactionTexturePath: string;
+	reactionColor: string;
+	isVisible: bool = true;
+	reactionDescription: string;
+}
+
+table EntityVoxelInfo {
+	id: int;
+	mapId: int;
+	entityId: int;
+	envType: int;
+}
+
+table EnrichmentAreaConfig {
+	id: int;
+	enrichmentId: int;
+	itemId: int;
+	levelId: int;
+	entityIds: [int];
+}
+
+table EntrustType {
+	id: int;
+	icon: string;
+}
+
+table EntityOwnerData {
+	guid: string;
+	owner: string;
+}
+
+table ExchangeReward {
+	id: int;
+	sharedId: int;
+	maxCount: int;
+	cost: [DicIntInt];
+	rewardId: [DicIntInt];
+	previewReward: [DicIntIntIntMap];
+}
+
+table EntitySelfEventConfig {
+	id: int;
+	key: string;
+	name: string;
+	desc: string;
+}
+
+table EntrustFinishDialog {
+	id: int;
+	entrustId: int;
+	level: int;
+	upDialog: string;
+	unchangedDialog: string;
+	upDialogGirl: string;
+	unchangedDialogGirl: string;
+}
+
+table EntrustRoleLevel {
+	id: int;
+	roleId: int;
+	needLike: int;
+}
+
+table ExchangeShared {
+	id: int;
+	maxCount: int;
+	cost: [DicIntInt];
+	resetTimeId: int;
+}
+
+table ErrorCode {
+	id: int;
+	debugText: string;
+	text: string;
+	isTip: bool;
+}
+
+table ExploreTools {
+	phantomSkillId: int;
+	name: string;
+	skillType: int;
+	canEquip: bool = true;
+	currentSkillInfo: string;
+	helpId: int;
+	icon: string;
+	backGround: string;
+	battleViewIcon: string;
+	sortId: int;
+	autoFill: bool;
+	showUnlock: bool;
+	skillGroupId: int;
+	isUseInPhantomTeam: bool;
+	cost: [DicIntInt];
+	authorization: [DicIntInt];
+	summonConfigId: int;
+}
+
+table ExploreActivity {
+	id: int;
+	bg: string;
+	exploreTitle: string;
+	percentDesc: string;
+	areaTitle: string;
+	mainTitle: string;
+	desc: string;
+	sumRewardDesc: string;
+	sumRewardNum: int;
+	recommendAreaList: [int];
+	sourceList: [int];
+}
+
+table Evaluate {
+	id: int;
+	content: string;
+	color: string;
+	spriteColor: string;
+	icon: string;
+}
+
+table EntitySkillPreload {
+	id: int;
+	skillId: int;
+	actorBlueprint: string;
+	isCommon: bool;
+	hasMontagePath: bool;
+	actorClass: [string];
+	animations: [string];
+	effects: [string];
+	audios: [string];
+	meshes: [string];
+	materials: [string];
+	animationBlueprints: [string];
+	others: [string];
+}
+
+table EntranceIconTag {
+	id: string;
+	configParam: string;
+}
+
+table EntityGravityConfig {
+	id: int;
+	mapId: int;
+	entityId: int;
+	gravityDirection: [float];
+}
+
+table ExploreReward {
+	id: int;
+	country: int;
+	exploreLevel: int;
+	needScore: int;
+	drop: int;
+	showItem: int;
+	scoreName: string;
+	scoreTexturePath: string;
+	show: bool;
+	pic: string;
+	rewardName: string;
+	reward: string;
+	help: int;
+}
+
+table ExploratoryTypeConfig {
+	id: int;
+	key: int;
+	name: string;
+	belongType: int;
+	desc: string;
+}
+
+table ElementReactionMatrix {
+	id: int;
+	elementReactionList: [int];
+}
+
+table FarmGoldDifficulty {
+	id: int;
+	magnification: int;
+	recommendedLevel: int;
+	desc: string;
+}
+
+table ExecutionConf {
+	id: int;
+	executionRoleId: int;
+	executionSkillId: int;
+	limitExecutionTags: [string];
+}
+
+table ExploreProgress {
+	id: int;
+	area: int;
+	exploreType: int;
+	subTypeScore: [DicIntInt];
+	phantomSkillId: int;
+	unlockTextId: string;
+	lockTextId: string;
+	unlockCondition: int;
+	specialPlayerMap: [DicIntInt];
+	isRecommend: bool;
+	isShowProgress: bool;
+	isShowTrack: bool;
+	specialPlayerDesc: string;
+}
+
+table FaceExpressionData {
+	id: int;
+	faceExpression: string;
+	maleVariant: string;
+}
+
+table FarmGoldActivity {
+	id: int;
+	activityId: int;
+	instId: int;
+	entranceId: int;
+	groupId: int;
+	sortId: int;
+	passScore: int;
+	levelRewardDesc: string;
+	rewardId: int;
+	openDay: int;
+	preLevel: int;
+	recommendLevel: int;
+	difficultyOptions: [int];
+}
+
+table EntrustRole {
+	id: int;
+	icon: string;
+	headIcon: string;
+	smallHeadIcon: string;
+	name: string;
+	unLockCondition: int;
+	jumpType: int;
+	jumpParam: int;
+	exPropertyCurve: int;
+	type: int;
+	mapSortId: int;
+	failDialog: string;
+	successDialog: string;
+	investDialog: string;
+	investSuccessDialog: string;
+	investFailDialog: string;
+	joinDialog: string;
+	buildSuccessDialog: string;
+	spineAtlas: string;
+	spineSkeletonData: string;
+	smallSpineAtlas: string;
+	smallSpineSkeletonData: string;
+	portrait: string;
+}
+
+table ExploreScore {
+	area: int;
+	exploreScore: [DicIntInt];
+}
+
+table ExploreRewardDisplay {
+	id: int;
+	title: string;
+	titleHexColor: string;
+	titleIconPath: string;
+	titleIconHexColor: string;
+	isRecordVisible: bool;
+	isItemVisible: bool = true;
+	isExploreProgressVisible: bool;
+	exploreBarTipsTextId: string;
+	isDescription: bool;
+	description: string;
+	isSuccess: bool = true;
+	audioId: string;
+}
+
+table ExploreProgressReward {
+	id: int;
+	area: int;
+	stepId: int;
+	dropReward: int;
+	needExploreProgress: int;
+}
+
+table FavorRoleInfo {
+	id: int;
+	roleId: int;
+	birthday: string;
+	sex: string;
+	country: string;
+	influence: string;
+	info: string;
+	talentName: string;
+	talentDoc: string;
+	talentCertification: string;
+	condGroupId: int;
+	cVNameCn: string;
+	cVNameJp: string;
+	cVNameKo: string;
+	cVNameEn: string;
+}
+
+table ExploreRouletteReplace {
+	id: int;
+	tagsInForce: [string];
+	priority: int;
+	rouletteSkillIdList: [int];
+	rouletteItemId: int;
+	replaceSkillId: int;
+}
+
+table ExploreSkillInteract {
+	id: int;
+	tag: string;
+	desc: string;
+}
+
+table FarmGoldScore {
+	id: int;
+	activityId: int;
+	score: int;
+	rewardId: int;
+}
+
+table EquivConversion {
+	id: int;
+	damageRatio: int;
+}
+
+table FarmGoldMapMark {
+	activityId: int;
+	markId: int;
+}
+
+table FavorStory {
+	id: int;
+	roleId: int;
+	sort: int;
+	title: string;
+	content: string;
+	condGroupId: int;
+	type: int;
+	motionImg: string;
+	aniBlueprint: string;
+	aniMontage: string;
+}
+
+table ExploreRoulette {
+	id: int;
+	banTags: [string];
+}
+
+table FishingActivityGroup {
+	id: int;
+	groupName: string;
+}
+
+table FilterRule {
+	id: int;
+	filterType: int;
+	title: string;
+	idList: [int];
+	needChangeColor: bool;
+}
+
+table ExploreType {
+	exploreType: int;
+	name: string;
+	icon: string;
+	descBg: string;
+	lockDescId: string;
+	descId: string;
+	countMode: int;
+	sortIndex: int;
+}
+
+table ExternalSourceSetting {
+	id: string;
+	audioEventPath: string;
+	externalSrcName: string;
+	subtitleEvent: string;
+	subtitleSrc: string;
+	bubbleEvent: string;
+	bubbleSrc: string;
+}
+
+table FeedingAnimal {
+	id: int;
+	itemIds: [int];
+	gameplayTags: [string];
+}
+
+table FishingActivity {
+	activityId: int;
+	timeQuantumId: int;
+	milestonItemId: int;
+	previewWeaponId: int;
+	recommendQuestId: int;
+	recommendQuestLinkList: [int];
+	recommendQuestLabel: string;
+}
+
+table FavorGoods {
+	id: int;
+	roleId: int;
+	sort: int;
+	title: string;
+	content: string;
+	pic: string;
+	condGroupId: int;
+	type: int;
+	motionImg: string;
+	aniBlueprint: string;
+	aniMontage: string;
+}
+
+table ExploreActivityTask {
+	taskId: int;
+	activityId: int;
+	dropId: int;
+	desc: string;
+}
+
+table FilterSortGroup {
+	id: int;
+	sortId: int;
+	filterId: int;
+}
+
+table FishingBomb {
+	id: int;
+	itemId: int;
+	exploreToolId: int;
+}
+
+table FishingItem {
+	id: int;
+	type: int;
+	category: int;
+	name: string;
+	desc: string;
+	pic: string;
+	icon: string;
+	shap: int;
+	quality: int = 2;
+	tech: [int];
+	price: [int];
+	sizeWeight: [IntArray];
+	relation: int;
+	childRelation: int;
+	convertItem: [DicIntInt];
+	canDelete: bool = true;
+	detectionUnlockCondition: int;
+	area: [int];
+	time: int;
+	color: string;
+	sprite: string;
+	illustratedNum: int;
+	reputation: int;
+}
+
+table Filter {
+	id: int;
+	dataType: int;
+	ruleList: [int];
+	isSupportSelectAll: bool;
+	isShowIcon: bool;
+	gridType: string;
+}
+
+table FightInfoDtType {
+	id: int;
+	name: string;
+}
+
+table FavorTabCamera {
+	id: int;
+	cameraSettingsName: string;
+}
+
+table FishingReputation {
+	level: int;
+	exp: int;
+	sailRating: string;
+}
+
+table FilterSortConfig {
+	id: int;
+	saveGroupId: [int];
+}
+
+table FavorLevel {
+	level: int;
+	levelUpExp: int;
+}
+
+table FavorWord {
+	id: int;
+	roleId: int;
+	type: int;
+	sort: int;
+	title: string;
+	content: string;
+	voice: string;
+	cVCn: string;
+	cVJp: string;
+	cVEn: string;
+	cVKo: string;
+	condGroupId: int;
+	motionImg: string;
+	aniBlueprint: string;
+	aniMontage: string;
+}
+
+table FishingNpcPerform {
+	id: string;
+	title: string;
+	content: string;
+	audioEvent: string;
+	montagePath: string;
+}
+
+table FishingQteConfig {
+	id: int;
+	comment: string;
+	randomArea: [int];
+	invalidArea: [IntArray];
+	maxScore: int = 100;
+	hitAreaScore: int = 10;
+	perfectSize: int;
+	perfectAppearRate: [DicIntInt];
+	perfectScore: int;
+	cursorSpeed: [DicIntInt];
+	hitColdTime: int = 100;
+	scoreUp: int = 1;
+	multiBoxGroup: int = 1;
+	hiddenInterval: [float];
+	rouletteRotateSpeed: [DicIntInt];
+	mistakeScore: int;
+	isAnticlockwise: bool;
+	refreshType: int;
+}
+
+table FishingDelivery {
+	id: int;
+	needItems: [DicIntIntArray];
+}
+
+table FishingGridItemShape {
+	id: int;
+	fillState: [IntArray];
+}
+
+table FishingEntrustType {
+	id: int;
+	name: string;
+	color: string;
+}
+
+table FishingActivityMilestone {
+	id: int;
+	activityId: int;
+	itemNum: int;
+	dropId: int;
+}
+
+table Flow {
+	id: string;
+	dungeonId: int;
+	states: [int];
+}
+
+table FlowTemplateData {
+	id: int;
+	name: string;
+	amount: int;
+	enable: bool;
+	template: string;
+	cameraType: string;
+	actorDataArray: string;
+	cameraData: string;
+}
+
+table FishingIllustratedReward {
+	id: int;
+	desc: string;
+	type: int;
+	conditionGroup: int;
+	dropId: int;
+	accessPath: int;
+}
+
+table FishingManualRefresh {
+	id: int;
+	entrustPoolType: int;
+	star: int;
+	refreshCost: int;
+}
+
+table FishingNotice {
+	id: int;
+	alertCondition: int;
+	finishCondition: int;
+	alertTip: string;
+}
+
+table FishingTag {
+	id: int;
+	name: string;
+	color: string;
+}
+
+table FishingBait {
+	id: int;
+	exploreToolId: int;
+	areaId: int;
+	gamePlayId: int;
+	itemId: int;
+	countLimit: int;
+}
+
+table FishingEntrust {
+	id: int;
+	name: string;
+	isNight: bool;
+	desc: string;
+	previewItem: int;
+	star: int;
+	entrustType: int;
+	entrustPool: int;
+	unlockCondition: int;
+	entrustTarget: [DicIntInt];
+	entrustDestination: int;
+	entrustReward: [DicIntInt];
+	accessPath: int;
+	targetDesText: [DicIntString];
+}
+
+table FishingActivityLimitTask {
+	taskId: int;
+	activityId: int;
+	taskName: string;
+	sortId: int;
+	groupId: int;
+	dropId: int;
+	jumpId: int;
+}
+
+table FishingCage {
+	id: int;
+	entityConfigId: int;
+	sceneConfigId: int = 8;
+	unlockCondition: int;
+	countLimit: int;
+	refreshTime: int;
+	outputGroupId: int;
+}
+
+table FishingTech {
+	id: int;
+	name: string;
+	type: int;
+	treeLevel: int;
+	area: int;
+	indexId: int;
+	preNode: int;
+	unlockCondition: int;
+	effect: [int];
+	icon: string;
+	tagName: string;
+}
+
+table FishingQuality {
+	id: int;
+	txtColor: string;
+	texBg: string;
+	gridColor: string;
+	gridSprite: string;
+}
+
+table ForgeSkill {
+	id: int;
+	extraItemId: int;
+	effectiveProbability: int;
+	typeld: int;
+	skillDescription: int;
+}
+
+table FriendFilter {
+	id: int;
+	filter: string;
+	iconPath: string;
+}
+
+table FishingPosition {
+	id: int;
+	position: [int];
+	rotation: [int];
+}
+
+table FishingEntrustPool {
+	id: int;
+	priority: int;
+	numLimit: int;
+	totalCount: int;
+	titleName: string;
+	titleSprite: string;
+}
+
+table FoleySynthConfig {
+	id: int;
+	name: string;
+	model1Config: [int];
+	model2Config: [int];
+	model2AccMaxCount: int = 10;
+	model2VelMaxCount: int = 5;
+}
+
+table FunctionCondition {
+	functionId: int;
+	name: string;
+	isOn: bool;
+	openConditionId: int;
+	showUIType: int;
+	delay: int = 101;
+	title: string;
+	desc: string;
+	icon: string;
+	iconSprite: string;
+}
+
+table FogBlock {
+	id: string;
+	block: string;
+	mapId: int;
+	r: int;
+	g: int;
+	b: int;
+	alpha: int;
+}
+
+table FormationProperty {
+	id: int;
+	initValue: int;
+	initRecoveryRate: int = -500;
+	initMax: int = 10000;
+	markTag: [string];
+	resistTag: [string];
+	triggerRange1: FloatRange;
+	triggerType1: int;
+	triggerEffect1: int;
+	triggerEffectParams1: [double];
+	triggerRange2: FloatRange;
+	triggerType2: int;
+	triggerEffect2: int;
+	triggerEffectParams2: [double];
+	triggerRange3: FloatRange;
+	triggerType3: int;
+	triggerEffect3: int;
+	triggerEffectParams3: [double];
+	condition: int;
+	propertyIndex: int;
+}
+
+table FlowState {
+	stateKey: string;
+	id: int;
+	keepBgm: bool;
+	pos: string;
+	actions: string;
+}
+
+table FightFormation {
+	id: int;
+	limitRole: [int];
+	limitCount: [int];
+	litmitElement: [int];
+	content: string;
+	recommendFormation: [int];
+	trialRole: [int];
+	autoRole: [int];
+	chooseRole: bool = true;
+}
+
+table FishingTechEffect {
+	id: int;
+	type: int;
+	consume: [DicIntInt];
+	desc: string;
+	params: [int];
+	paramDic: [DicIntInt];
+	showParams: [string];
+}
+
+table FishingPoint {
+	id: int;
+	entityConfigId: int;
+	showItem: int;
+	gamePlayId: int;
+	unlockTech: int;
+	groupId: int;
+	sceneConfigId: int = 8;
+	rewardItem: [DicIntInt];
+	outGrowth: [DicIntInt];
+	doubleRate: int;
+	count: int;
+	refreshTime: int;
+}
+
+table GachaWeaponTransform {
+	id: int;
+	location: Vector;
+	rotation: Vector;
+	size: float = 1.0;
+	rotateTime: int;
+	scabbardOffset: Vector;
+	showScabbard: bool = true;
+	axisRotate: Vector;
+	weaponTypeTexture: string;
+}
+
+table GachaSequenceConfig {
+	id: int;
+	sequencePath: string;
+}
+
+table ForgeFormula {
+	id: int;
+	formulaItemId: int;
+	itemId: int;
+	typeId: int;
+	unlock: bool = true;
+	sortId: int;
+	name: string;
+	consumeItems: [OneItemConfig];
+	forgeContent: string;
+	background: string;
+	roleList: [int];
+}
+
+table FishingShipSkin {
+	id: int;
+	name: string;
+	iconTexture: string;
+	bigTexture: string;
+	desText: string;
+	lockText: string;
+	mesh: string;
+	templateId: int;
+	techLevel: int;
+	techEffect: int;
+}
+
+table FogTextureConfig {
+	id: string;
+	block: string;
+	mapId: int = 8;
+	gravityFlip: int = 1;
+	mapTilePath: string;
+	miniMapTilePath: string;
+	hdMapTilePath: string;
+	fogTilePath: string;
+	miniFogTilePath: string;
+	subMapGroupId: int;
+}
+
+table Gacha {
+	id: int;
+	ruleGroupId: int;
+	sort: int = 10;
+}
+
+table GamePlayScan {
+	uId: int;
+	iconPath: string;
+	interval: float = 8.0;
+	offset: Vector;
+	resourcePath: string;
+	color: int;
+}
+
+table GeographyHandBook {
+	id: int;
+	type: int;
+	name: string;
+	texture: string;
+	typeDescrtption: string;
+	descrtption: string;
+}
+
+table GaChaShare {
+	id: int;
+	type: int;
+	desc: string;
+	sharePic: string;
+}
+
+table GamePlayInformationInfo {
+	id: int;
+	type: int;
+	info: string;
+}
+
+table GiftPackage {
+	id: int;
+	type: GiftType = Fixed;
+	content: [DicIntInt];
+	weight: [DicIntInt];
+	availableNum: int;
+	showType: int;
+}
+
+table FishingPort {
+	id: int;
+	entityConfigId: int;
+	npcEntityConfigId: int;
+	unlockCondition: int;
+	sceneConfigId: int = 8;
+	sailingPoint: int;
+	ashorePoint: int;
+	markId: int;
+	shopId: int;
+	enterRange: int;
+	leaveRange: int;
+	rangeCenter: int;
+}
+
+table GeographyType {
+	id: int;
+	typeDescription: string;
+	icon: string;
+}
+
+table HiddenBossWindow {
+	id: int;
+	bossName: string;
+	markId: int;
+	iconRefPath: string;
+}
+
+table FunctionOpenViewLimit {
+	viewName: string;
+}
+
+table GachaPool {
+	id: int;
+	gachaId: int;
+	sort: int = 10;
+}
+
+table GuideTips {
+	guideId: int;
+	content: string;
+	button: [string];
+	inputEnums: [string];
+	limitInputEnums: [string];
+	useLoopAnim: bool;
+	useMask: int;
+}
+
+table GachaViewInfo {
+	id: int;
+	type: int;
+	summaryTitle: string;
+	summaryDescribe: string;
+	themeColor: string;
+	effectLocation: Vector;
+	effectPath: string;
+	textTexture: string;
+	contentTexturePath: string;
+	contentTextureBgPath: string;
+	underBgTexturePath: string;
+	tagNotSelectedSpritePath: string;
+	tagSelectedSpritePath: string;
+	weaponPrefabPath: string;
+	spinePrefabResource: string;
+	upList: [int];
+	showIdList: [int];
+	previewIdList: [int];
+}
+
+table FunctionMenu {
+	functionId: int;
+	sortIndex: int;
+	functionName: string;
+	functionIcon: string;
+	jumpView: string;
+}
+
+table GachaTextureInfo {
+	id: int;
+	gachaMainViewTexture: string;
+	gachaResultViewTexture: string;
+	showSequence: int;
+	bindPoint: string;
+	idArray: [int];
+	trialId: int;
+}
+
+table GenericPrompt {
+	tipsId: string;
+	typeId: int;
+	tipsText: string;
+	extraText: string;
+	duration: int;
+	priority: int;
+}
+
+table HelpText {
+	id: int;
+	groupId: int;
+	title: string;
+	picture: string;
+	content: string;
+	type: int;
+}
+
+table HandBookQuestTab {
+	id: int;
+	name: string;
+	icon: string;
+	type: int;
+}
+
+table GmAccount {
+	id: int;
+	gmName: string;
+	firstName: string;
+	gmOrderListId: int;
+}
+
+table FlowText {
+	key: long;
+	flowListId: string;
+	plotLineId: string;
+	id: int;
+	text: int;
+	sound: string;
+	esKey: string;
+}
+
+table GamePlayScanComposite {
+	uId: int;
+	scanInfos: [int];
+	itemMaterialDataPath: string;
+	nearVoiceEffectPath: string;
+	farVoiceEffectPath: string;
+	scanConcealEffectPath: string;
+	interactionEffectInterval: float = 8.0;
+	showDistance: bool;
+	showInteractionEffect: bool;
+	scanAudioEvent: string;
+	triggerRoleAudio: bool;
+}
+
+table FoleySynthBoneConfig {
+	id: int;
+	name: string;
+	boneName: string;
+	model1Ceil: float;
+	model1CeilEventPath: string;
+	model1Floor: float;
+	model1FloorEventPath: string;
+	model1CeilInterpolation: float;
+	model1FloorInterpolation: float;
+	model1RtpcPath: string;
+	model2Ceil: float;
+	model2CeilEventPath: string;
+	model2Floor: float;
+	model2FloorPath: string;
+	model2FloorPrecent: float;
+	model2RptcVelocityMax: string;
+	model2RptcAccelerationMax: string;
+	model2RptcVelocityDuring: string;
+	model2CeilInterpolation: float;
+	model2FloorInterpolation: float;
+}
+
+table GuideTutorialPage {
+	id: int;
+	pic: string;
+	title: string;
+	subTitle: string;
+	content: string;
+	button: [string];
+}
+
+table GamePlaySoundQuiz {
+	id: int;
+	soundNum: int = 1;
+	type: string;
+	name: string;
+	interactId: string;
+}
+
+table GamepadKey {
+	id: int;
+	keyName: string;
+	keyDescription: string;
+	keyDisplayName: string;
+	keyIconPath: string;
+	psKeyIconPath: string;
+}
+
+table GachaEffectConfig {
+	id: int;
+	times: int;
+	quality: int;
+	finalShowSequencePath: string;
+	defaultColor: Color;
+	finalColor: Color;
+	defaultProcess: float;
+	changeColorProcess: float;
+	completeChangeColorProcess: float;
+	playSequenceProcess: float;
+	slideCurveAssetPath: string;
+}
+
+table GuideFromMontage {
+	eventGroupId: int;
+	guideGroupId: int;
+}
+
+table ItemIconTag {
+	id: string;
+	configParam: string;
+}
+
+table GatherActivity {
+	id: int;
+	playTask: int;
+	taskClue: string;
+	submitItem: [DicIntInt];
+	reward: int;
+	locationEntityConfigId: int;
+	markId: int;
+	rewardItem: [DicIntInt];
+}
+
+table GuideData {
+	id: int;
+	titleText: string;
+	noteText: string;
+	bgTexture: string;
+}
+
+table GuideFocusNew {
+	guideId: int;
+	viewName: string;
+	dynamicTabName: string;
+	platform: string;
+	hookName: string;
+	hookNameForShow: string;
+	extraParam: [string];
+	extraParamDesc: string;
+	contentDirection: string;
+	showArrow: bool = true;
+	content: string;
+	button: [string];
+	inputEnums: [string];
+	limitInputEnums: [string];
+	showMouse: bool;
+	useMask: bool;
+	useClick: bool = true;
+	clickAnywhere: bool;
+	clickAnywhereShowTime: int;
+	onlyFrame: bool;
+	onlyText: bool;
+	roleHeadId: int;
+	textInScreen: bool = true;
+}
+
+table HardnessMode {
+	id: int;
+	reductionData: [float];
+	attackTypeData: [float];
+	correctData: [float];
+	weaponReduction: [float];
+	skillTypeParam: [float];
+	percent: int;
+}
+
+table GuideGroup {
+	id: int;
+	step: [int];
+	openLimitCondition: int;
+	autoOpenCondition: int;
+	limitRepeat: [int];
+	dungeonId: [int];
+	resetInDungeon: bool;
+	onlineMode: int = 1;
+	priority: int;
+}
+
+table GASkill {
+	id: int;
+	configId: int;
+	skillId: int;
+	montageId: [int];
+}
+
+table GuideStep {
+	id: int;
+	controller: string;
+	successCondition: int;
+	failureCondition: int;
+	tickCondition: int;
+	timeScale: float = 1.0;
+	contentType: int;
+	reportId: int;
+	duration: int = 5000;
+	minDuration: int = -1;
+	showDelay: int;
+	isDangerous: bool;
+	isTimeUpAsFinish: bool;
+}
+
+table InteractAudioMaterial {
+	collisionMaterial: string;
+	isActiveImpacter: bool;
+	audioEvent: string;
+	impactMass: float;
+	maxforce: float;
+	minimumPosteventForce: float;
+	minimumTimeBetweenAkevent: float;
+}
+
+table InstanceDungeonTitle {
+	id: int;
+	commonText: string;
+	iconTexture: string;
+}
+
+table GuideTutorial {
+	id: int;
+	tutorialType: int = 11;
+	tutorialOrder: int;
+	pageId: [int];
+	pageReplaceConditionGroupId: int;
+	replacePageId: [int];
+	groupName: string;
+	tutorialTip: bool;
+	dropId: int = 100001;
+	disableDropReward: bool;
+	requireReadAll: bool;
+	excludeFromWiki: bool;
+	copiedFrom: int;
+}
+
+table GamePlayInformationGroup {
+	id: int;
+	infoGroup: [int];
+	iconString: string;
+}
+
+table GongduolaPassengerVoiceConfig {
+	id: int;
+	roleId: int;
+	triggerType: int;
+	priority: int;
+	plotFlow: [string];
+	voice: string;
+}
+
+table KillMonstersScores {
+	id: int;
+	instanceID: int;
+	scoreMin: int;
+	scoreMax: int;
+	reward: int;
+	difficultyOptions: [int];
+	desc: string;
+}
+
+table Interjection {
+	id: int;
+	timberId: int;
+	universalToneId: int;
+	akEvent: string;
+}
+
+table FuncMenuWheel {
+	funcId: int;
+	funcName: string;
+	funcMenuIconPath: string;
+	funcMenuSequence: int;
+	autoEquip: bool;
+	unlockCondition: int;
+}
+
+table InfoDisplay {
+	id: int;
+	itemId: int;
+	type: int;
+	title: string;
+	text: string;
+	picture: string;
+	audio: string;
+	background: string;
+}
+
+table GenericPromptTypes {
+	typeId: int;
+	generalText: string;
+	generalExtraText: string;
+	textColor: string;
+	duration: int;
+	priority: int;
+	showArea: string;
+	maxCount: int = 1;
+	onlyBattle: bool = true;
+	tickable: bool;
+	uiPath: string;
+	offsetY: float;
+}
+
+table HandBookEntrance {
+	id: int;
+	name: string;
+	titleIcon: string;
+	texture: string;
+}
+
+table GmOrderConfig {
+	id: int;
+	name: string;
+	nameOverride: string;
+	code: string;
+	codeOverride: string;
+	sort: int;
+	visible: bool = true;
+}
+
+table ItemHandBook {
+	id: int;
+	type: int;
+	title: string;
+}
+
+table GmOrderList {
+	id: int;
+	name: string;
+	orderList: [string];
+}
+
+table LoadingTipsText {
+	id: int;
+	levelAreaId: int;
+	imageId: int;
+	weight: int;
+	title: string;
+	tipsText: string;
+}
+
+table InstanceEnterControl {
+	id: int;
+	enterCount: int;
+	enterCountConsumeType: int;
+}
+
+table KeyType {
+	typeId: int;
+	name: string;
+	iconSpritePath: string;
+}
+
+table HeadIcon {
+	id: int;
+	iconPath: string;
+	bigIconPath: string;
+}
+
+table ItemMainType {
+	id: int;
+	name: string;
+	icon: string;
+	iconFirstAchieve: string;
+	packageId: int;
+	bShowDescompose: bool;
+	sequenceId: int;
+	useWayId: int;
+	destroyUseWayId: int;
+	bFilterSortVisible: bool;
+}
+
+table GenderText {
+	maleText: string;
+	femaleText: string;
+}
+
+table InteractData {
+	guid: string;
+	type: string;
+	icon: string;
+	tidContent: string;
+	condition: string;
+	uniquenessTest: string;
+	doIntactType: string;
+	range: int;
+	duration: string;
+}
+
+table GachaViewTypeInfo {
+	type: int;
+	tagText: string;
+	tagColor: string;
+	typeText: string;
+	optionalTitle: string;
+	optionalDesc: string;
+	gachaButtonTip: string;
+}
+
+table LevelPlayInfoMappingConfig {
+	id: int;
+	type: int;
+	data: string;
+}
+
+table ItemShowType {
+	id: int;
+	name: string;
+}
+
+table HotKeyType {
+	id: int;
+	type: int;
+	hotKeyList: [int];
+}
+
+table GameplayCue {
+	id: double;
+	path: string;
+	cueType: int = 1;
+	comp: int;
+	compName: string;
+	socket: string;
+	location: Vector;
+	rotation: Vector;
+	scale: Vector;
+	locRule: int;
+	rotaRule: int;
+	sclRule: int;
+	endRule: int;
+	magni: int;
+	attrId: int;
+	tag: string;
+	max: int = 10000;
+	min: int;
+	bListenAttr: bool;
+	bSoftFollow: bool;
+	bLockRevolution: bool;
+	lockRotation: Vector;
+	lockCamera: bool;
+	interpSpeed: int = 5;
+	farthestDistance: int = 100;
+	faultTolerance: Vector;
+	targetScaleUp: [float];
+	resources: [string];
+	parameters: [string];
+	group: int;
+	priority: int;
+}
+
+table HotKeyText {
+	textId: string;
+	name: string;
+}
+
+table LevelPlayData {
+	levelPlayId: int;
+	data: string;
+}
+
+table GlobalConfigFromCsv {
+	id: int;
+	name: string;
+	desc: string;
+	type: string;
+	value: string;
+}
+
+table LangOfLogo {
+	name: string;
+	zhHansLogo: string;
+	enLogo: string;
+	jpLogo: string;
+	zhHantLogo: string;
+	krLogo: string;
+}
+
+table HotKeyView {
+	id: int;
+	functionButtonArray: [int];
+}
+
+table ItemAccessedPath {
+	id: int;
+	giftItemGroup: [int];
+}
+
+table HotKeyIcon {
+	keyName: string;
+	icon: string;
+}
+
+table KeySetting {
+	id: int;
+	typeId: int = 1;
+	inputControllerType: int;
+	name: string;
+	openViewType: int;
+	buttonTextId: string;
+	actionOrAxis: int;
+	actionOrAxisName: string;
+	canCombination: bool;
+	pcKeyIndex: int;
+	xBoxKeyIndex: int;
+	connectedKeySettingId: int;
+	pcAxisValue: float;
+	xBoxAxisValue: float;
+	isLock: bool;
+	bothActionName: [string];
+	isCheckSameKey: bool = true;
+	canDisable: bool;
+	allowKeys: [string];
+	allowMainKeys: [string];
+	allowSecondKeys: [string];
+	detailTextId: string;
+}
+
+table InteractBackGround {
+	id: int;
+	viewName: string;
+	title: string;
+	titleSpritePath: string;
+	contentSpritePath: string;
+	costItemList: [int];
+	isHelpButtonVisible: bool;
+	helpGroupId: int;
+}
+
+table Influence {
+	id: int;
+	title: string;
+	introduction: string;
+	extraDesc: string;
+	showIcon: int = 1;
+	logo: string;
+	dailyTaskShow: int = 1;
+	rawRelation: int;
+	relationCondition: int;
+	lastRelation: int;
+	reputationMax: int = 10000;
+	reputationItem: [IntPair];
+	reputationReward: [IntPair];
+	partyTags: [int];
+}
+
+table MonsterBattleConf {
+	id: int;
+	roleMappingId: int;
+	executionId: [int];
+	executionRadius: float = 3.0;
+	forceLockOnCoefficient: float;
+	monsterSizeId: int = 1;
+	monsterPerformanceId: int;
+	fixedLocation: bool;
+}
+
+table MapTravelConfig {
+	activityId: int;
+	maxLevel: int;
+	expItemId: int;
+	finalRewardId: int;
+	tabName: [DicIntString];
+	tabIcon: [DicIntString];
+}
+
+table Liveness {
+	id: int;
+	goal: int;
+	dropId: int;
+}
+
+table InstanceTrialRoleConfig {
+	id: int;
+	maleFormation: [int];
+	femaleFormation: [int];
+	maleDelayFormation: [int];
+	femaleDelayFormation: [int];
+	onlyTrial: bool;
+	autoChange: bool;
+	showInEntrance: bool;
+}
+
+table LevelPlayNodeData {
+	key: string;
+	data: string;
+}
+
+table MapBorder {
+	borderId: int;
+	mapId: int;
+	instanceDungeonId: int;
+	gravityFlip: int = 1;
+	instanceDungeonIdMapType: int;
+	conditionId: int;
+	prefabPath: string;
+}
+
+table LongPressConfig {
+	id: int;
+	pressTime: [int];
+	triggerTime: [int];
+	audioIntervalLimit: int;
+}
+
+table LordGymFilterType {
+	id: int;
+	name: string;
+}
+
+table LivenessTask {
+	taskId: int;
+	taskName: string;
+	updateType: int;
+	taskReward: [DicIntInt];
+	taskFunc: [string];
+	unlockCondition: int;
+	sortRank: int;
+}
+
+table ItemExchangeLimit {
+	itemId: int;
+	addBtnTime: int = 100;
+}
+
+table MapMarkPhantomGroup {
+	markId: int;
+	showRange: [int];
+}
+
+table ItemExchangeContent {
+	itemId: int;
+	times: int;
+	gainCount: int;
+	consume: [DicIntInt];
+}
+
+table ItemInfo {
+	id: int;
+	itemType: int;
+	name: string;
+	showTypes: [int];
+	attributesDescription: string;
+	bgDescription: string;
+	icon: string;
+	iconMiddle: string;
+	iconSmall: string;
+	mesh: string;
+	qualityId: int;
+	mainTypeId: int;
+	redDotDisableRule: int;
+	useCountLimit: int;
+	sortIndex: int;
+	maxCapcity: int = 999999999;
+	maxStackableNum: int = 99999999;
+	decomposeInfo: [DicIntInt];
+	useLevel: int;
+	beginTimeStamp: int;
+	durationStamp: int;
+	itemAccess: [int];
+	parameters: [DicIntInt];
+	showUseButton: bool;
+	obtainedShow: int;
+	obtainedShowDescription: string;
+	compositeItem: [int];
+	entityConfig: int;
+	numLimit: int;
+	showInBag: bool = true;
+	destructible: bool;
+	itemBuffType: int;
+	specialItem: bool;
+	uiPlayItem: bool;
+	isBuffItem: bool;
+}
+
+table LockOnConfig {
+	id: int;
+	distance: int;
+	upDistance: int = 300;
+	downDistance: int = 800;
+	sectorRadius: int;
+	sectorAngle: int;
+	toleranceAngle: float = 22.5;
+}
+
+table ItemHandBookType {
+	id: int;
+	descrtption: string;
+	icon: string;
+}
+
+table LongShanTask {
+	taskId: int;
+	stageId: int;
+	taskName: string;
+	sortId: int;
+	taskReward: [DicIntInt];
+	jumpId: int;
+}
+
+table LordGym {
+	id: int;
+	difficulty: int = 1;
+	rewardId: int;
+	playId: int;
+	gymTitle: string;
+	newGymTitle: string;
+	iconPath: string;
+	playDescription: string;
+	helpId: int;
+	monsterList: [int];
+	monsterLevel: int;
+	lockCon: int;
+	lockDescription: string;
+	filterType: int = 1;
+	isNew: bool;
+	isDebug: bool;
+}
+
+table LipSyncData {
+	dataID: int;
+	functionName: string;
+	lipSyncData: string;
+}
+
+table LanguageDefine {
+	languageType: int;
+	languageCode: string;
+	isShow: bool = true;
+	questionnaireId: int;
+	audioCode: string;
+	sortId: int;
+}
+
+table MainLine {
+	id: int;
+	taskId: int;
+	prevTaskId: int;
+	icon: string;
+	unlockTip: string;
+	taskName: string;
+	taskType: int;
+}
+
+table MapNote {
+	id: int;
+	type: int;
+	mapId: int;
+	icon: string;
+	desc: string;
+	style: int;
+	priority: int;
+	rank: int;
+	markIdMap: [DicIntInt];
+	markId: [int];
+	conditionId: int;
+	questIdList: [int];
+}
+
+table HotKeyMap {
+	id: int;
+	actionName: string;
+	axisName: string;
+	axisDirection: int;
+	textId: string;
+	type: string;
+	longPressTime: int;
+	releaseFailureTime: int;
+	bindButtonTag: string;
+	applicableType: int;
+	isOccupancyFightInput: bool = true;
+}
+
+table MapMarkRelativeSubType {
+	id: int;
+	functionId: int;
+	position: IntVector;
+	scale: float = 1.0;
+}
+
+table MainType {
+	id: int;
+	mainSort: int;
+	mainName: string;
+	mainIcon: string;
+	tabPanelType: int = 1;
+	pcTabPanelType: int = 1;
+	xboxTabPanelType: int = 1;
+	psTabPanelType: int = 1;
+	mainSmallIcon: string;
+}
+
+table MapAudio {
+	id: int;
+	name: string;
+	event: string;
+	enterEvent: string;
+	exitEvent: string;
+	resetEvent: string;
+	musicResetEvent: string;
+}
+
+table LongShanStage {
+	id: int;
+	activityId: int;
+	title: string;
+	titleDetail: string;
+	openConditionId: int;
+	questionId: int;
+	picture: string;
+}
+
+table InstanceDungeonEntrance {
+	id: int;
+	markId: int;
+	name: string;
+	description: string;
+	instanceDungeonList: [int];
+	flowId: int;
+	helpButtonId: int;
+	titleSprite: string;
+	teleportEntityConfigId: int;
+	unLockCondition: int;
+	regularReward: [IntArray];
+	powerCostShow: int;
+	mapBgPath: string;
+}
+
+table MapMark {
+	markId: int;
+	instanceDungeonId: int;
+	mapId: int = 8;
+	relativeDungeonId: int = 8;
+	relativeType: int;
+	relativeSubType: int;
+	relativeId: int;
+	entityConfigId: int;
+	fogHide: int;
+	markVector: IntVector;
+	objectType: int;
+	markTitle: string;
+	markDesc: string;
+	toBeDiscovered: int;
+	isMonster: int;
+	showPriority: int;
+	showRange: [int];
+	lockMarkPic: string;
+	unlockMarkPic: string;
+	showCondition: int;
+	fogShow: int;
+	mapShow: int;
+	scale: float = 1.0;
+	cornerScale: float = 1.0;
+	firstReward: float;
+	reward: float;
+	multiMapFloorId: int;
+	connetMultiMapFloorId: [int];
+	trackHudEnable: int = 1;
+	trackAutoCancelDistance: float = 400.0;
+	createOnStart: int = 1;
+	enableQuickTransfer: int;
+	finishIsShow: int;
+	historyState: int = 1;
+	gravityFlip: int;
+}
+
+table MapRange {
+	id: int;
+	mapId: int = 8;
+	mapName: string;
+	areaRange: [int];
+}
+
+table MailFilter {
+	id: int;
+	iconPath: string;
+	name: string;
+}
+
+table LordGymEntrance {
+	id: int;
+	markId: int;
+	lordGymList: [int];
+	entranceTitle: string;
+	entranceDescription: string;
+	meshId: int;
+	zoom: [float];
+	location: [float];
+	rotator: [float];
+	standAnim: string;
+	isDebug: bool;
+}
+
+table MainRoleConfig {
+	id: int;
+	gender: int;
+	unlockCondition: int;
+}
+
+table MenuConfig {
+	id: int;
+	functionId: int;
+	sliderDefault: float;
+	optionsDefault: int;
+	mainType: int;
+	subName: string;
+	subType: int;
+	subSort: int;
+	subImage: string;
+	name: string;
+	platform: int;
+	device: string;
+	functionSort: int;
+	functionImage: string;
+	setType: int;
+	sliderRange: [float];
+	sliderRangeDisplay: [float];
+	digits: int;
+	optionsName: [string];
+	optionsValue: [int];
+	keyMap: string;
+	buttonText: string;
+	openView: string;
+	relationFunction: [int];
+	disableValue: [int];
+	disableFunction: [int];
+	affectedValue: [int];
+	affectedFunction: [DicIntInt];
+	valueTipsMap: [DicIntString];
+	clickedTipsMap: [DicIntInt];
+	clickedTips: string;
+	blockOnIosCheckServer: bool;
+	detailText: string;
+	conditionGroup: int;
+	ps5Hide: int;
+}
+
+table MingSuTi {
+	id: int;
+	type: int;
+}
+
+table MapFog {
+	fog: int;
+	mapId: int;
+	areaId: int;
+	gravityFlip: int = 1;
+	unlockCondition: int;
+	fogUnlockPosition: [int];
+}
+
+table MonsterDisplay {
+	id: int;
+	nameStringKey: int;
+	name: int;
+	introduceStringKey: int;
+	introduce: int;
+	monsterPileIconAsset: string;
+}
+
+table MonsterBodyTypeConfig {
+	id: int;
+	handBookCameraId: string;
+	moveForwardDistance: int;
+	moveForwardDuration: int;
+	moveForwardCurvePath: string;
+}
+
+table MarkEffect {
+	markId: int;
+	effectResourcePath: string;
+}
+
+table MultiMapAreaConfig {
+	id: string;
+	block: string;
+	multiMapList: [int];
+	multiMapRangeList: [IntArray];
+	mapConfigId: int = 8;
+	gravityFlip: int = 1;
+}
+
+table MonsterDetectionFilter {
+	id: int;
+	entityConfigId: int;
+}
+
+table MonthCardContent {
+	id: int;
+	days: int;
+	itemId: int;
+	count: int;
+}
+
+table MaterialReplace {
+	itemId: int;
+	groupId: int;
+	showGroupId: int;
+	sortId: int;
+}
+
+table PassiveSkill {
+	id: double;
+	skillDesc: string;
+	cDTime: float;
+	cdThreshold: float = -1.0;
+	shareGroupId: int;
+	maxCount: int = 1;
+	isShareAllCdSkill: bool;
+	isDefaultActivated: bool = true;
+	triggerType: string;
+	triggerPreset: [string];
+	triggerParams: string;
+	triggerFormula: string;
+	subSkillAction: [double];
+	instigatorType: string;
+	skillAction: string;
+	skillActionParams: [string];
+}
+
+table ModelConfigPreload {
+	id: int;
+	actorClassPath: string;
+	actorClass: [string];
+	animations: [string];
+	effects: [string];
+	audios: [string];
+	meshes: [string];
+	materials: [string];
+	animationBlueprints: [string];
+	others: [string];
+}
+
+table Motion {
+	id: int;
+	roleId: int;
+	skinId: int;
+	type: int;
+	sort: int;
+	title: string;
+	content: string;
+	motionImg: string;
+	aniBlueprint: string;
+	aniMontage: string;
+	condGroupId: int;
+}
+
+table NewOccupationConfig {
+	id: string;
+	occupationType: string;
+	occupationData: string;
+	occupationNameStringKey: string;
+}
+
+table LongShanActivityConfig {
+	activityId: int;
+	type: int = 1;
+}
+
+table NewbieCourse {
+	id: int;
+	reward: int;
+}
+
+table InstanceDungeon {
+	id: int;
+	mapConfigId: int;
+	mapName: string;
+	instType: int;
+	instSubType: int;
+	onlineType: InstOnlineType = Single;
+	customTypes: [int];
+	miniMapId: int = 1;
+	subLevels: [string];
+	fightFormationId: int = 2;
+	roleTypeList: [int];
+	trialRoleInfo: [int];
+	trialRoleFormation: int;
+	reviveId: int;
+	bornPosition: [int];
+	bornRotation: [int];
+	recoverWorldLocation: [int];
+	exitDungeonConfirmId: [int];
+	entranceEntities: [DungeonEntrance];
+	exitEntities: [int];
+	dungeonDesc: string;
+	title: int = 999;
+	bannerPath: string;
+	monsterPreview: [int];
+	monsterTips: string;
+	firstRewardId: int;
+	rewardId: int;
+	repeatRewardId: int;
+	exchangeRewardId: int;
+	sharedTreasureGroup: [int];
+	enterControlId: int;
+	enterCondition: [int];
+	enterConditionText: string;
+	difficultyIcon: string;
+	entityLevel: int;
+	recommendLevel: [DicIntInt];
+	recommendRole: [int];
+	recommendElement: [int];
+	shareAttri: int = 1;
+	fightInfoDtType: [int];
+	limitViewName: [string];
+	canUseItem: int = 1;
+	guideType: int;
+	guideValue: int;
+	settleButtonType: int = 1;
+	subTitle: [DicIntString];
+	subInstanceTitle: string;
+	autoLeaveTime: int = 300;
+	limitTime: int;
+	leaveWaitTime: int;
+	failTips: string;
+	verifyCreatureGen: bool = true;
+	difficultyLevel: [int];
+	difficultyDesc: [string];
+	drop: [int];
+	enterCount: int;
+	enterConditionGroup: int;
+	iconTagPath: string;
+	viewMapId: int;
+	renderSettings: [DicIntInt];
+	dropVisionLimit: int;
+}
+
+table LoadingLevelArea {
+	id: int;
+	levelRange: [int];
+	areaId: [int];
+	mapId: [int];
+	conditionGroup: int;
+	isLimitShow: bool;
+	beginTime: int;
+	endTime: int;
+	activityId: int;
+}
+
+table MonsterIconTag {
+	id: string;
+	configParam: string;
+}
+
+table MonsterInfo {
+	id: int;
+	name: string;
+	rarityId: int;
+	icon: string;
+	bigIcon: string;
+	tachine: string;
+	elementIdArray: [int];
+	monsterEntityID: string;
+	monsterPose: string;
+	undiscoveredDes: string;
+	discoveredDes: string;
+	perchId: [int];
+}
+
+table MonsterPerch {
+	id: int;
+	perchDes: string;
+}
+
+table PayGift {
+	id: int;
+	itemId: int;
+}
+
+table PayShopGoods {
+	id: int;
+	shopId: int;
+	tabId: int;
+	itemId: int;
+	sort: int = 10;
+	itemCount: int;
+	conditionId: int;
+	buyConditionId: int;
+	buyLimit: int;
+	sellTimeText: string;
+	moneyId: int;
+	price: int;
+	promotionPrice: int;
+	promotionShow: int;
+	promotionTimeText: string;
+	banner: string;
+	enable: bool = true;
+	show: bool = true;
+	soldoutShowInShop: bool;
+	tag: int;
+}
+
+table MultiMap {
+	id: int;
+	groupId: int;
+	mapId: int;
+	gravityFlip: int = 1;
+	floor: int;
+	mapTilePath: [string];
+	miniMapTilePath: [string];
+	area: [int];
+	mark: [int];
+	conditionId: int;
+	floorName: string;
+	floorIcon: string;
+}
+
+table Montage {
+	id: int;
+	montageId: int;
+	startTime: int;
+	endTime: int;
+	type: int;
+	params: string;
+}
+
+table OverlayAbpMontageData {
+	id: int;
+	montage: string;
+	maleVariant: string;
+}
+
+table MowTowerLevelsRe {
+	id: int;
+	activityId: int;
+	groupId: int;
+	instIds: [int];
+	sortId: int;
+	buffCount: int;
+	optionalBuff: [int];
+	openDay: int;
+	preLevel: int;
+	passScore: int;
+	levelRewardDesc: string;
+	mowTowerLevel: [int];
+	rewardName: string;
+	rewardTexture: string;
+	levelDesc: string;
+	normalTexture: string;
+	lockTexture: string;
+	levelTips: string;
+	isInfinite: bool;
+	monsterDes: string;
+}
+
+table MapLevelExp {
+	id: int;
+	activityId: int;
+	level: int;
+	needExp: int;
+	rewardDropId: int;
+	tipsLock: string;
+	tipsDone: string;
+}
+
+table MowTowerBuffRe {
+	id: int;
+	buffId: [long];
+	texture: string;
+	name: string;
+	description: string;
+	descriptionParam: [string];
+}
+
+table MonsterRarity {
+	id: int;
+	rarityDesc: string;
+}
+
+table MonsterHandBookType {
+	id: int;
+	descrtption: string;
+}
+
+table NpcSystemBackground {
+	id: int;
+	viewName: string;
+	title: string;
+	titleTexturePath: string;
+	titleBgTexturePath: string;
+	titleSymbolColor: string;
+	captionTitle: string;
+	captionTitleSpritePath: string;
+	costItemList: [int];
+	isHelpButtonVisible: bool;
+	helpGroupId: int;
+}
+
+table NpcHeadInfo {
+	id: int;
+	secondName: string;
+	functionPath: string;
+}
+
+table OccupationConfig {
+	id: string;
+	occupationType: string;
+	nameStringKey: int;
+	name: int;
+	occupationData: string;
+}
+
+table MonsterPerformanceConf {
+	id: int;
+	monsterPerformanceId: int;
+	skillIds: [int];
+	tag: string;
+}
+
+table PhantomCustomizeItem {
+	itemId: int;
+	phantomId: int;
+	skinItemId: int;
+}
+
+table MonsterPropertyGrowth {
+	id: int;
+	curveId: int;
+	level: int;
+	lifeMaxRatio: int;
+	atkRatio: int;
+	defRatio: int;
+	hardnessMaxRatio: int;
+	hardnessRatio: int;
+	hardnessRecoverRatio: int;
+	rageMaxRatio: int;
+	rageRatio: int;
+	rageRecoverRatio: int;
+}
+
+table PayShopCondition {
+	id: int;
+	conditionText: string;
+}
+
+table Pay {
+	id: int;
+	payId: int;
+	region: string;
+	amount: float;
+	globalAmount: float;
+	productId: string;
+	currencyType: string;
+}
+
+table PhantomExpItem {
+	itemId: int;
+	exp: int;
+}
+
+table MonsterHandBook {
+	id: int;
+	type: int;
+	name: string;
+	meshId: int;
+	scale: [float];
+	position: [float];
+	rotator: [float];
+	standAnim: string;
+	typeDescrtption: string;
+	descrtption: string;
+	fightSkillDescrtption: string;
+	phantomItem: [int];
+}
+
+table PackageCapacity {
+	packageId: int;
+	packageCapacity: int;
+}
+
+table MonsterDetection {
+	id: int;
+	blueprintType: string;
+	markId: int;
+	name: string;
+	showReward: int;
+	entityConfigId: int;
+	dangerType: int;
+	typeDescription2: int;
+	attributesDescriptionLock: string;
+	attributesDescriptionUnlock: string;
+	bigIcon: string;
+	icon: string;
+	temporaryIconUnLock: string;
+	temporaryIconlock: string;
+	beginTimeStamp: int;
+	lockCon: int;
+	monsterInfoId: int;
+}
+
+table PhantomFormation {
+	id: int;
+	roles: [int];
+}
+
+table MowTowerRewardRe {
+	id: int;
+	mowTowerLevelsId: int;
+	score: int;
+	rewardId: int;
+	levelRewardDesc: string;
+}
+
+table PhantomFetterHandBook {
+	id: int;
+}
+
+table LevelEntityConfig {
+	id: int;
+	mapId: int;
+	entityId: int;
+	blueprintType: string;
+	name: string;
+	inSleep: bool;
+	isHidden: bool;
+	areaId: int;
+	transform: [IntVector];
+	componentsData: string;
+}
+
+table PerformanceCondition {
+	id: int;
+	waterHeight: [float];
+	standingNormalZ: [float];
+	disableTag: [string];
+}
+
+table PhantomCollectTaskDesc {
+	id: int;
+	title: string;
+	desc: string;
+	jumpTo: [DicIntString];
+}
+
+table OverlayMap {
+	overlayMapId: int;
+	mapId: int;
+	gravityFlip: int = 1;
+	mapAddress: string;
+	mapPos: [int];
+	rotation: int;
+	widthHeight: [int];
+}
+
+table Mapping {
+	id: int;
+	excelName: string;
+	sheetName: string;
+	fieldName: string;
+	value: int;
+	comment: string;
+	icon: string;
+}
+
+table PayItem {
+	id: int;
+	itemId: int;
+	itemCount: int;
+	payId: int;
+	isDisplay: bool = true;
+	stageImage: string;
+	bonusItemCount: int;
+	specialBonusItemCount: int;
+}
+
+table OpenAndCloseViewHotKey {
+	id: int;
+	actionName: string;
+	inputControllerType: int;
+	viewName: string;
+	handleType: string;
+	isPressTrigger: bool = true;
+	pressStartTime: int;
+	pressTriggerTime: int;
+	isReleaseTrigger: bool;
+	releaseInvalidTime: int;
+	isPressClose: bool;
+	isReleaseClose: bool;
+	viewParam: [string];
+}
+
+table PhantomGain {
+	id: int;
+	monsterInfoId: int;
+	activityId: int;
+	unLockReward: int;
+	sort: int;
+	name: string;
+	texPhantom: string;
+}
+
+table PayShopRecommend {
+	id: int;
+	recommendType: int;
+	recommendId: int;
+	recommendTexture: string;
+	tabName: string;
+	prefabPath: string;
+	sort: int;
+}
+
+table MontageData {
+	id: int;
+	actionMontage: string;
+	expressionMontage: string;
+	mouthSequence: string;
+}
+
+table PayShopDirectGoods {
+	goodsId: int;
+	payId: int;
+}
+
+table PlatformIcon {
+	id: int;
+	iconName: string;
+	iconPath: string;
+	mobileIconPath: string;
+}
+
+table NounHandBook {
+	id: int;
+	type: int;
+}
+
+table PhantomMainProperty {
+	id: int;
+	randGroupId: int;
+	propGroup: [int];
+}
+
+table PhysicsAssetConfig {
+	id: string;
+	physicsAssetPath: string;
+	boneNames: [string];
+}
+
+table PcKey {
+	id: int;
+	keyName: string;
+	keyDescription: string;
+	keyDisplayName: string;
+	frenchKeyName: string;
+	keyIconPath: string;
+}
+
+table ParkourChallenge {
+	id: int;
+	markId: int;
+	backGroundTexture: string;
+	title: string;
+	levelPlayId: int;
+	rewards: [DicIntInt];
+	rewardList: [IntPair];
+	locationEntityConfigId: int;
+}
+
+table PhantomHandBook {
+	id: int;
+	name: string;
+	typeDescrtption: string;
+	intensity: string;
+	place: string;
+	title1: string;
+	descrtption1: string;
+	title2: string;
+	descrtption2: string;
+	scale: [float];
+	position: [float];
+	rotator: [float];
+}
+
+table PhotoMemoryActivity {
+	id: int;
+	topicId: int;
+	guideText: string;
+	viewJump: string;
+}
+
+table LordGymEntranceSet {
+	id: int;
+	previewRewardId: int;
+	markId: int;
+	lordEntranceList: [int];
+	mapNoteUnlockCondition: int;
+	title: string;
+	description: string;
+	helpId: int;
+}
+
+table PhantomFetter {
+	id: int;
+	name: string;
+	buffIds: [double];
+	addProp: [ConfigPropValue];
+	effectDescription: string;
+	fetterIcon: string;
+	simplyEffectDesc: string;
+	effectDescriptionParam: [string];
+	effectDefineDescription: string;
+	priority: int;
+}
+
+table PhantomFetterGroup {
+	id: int;
+	fetterMap: [DicIntInt];
+	fetterGroupName: string;
+	accessId: int;
+	fetterGroupDesc: string;
+	fetterElementColor: string;
+	fetterElementPath: string;
+}
+
+table PhantomGrowth {
+	id: int;
+	growthId: int;
+	level: int;
+	value: int;
+}
+
+table PbDataPreload {
+	id: int;
+	mapId: int;
+	pbDataId: int;
+	actorClass: [string];
+	animations: [string];
+	effects: [string];
+	audios: [string];
+	meshes: [string];
+	materials: [string];
+	animationBlueprints: [string];
+	others: [string];
+}
+
+table PayShop {
+	id: int;
+	shopTabViewType: int;
+	dynamicTabId: int;
+	sort: int;
+	name: string;
+	money: [int];
+	notice: string;
+	enable: bool = true;
+	icon: string;
+	sortRule: int;
+}
+
+table MobileBattleUiSet {
+	id: int;
+	panelIndex: int;
+	itemIndex: int;
+	name: string;
+	sourceSize: float;
+	sourceAlpha: float;
+	sourceOffsetX: float;
+	sourceOffsetY: float;
+	isCheckOverlap: bool = true;
+	canEdit: bool = true;
+	isDefaultSelected: bool;
+	sourceHierarchyIndex: int;
+}
+
+table PrefabConfig {
+	id: int;
+	entities: string;
+}
+
+table PhantomLevel {
+	id: int;
+	groupId: int;
+	level: int;
+	exp: int;
+}
+
+table NounType {
+	id: int;
+	typeDescription: string;
+	icon: string;
+}
+
+table PhantomMainPropItem {
+	id: int;
+	propId: int;
+	addType: int;
+	standardProperty: int;
+	growthId: int;
+}
+
+table MonsterSizeId {
+	id: int;
+	monsterSizeTag: [string];
+}
+
+table PhantomItem {
+	itemId: int;
+	monsterId: int;
+	monsterName: string;
+	elementType: [int];
+	mainProp: PhantomPropRandom;
+	levelUpGroupId: int;
+	skillId: int;
+	calabashBuffs: [double];
+	rarity: int;
+	meshId: int;
+	zoom: [float];
+	location: [float];
+	rotator: [float];
+	standAnim: string;
+	typeDescription: string;
+	attributesDescription: string;
+	icon: string;
+	iconMiddle: string;
+	iconSmall: string;
+	mesh: string;
+	qualityId: int;
+	maxCapcity: int = 999999999;
+	itemAccess: [int];
+	obtainedShow: int;
+	obtainedShowDescription: string;
+	numLimit: int;
+	showInBag: bool = true;
+	sortIndex: int;
+	skillIcon: string;
+	destructible: bool = true;
+	redDotDisableRule: int;
+	fetterGroup: [int];
+	phantomType: int = 1;
+	parentMonsterId: int;
+}
+
+table PlotAudio {
+	id: string;
+	externalSourceSetting: string;
+	fileName: string;
+	globalLanguage: bool;
+	checkGenderEn: bool;
+	checkGenderJa: bool;
+	checkGenderKo: bool;
+	checkGenderZh: bool;
+	tailTime: int = -1;
+}
+
+table Popularity {
+	id: int;
+	popularityValue: int;
+	popularityRating: string;
+	npcCount: int;
+	npcDialog: string;
+	npcDialogGirl: string;
+}
+
+table PreheatBonus {
+	id: int;
+	title: string;
+	content: string;
+	crestIndex: int;
+	mainTex: string;
+	photo: string;
+	sharePhoto: string;
+	npcIconPath: string;
+	npcContent: string;
+	bonusTxt: string;
+}
+
+table QualityIconTag {
+	id: string;
+	configParam: string;
+}
+
+table PhonographMusic {
+	id: int;
+	itemId: int;
+	musicEvent: string;
+	album: [int];
+	lock: bool = true;
+	duration: float;
+	desc: string;
+	title: string;
+	unlockConditionText: string;
+}
+
+table PhotoMontage {
+	id: int;
+	roleId: int;
+	sort: int;
+	name: string;
+	isLoop: bool = true;
+	montagePath: string;
+	iconType: int;
+	motionType: int;
+	unLockConditionGroup: int;
+	conditionTipsId: string;
+}
+
+table PersonalTips {
+	id: int;
+	functionId: int;
+	sort: int;
+	redDotName: string;
+	description: string;
+	iconPath: string;
+}
+
+table PhantomWildItem {
+	itemId: int;
+}
+
+table PhantomSkill {
+	id: int;
+	phantomSkillId: int;
+	buffIds: [double];
+	settleIds: [double];
+	buffEffects: [double];
+	chargeEfficiency: int;
+	skillGroupId: int;
+	skillCD: float;
+	descriptionEx: string;
+	simplyDescription: string;
+	ifCounterSkill: bool;
+	curLevelDescriptionEx: [string];
+	levelDescStrArray: [StringArray];
+	battleViewIcon: string;
+	specialBattleViewIcon: string;
+}
+
+table RedDot {
+	name: string;
+	relativeName: string;
+}
+
+table PhantomRoleConfig {
+	id: int;
+	geDesc: string;
+	name: string;
+	meshId: int;
+	skillId: int;
+	skillTreeGroupId: int;
+	cameraConfig: int;
+	cameraFloatHeight: float;
+	propertyId: int;
+	roleHeadIcon: string;
+	cameraId: int;
+	searchId: int;
+	hUDId: int;
+}
+
+table PlayerTitle {
+	id: int;
+	titleType: int;
+	titleStyle: int;
+	titleName: string;
+	titleQuality: int;
+	titleIcon: string;
+	titleBgIcon: string;
+	starTitleIcon: string;
+	starTitleBgIcon: string;
+	selectedIcon: string;
+	description: string;
+	activityId: int;
+	honorDescription: string;
+	seasonId: string;
+	seasonName: string;
+	actvityName: string;
+	itemAccess: string;
+	sortIndex: int;
+	iconInTitleInfo: string;
+}
+
+table PrefabRichTextData {
+	id: string;
+	isIncludeRichText: bool;
+	isIncludeGameText: bool;
+}
+
+table PlayStationActivityConfig {
+	id: int;
+	activityStringId: string;
+	questId: int;
+}
+
+table PhantomQuality {
+	quality: int;
+	levelLimit: int;
+	slotUnlockLevel: [int];
+	identifyCost: [DicIntInt];
+	identifyCoin: int;
+	qualitySprite: string;
+}
+
+table PhantomHandBookPage {
+	id: int;
+	icon: string;
+}
+
+table PunishReport {
+	id: int;
+	condDescription1: string;
+	condDescription2: string;
+	condDescription3: string;
+	cond1Key: string;
+	cond2ey: string;
+	cond3Key: string;
+	getBoxKey: string;
+}
+
+table PlotType {
+	id: int;
+	typeDescription: string;
+	type: int;
+}
+
+table PhonographAlbum {
+	id: int;
+	title: string;
+	desc: string;
+	icon: string;
+}
+
+table PhotoMemoryTopic {
+	id: int;
+	rank: int;
+	bgResourceLight: string;
+	bgResource: string;
+	topicTexture: string;
+	title: string;
+	clueId: int;
+	conditionGroupId: int;
+}
+
+table QuestMainType {
+	id: int;
+	mainTypeName: string;
+	questTabIcon: string;
+	questTypeTitleIcon: string;
+	questChapterBg: string;
+	trackIconId: int = 2;
+	typeColor: string;
+	sortValue: int;
+	autoHideTrack: bool = true;
+	newQuestTipTime: int = 2;
+	questUpdateTipsTime: int = 2;
+}
+
+table PreOpenDetection {
+	id: int;
+	soundAreaType: int;
+	detectionId: int;
+	conditionGroup: int;
+	teleportEntityId: int;
+	dungeonEntranceId: int;
+	instanceID: int;
+	spoiler: bool;
+}
+
+table PhotographHandBook {
+	id: int;
+	type: int;
+	name: string;
+	maleTexture: string;
+	femaleTexture: string;
+	descrtption: string;
+	areaIcon: string;
+	areaNumber: string;
+	roleName: string;
+	questId: int;
+	showQuestList: [int];
+}
+
+table PreheatSignRe {
+	id: int;
+	activityId: int;
+	dropId: int;
+	questId: int;
+	preSignId: int;
+}
+
+table PlotGuest {
+	guestID: int;
+	headIconPath: string;
+	name: string;
+	speakerID: [int];
+}
+
+table PhantomRarity {
+	rare: int;
+	cost: int;
+	desc: string;
+}
+
+table PhantomSubProperty {
+	id: int;
+	propId: int;
+	addType: int;
+	subStandardProperty: int;
+}
+
+table QuestTag {
+	id: int;
+	name: string;
+	bgSpritePath: string;
+	text: string;
+}
+
+table PhantomCollectActivity {
+	id: int;
+	phantoms: [int];
+	phantomReward: int;
+	phantomDesc: [DicIntString];
+	phantomActivityImage: [DicIntString];
+	dataDockLevel: int;
+	dataDockReward: int;
+	phantomSideQuest: [int];
+	phantomSideQuestReward: int;
+}
+
+table PlayerInterFace {
+	id: int;
+	name: string;
+	mainName: string;
+}
+
+table PhantomRecommend {
+	roleId: int;
+}
+
+table RiskHarvestDifficulty {
+	id: int;
+	levelGroup: [int];
+	timeRatio: int;
+	monsterRatio: int;
+}
+
+table PlayerStateRestriction {
+	id: int;
+	type: string;
+	includedTags: [string];
+	excludedTags: [string];
+	creatorId: int;
+	remark: string;
+}
+
+table PhotoFilter {
+	id: int;
+	name: string;
+	icon: string;
+	lUTPath: string;
+	pPVName: string;
+}
+
+table ReportPlayerInfo {
+	id: int;
+	reason: string;
+}
+
+table RewardViewFromSource {
+	id: int;
+	rewardSourceId: int;
+	rewardViewId: int;
+}
+
+table RiskHarvestBuffGroup {
+	id: int;
+	activityId: int;
+	buff: [double];
+	buffName: string;
+	buffDesc: string;
+	buffFactors: [string];
+	buffType: int;
+	buffProgress: int;
+	buffIcon: string;
+	reward: int;
+	rewardDesc: string;
+}
+
+table QuestNodeData {
+	key: string;
+	data: string;
+}
+
+table RogueDeliveryRule {
+	id: int;
+	type: int;
+	insts: [int];
+}
+
+table RecordConfig {
+	id: int;
+	limitParams: [DicStringString];
+	progressNeed: int = 1;
+	saveRecord: bool = true;
+}
+
+table RogueQualityConfig {
+	id: int;
+	phantomBgA: string;
+	phantomBgB: string;
+	phantomBgC: string;
+	tokenBg: string;
+	tokenColor: string;
+	roleNiagaraColor: string;
+}
+
+table Quest {
+	id: int;
+	questKey: string;
+	questName: string;
+	questType: int;
+	isRepeat: bool;
+	isAutoTrack: bool;
+	questText: string;
+	isOnline: int;
+	rewardShow: int;
+	areaId: int;
+	duration: int;
+	panelTexturePath: string;
+}
+
+table RogueBossInstance {
+	id: int;
+	instanceId: int;
+	instNumber: string;
+	instTitle: string;
+	conditionGroupId: int;
+	rewardTypeTitle: string;
+}
+
+table QuestChapter {
+	id: int;
+	chapterNum: string;
+	sectionNum: string;
+	actName: string;
+	chapterName: string;
+	chapterIcon: string;
+	prefabName: string;
+}
+
+table QuestType {
+	id: int;
+	mainId: int;
+	questTypeName: string;
+	isShowInQuestPanel: bool = true;
+	typeColor: string;
+	textColor: string;
+	needRedDot: bool;
+	mapId: [int];
+}
+
+table PhotoSetup {
+	id: int;
+	valueType: int;
+	name: string;
+	type: int;
+	options: [string];
+	defaultOptionIndex: int = 1;
+	subOptions: [DicIntIntArray];
+	valueRange: [float];
+	isReverseSet: bool;
+	changeValue: float = 0.1;
+}
+
+table PreheatVote {
+	id: int;
+	title: string;
+	content: string;
+	option1: string;
+	option2: string;
+	npcIconPath: string;
+	npcContent: string;
+	optionContent1: string;
+	optionContent2: string;
+	optionTheme1: string;
+	optionTheme2: string;
+}
+
+table RogueLimitTimeReward {
+	id: int;
+	activityId: int;
+	targetName: string;
+	type: int = 1;
+	targetReward: int;
+}
+
+table ResonanceAmplification {
+	id: int;
+	attr: int = 7;
+	lifeSeatBoostFactor: [float];
+}
+
+table QuestTrackingConfig {
+	id: int;
+	preQuestIds: [int];
+	trackQuestId: int;
+	desc: string;
+	priority: int;
+}
+
+table PrefabTextItem {
+	itemId: long;
+	prefabPathHash: long;
+	itemPath: string;
+	text: string;
+}
+
+table PlayerExp {
+	playerLevel: int;
+	playerExp: int;
+	condition: string;
+}
+
+table RogueActivity {
+	id: int;
+	functionType: int;
+	functionParams: [string];
+	activityResource: string;
+}
+
+table RogueRoomShowConfig {
+	behaviorTree: int;
+	icon: string;
+	name: string;
+	desc: string;
+	buffPoolId: int;
+	buffId: int;
+}
+
+table ResonantChain {
+	id: int;
+	groupId: int;
+	groupIndex: int;
+	nodeType: int;
+	nodeIndex: string;
+	nodeName: string;
+	attributesDescription: string;
+	bgDescription: string;
+	buffIds: [double];
+	addProp: [ConfigPropValue];
+	activateConsume: [DicIntInt];
+	attributesDescriptionParams: [string];
+	nodeIcon: string;
+}
+
+table PreviewItem {
+	id: int;
+	name: string;
+	showTypes: [int];
+	attributesDescription: string;
+	bgDescription: string;
+	icon: string;
+	iconMiddle: string;
+	iconSmall: string;
+	previewCornerMarker: string;
+	qualityId: int;
+	previewItemAccess: [int];
+}
+
+table RefreshRatio {
+	count: int;
+	decRatio: int;
+}
+
+table RogueWeeklyBuffDesc {
+	id: int;
+	buffDsec: string;
+	buffDsecParam: [string];
+}
+
+table RiskHarvestActivityInfo {
+	id: int;
+	activityId: int;
+	entranceId: int;
+	questId: int;
+	markId: int;
+}
+
+table RewardConfig {
+	id: int;
+	reward: int;
+}
+
+table PropRewardConf {
+	id: int;
+	props: [ConfigPropValue];
+	tips: [DicStringInt];
+	isFormation: bool;
+}
+
+table RiskHarvestArtifact {
+	id: int;
+	buffGroup: [int];
+	basicBuffGroup: [int];
+}
+
+table QuickChat {
+	id: int;
+	quickChatContent: string;
+}
+
+table PreheatQuestText {
+	id: int;
+	mainTexPath: string;
+	crestIndex: int;
+	themeBefore: string;
+	themeAfter: string;
+	questContent: string;
+	displayTex: string;
+	shareTex: string;
+}
+
+table PlotHandBookConfig {
+	questId: int;
+	data: string;
+}
+
+table RogueWhiteCat {
+	id: int;
+	scoreId: int;
+	energyId: int;
+	maxEnergy: int;
+	insts: [int];
+	bossRewards: [int];
+	limitedTimeId: int;
+	rewards: [int];
+	firstWhiteCatDungeonId: int;
+	repeatWhiteCatDungeonId: int;
+	whiteCatFirstOpenCondition: int;
+	firstWhiteCatQuestId: int;
+	whiteCatRepeatOpenCondition: int;
+	openCondition: [DicIntInt];
+	dreamLinkTeleportMarkId: int;
+	tabText: [DicIntString];
+	tabIcon: [DicIntString];
+	bossTabText: [DicIntString];
+	plotRoleLinkAudio: string;
+	bossInstanceList: [int];
+	weaponPreviewId: int;
+	dungeonBaseProgress: int;
+	dungeonMaxProgress: int;
+	preloadRoleIds: [DicIntString];
+	plotRoleLinkTeam: [int];
+}
+
+table RogueToken {
+	id: int;
+	seasonId: int;
+	token: int;
+	dropId: int;
+}
+
+table RogueTalentTree {
+	id: int;
+	seasonId: int;
+	talentType: int;
+	column: int;
+	row: int;
+	postId: [int];
+	condition: int;
+	consule: [int];
+	describe: int;
+}
+
+table RegressRewards {
+	id: int;
+	rewardGroup: int;
+}
+
+table PhotoMemoryCollect {
+	id: int;
+	topicID: int;
+	type: int = 1;
+	rank: int;
+	themeBg: string;
+	bgResourceM: string;
+	bgResourceF: string;
+	title: string;
+	tipsDesc: string;
+	clueId: int;
+	desc: string;
+	dropId: int;
+	traceEntityId: int;
+	trackMapId: int;
+	traceMarkId: int;
+	questId: int;
+	questIdList: [int];
+}
+
+table RogueWeeklyParam {
+	id: int;
+	roguelikeSettleBgS: string;
+	roguelikeSettleBgNormal: string;
+	roguelikeRoomFloatTipsNoHeadIcon: string;
+	roguelikeRoomFloatTipsSpecialIcon: string;
+	roguelikeSettleS: int;
+	roguelikeSettleA: int;
+	roguelikeSettleB: int;
+	roguelikeSettleC: int;
+	pointItem: int;
+	pointItemMaxCount: int;
+	tokenItem: int;
+	weekTokenMaxCount: int;
+	insideCurrency: int;
+	dungeonList: [int];
+	validRoleOpenTimeMap: [DicIntInt];
+	dungeonRoleOpenTimeMap: [DicIntInt];
+}
+
+table RogueWeekDeliveryRule {
+	id: int;
+	type: int;
+	insts: [int];
+}
+
+table RogueSeasonReward {
+	id: int;
+	seasonId: int;
+	index: int;
+	point: int;
+	dropId: int;
+}
+
+table RoguePopularEntrieArg {
+	id: int;
+	seasonId: int;
+	instId: int;
+	slot: int;
+}
+
+table PayShopTab {
+	shopId: int;
+	tabId: int;
+	sort: int;
+	name: string;
+	logic: int;
+	enable: bool = true;
+}
+
+table PropertyIndex {
+	id: int;
+	key: string;
+	name: string;
+	anotherName: string;
+	convertToWhiteId: int;
+	isShow: bool = true;
+	isPercent: bool;
+	priority: int;
+	icon: string;
+	dec: string;
+}
+
+table RogueRoomPool {
+	id: int;
+	behaviorTree: int;
+	roomsMusicState: string;
+}
+
+table RogueCharacter {
+	id: int;
+	roleId: int;
+	quality: int = 1;
+	roleIcon: string;
+	roleName: string;
+	roleBigIcon: string;
+}
+
+table QualityInfo {
+	id: int;
+	name: string;
+	textColor: string;
+	dropColor: string;
+	frameIconColor: string;
+	backgroundColor: string;
+	phantomColor: string;
+	gachaQualityNiagara: string;
+	tipQualityTexture: string;
+	gachaQualityTexture: string;
+	gachaBgTexture: string;
+	backgroundSprite: string;
+	verticalGradientSprite: string;
+	tipsSprite: string;
+	specialEffects: string;
+	dissipateEffects: string;
+	newItemGetEffects: string;
+	consumeFilterText: string;
+	payShopTexture: string;
+	newPayShopTexture: string;
+	payShopQualitySprite: string;
+	phantomSprite: string;
+	dropItemQualityNiagaraPath: string;
+	mediumItemGridQualitySpritePath: string;
+	qualityColor: string;
+	rouletteTipsQualityTexPath: string;
+	acquireQualityTexPath: string;
+	acquireNewItemQualityTexPath: string;
+	acquireQualitySpritePath: string;
+	filterIconPath: string;
+	calabashLevelUpViewShowText: string;
+	unlockVisionQuality: string;
+	unlockVisionQualityColor: string;
+	trainingWeight: int = 1;
+	roleTrialQualityColor: string;
+	skinQuality: string;
+	skinItemColor: string;
+	skinItemBg: string;
+	roleSkinQualityBg: string;
+	weaponSkinQualityBg: string;
+	composeQualityBg: string;
+}
+
+table RogueAffixLibrary {
+	id: int;
+	affixId: int;
+}
+
+table PlayerHeadRe {
+	id: int;
+	roleSkinId: int;
+	name: string;
+	icon: string;
+	iconMiddle: string;
+	iconSmall: string;
+	roleHeadIconCircle: string;
+	roleHeadIconLarge: string;
+	roleHeadIconBig: string;
+	card: string;
+	roleHeadIcon: string;
+	qualityId: int = 1;
+	itemAccess: [int];
+	sortIndex: int;
+	title: string;
+	attributesDescription: string;
+	obtainedShowDescription: string;
+	typeDescription: string;
+	bgDescription: string;
+	tips: string;
+	showInBag: bool;
+	redDotDisableRule: int;
+}
+
+table Revive {
+	id: int;
+	reviveTimes: int;
+	useItemId: int;
+	reviveDelay: [int];
+	deathBp: string;
+	windowBp: string;
+	reviveTitle: string;
+	reviveContent: string;
+	reviveSequencePath: string;
+}
+
+table QuestData {
+	questId: int;
+	data: string;
+}
+
+table RogueBuffPool {
+	id: int;
+	buffId: double;
+	perIds: [int];
+	effectId: int;
+	perkType: int;
+	quality: int = 3;
+	buffElement: [DicIntInt];
+	buffIcon: string;
+	buffDesc: string;
+	buffDescParam: [string];
+	buffDescSimple: string;
+	buffName: string;
+	roleId: int;
+	trialRoleId: int;
+}
+
+table RoleTrialRoleConfig {
+	roleId: int;
+	roleStand: string;
+	roleStand2: string;
+	roleIcon: string;
+	uiConfigId: int;
+	introduction: string;
+}
+
+table RogueSeason {
+	id: int;
+	activityId: int;
+	seasonName: string;
+	pointItem: int;
+	instanceDungeonEntrance: int;
+	tabIcon: string;
+	firstPassRewardMap: [DicIntInt];
+	shopId: int;
+	achievement: int;
+	paramId: int;
+	rogueThemeType: string;
+}
+
+table RogueEvent {
+	id: int;
+	textId: string;
+	title: string;
+	condition: int;
+	eventType: int;
+	args: [int];
+	flowListName: string;
+	flowId: int;
+	stateId: int;
+	isCopyCamera: bool;
+}
+
+table RogueParam {
+	id: int;
+	roguelikeSettleBgS: string;
+	roguelikeSettleBgNormal: string;
+	roguelikeRoomFloatTipsNoHeadIcon: string;
+	roguelikeRoomFloatTipsSpecialIcon: string;
+	roguelikeSettleS: int;
+	roguelikeSettleA: int;
+	roguelikeSettleB: int;
+	roguelikeSettleC: int;
+	pointItem: int;
+	pointItemMaxCount: int;
+	tokenItem: int;
+	weekTokenMaxCount: int;
+	skillPoint: int;
+	skillPointMaxCount: int;
+	insideCurrency: int;
+	guideInstArray: [int];
+	guideInstRoleIdArray: [int];
+	dungeonList: [int];
+	validRoleOpenTimeMap: [DicIntInt];
+	dungeonRoleOpenTimeMap: [DicIntInt];
+	blackFlowerDropId: int;
+	blackFlowerInstList: [int];
+}
+
+table RoleDevelopCurve {
+	id: int;
+	groupId: int;
+	trainType: int;
+	trainContent: string;
+	wishConsume: int;
+}
+
+table RogueEffect {
+	id: int;
+	mainEffectType: int;
+	condition: int;
+	conditionArgs: [int];
+	count: int;
+	roomCount: int;
+	buffArray1: [double];
+	extraEffectTypeArray1: [string];
+	extraEffectTypeArgsArray1: [string];
+	buffArray2: [double];
+	extraEffectTypeArray2: [string];
+	extraEffectTypeArgsArray2: [string];
+}
+
+table ProtocolMonitoring {
+	protocolId: int;
+	actionId: int;
+}
+
+table RoleBreach {
+	id: int;
+	breachGroupId: int;
+	breachLevel: int;
+	maxLevel: int;
+	breachConsume: [DicIntInt];
+	breachReward: int;
+	conditionId: int;
+}
+
+table RoleQuest {
+	id: int;
+	roleId: int;
+	region: string;
+	isShow: bool = true;
+	questId: int;
+	questName: string;
+	chapter: string;
+	consume: int = 1;
+}
+
+table RoguePokemon {
+	id: int;
+	phantomItem: int;
+	quality: int = 1;
+	pokemonIcon: string;
+	pokemonName: string;
+	pokemonSettleIcon: string;
+	pokemonSkillDesc: string;
+}
+
+table RogueWeeklyBuffPool {
+	id: int;
+	buffId: double;
+	perIds: [int];
+	quality: int = 3;
+	buffIcon: string;
+	buffDesc: string;
+	buffDescParam: [string];
+	buffDescSimple: string;
+	buffName: string;
+}
+
+table RogueRoomType {
+	id: int;
+	roomType: string;
+	roomTipsType: int;
+	roomsMusicState: string;
+}
+
+table RogueTalentTreeDesc {
+	id: int;
+	baseDesc: string;
+	args: [IntArray];
+	talentIcon: string;
+	talentName: string;
+}
+
+table RiskHarvestBuffReward {
+	id: int;
+	buffType: int;
+	count: int;
+	reward: int;
+	desc: string;
+}
+
+table RoleLevelConsume {
+	id: int;
+	consumeGroupId: int;
+	level: int;
+	expCount: int;
+}
+
+table SettleFlag {
+	id: int;
+	priority: int;
+	title: string;
+	content: string;
+	args: int = -1;
+}
+
+table RoleDescription {
+	id: int;
+	roleId: int;
+	texture: string;
+	description: string;
+}
+
+table ScratchCardActivityRe {
+	id: int;
+	itemId: int;
+	taskIdList: [int];
+	jumpId: int;
+}
+
+table RogueWhiteCatReward {
+	id: int;
+	needEnergy: int;
+	conditionGroupId: int;
+	dropId: int;
+}
+
+table RogueCurrency {
+	id: int;
+	qualityId: int = 1;
+	itemAccess: [int];
+	sortIndex: int;
+	imagePath: string;
+	icon: string;
+	iconMiddle: string;
+	iconSmall: string;
+	title: string;
+	attributesDescription: string;
+	obtainedShowDescription: string;
+	typeDescription: string;
+	bgDescription: string;
+	tips: string;
+	showInBag: bool;
+	redDotDisableRule: int;
+}
+
+table RoleAnimAudio {
+	id: int;
+	roleId: int;
+	actionName: string;
+	audioPath: string;
+	canInterrupt: bool;
+}
+
+table RogueWeeklyRoomPool {
+	id: int;
+	behaviorTree: int;
+	roomsMusicState: string;
+}
+
+table RoleSkillInput {
+	roleId: int;
+	skillInputIdList: [int];
+	icon: string;
+	descList: [string];
+}
+
+table RogueWeekQualityConfig {
+	id: int;
+	phantomBgA: string;
+	phantomBgB: string;
+	phantomBgC: string;
+	tokenBg: string;
+	tokenColor: string;
+	roleNiagaraColor: string;
+}
+
+table RoleTag {
+	id: int;
+	sortId: int;
+	tagName: string;
+	tagIcon: string;
+	tagNameColor: string;
+	tagDesc: string;
+}
+
+table RogueWhiteCatBossReward {
+	id: int;
+	instanceType: int;
+	title: string;
+	dropId: int;
+}
+
+table RoleTrialUiConfig {
+	id: int;
+	color1: string;
+	color2: string;
+	color3: string;
+	color4: string;
+	color5: string;
+}
+
+table RoleAudioRules {
+	id: int;
+	teamColdTime: int;
+	characterColdTime: int;
+	postProbability: int;
+}
+
+table RoleIconTag {
+	id: string;
+	configParam: string;
+}
+
+table Shield {
+	id: int;
+	priority: int = 1;
+	refrenceAttribute: int;
+	refrenceTarget: int;
+	attributeRate: [float];
+	value: [float];
+}
+
+table ScratchCardRewardRe {
+	id: int;
+	roundId: int;
+	isSpecial: bool;
+	rewardItem: IntPair;
+}
+
+table RoleTrialInfo {
+	id: int;
+	roleId: int;
+	trialRoleId: int;
+	instanceText: string;
+	instanceId: int;
+	rewardItem: [DicIntInt];
+}
+
+table SceneItemAttribute {
+	description: string;
+	creatorId: int;
+}
+
+table RoleSkinTrialActivity {
+	id: int;
+	roleIdList: [int];
+}
+
+table RoleGuideActivity {
+	id: int;
+	roleId: int;
+	roleQuestId: int;
+	roleTrialId: int;
+	showQuestId: int;
+	showQuestTips: string;
+	showQuestGetWay: string;
+	roleUi: string;
+}
+
+table ShopInfo {
+	id: int;
+	shopType: int;
+	shopName: string;
+	openId: int;
+	showCurrency: [int];
+	dialogueText: string;
+}
+
+table RolePropertyGrowth {
+	id: int;
+	level: int;
+	breachLevel: int;
+	lifeMaxRatio: int;
+	atkRatio: int;
+	defRatio: int;
+}
+
+table RecordCondition {
+	typeId: int;
+	type: string;
+	nullenable: [int];
+	param1: [DicStringString];
+	param2: [DicStringString];
+	param3: [DicStringString];
+	param4: [DicStringString];
+	param5: [DicStringString];
+}
+
+table ScanDefault {
+	uId: int;
+	entityType: string;
+	scanId: int;
+}
+
+table RogueWeeklyRoomType {
+	id: int;
+	roomType: string;
+	roomsMusicState: string;
+}
+
+table RoleQualityInfo {
+	id: int;
+	name: string;
+	icon: string;
+	qualityColor: string;
+	image: string;
+	gachaQualityImage: string;
+	spiloverCompensate: [DicIntInt];
+}
+
+table RoleDevelopType {
+	id: int;
+	icon: string;
+}
+
+table RiskHarvestInst {
+	id: int;
+	activityId: int;
+	instanceID: int;
+	unlockDay: int;
+	unlockInst: int;
+	unlockScore: int;
+	rewardScore: int;
+	maxScore: int;
+	harvestBuff: int;
+	reward: int;
+	difficulty: int;
+	difficultyName: string;
+	monsterRatio: string;
+	timePointName: string;
+	scorePointName: string;
+	timeScoreValidName: string;
+	maxTimeScore: int;
+	starRewardList: [IntPair];
+	accumulate: bool;
+	desc: string;
+	starRewardDesc: string;
+}
+
+table SignalDecodeWaveform {
+	id: int;
+	name: string;
+	speedRate: float = 1.0;
+	signalFragment: string;
+	missingParts: string;
+	offset: int;
+}
+
+table RiskHarvestScoreReward {
+	id: int;
+	activityId: int;
+	score: int;
+	reward: int;
+	desc: string;
+}
+
+table SettleReward {
+	activityId: int;
+	photoReward: int;
+	photoRewardFemale: int;
+	skinReward: int;
+	malePhotoPath: string;
+	femalePhotoPath: string;
+}
+
+table RoleTrainingDegree {
+	difficultyLevel: int;
+	roleLevel: int;
+	weaponLevel: int;
+	equipLevel: int;
+	skillLevel: int;
+}
+
+table RogueAffix {
+	id: int;
+	buffId: [double];
+	affixDesc: string;
+	affixDescParam: [string];
+	affixDescSimple: string;
+}
+
+table RogueWeeklyCycle {
+	id: int;
+	activityId: int;
+	timeId: int;
+	diff: [DicIntInt];
+	mapMark: int;
+	questId: int;
+	entranceId: int;
+	instId: int;
+	recommendedRole: [int];
+	scoreRate: int;
+	roguelikeRoomFloatTipsSpecialIcon: string;
+	blackFlowerCost: [DicIntInt];
+	blackFlowerAward: int;
+	goldItemId: int;
+	cycleName: string;
+	viewBackground: string;
+	buffIcon: string;
+	buffPR: int;
+	buffDesc: string;
+	buffDescParam: [string];
+	helpId: int;
+	blackFlowerHelpId: int;
+	maxScore: int;
+}
+
+table ShopBank {
+	id: int;
+	condId: int;
+}
+
+table RogueWhiteCatInst {
+	id: int;
+	instId: int;
+	conditionGroupId: int;
+	unlockDay: int;
+	trialRoleId: int;
+}
+
+table RoleTrialActivity {
+	id: int;
+	roleIdList: [int];
+}
+
+table SignReward {
+	id: int;
+	activityId: int;
+	signRewardGroup: int;
+}
+
+table SharePlatform {
+	id: int;
+	packageType: int;
+	sort: int;
+	language: [string];
+	packageId: [string];
+	channel: [int];
+	shareId: int;
+	icon: string;
+}
+
+table SlashTowerShowStage {
+	id: int;
+	name: string;
+	outIndex: int;
+}
+
+table ShopFixed {
+	id: int;
+	shopId: int;
+	itemId: int;
+	itemNum: int = 1;
+	condId: int;
+	visableCondition: int;
+	disableCondition: int;
+	limitNum: int = -1;
+	originalPrice: [DicIntInt];
+	price: [DicIntInt];
+	show: bool = true;
+	label: string;
+	switchText: string;
+	purchaseText: string;
+}
+
+table ScoreReward {
+	id: int;
+	activityId: int;
+	score: int;
+	reward: int;
+	desc: string;
+}
+
+table RoleSkin {
+	id: int;
+	roleId: int;
+	suitWeaponSkinId: int;
+	headId: int;
+	qualityId: int;
+	name: string;
+	titleName: string;
+	subDecName: string;
+	typeDescription: string;
+	attributesDescription: string;
+	bgDescription: string;
+	iconMiddle: string;
+	iconSmall: string;
+	itemAccess: [int];
+	sortIndex: int;
+	redDotDisableRule: int;
+	showInBag: bool = true;
+	obtainedShowDescription: string;
+	icon: string;
+	functionDesc: string;
+	firstObtainDesc: string;
+	quality: int;
+	tag: string;
+	roleHeadIconCircle: string;
+	roleHeadIconLarge: string;
+	roleHeadIconBig: string;
+	card: string;
+	roleHeadIcon: string;
+	previewRoleCard: string;
+	buyShopPreviewRoleCard: string;
+	formationRoleCard: string;
+	roleStand: string;
+	suitWeaponSkinColor: string;
+	roleObtainColor1: string;
+	roleObtainColor2: string;
+	rolePortrait: string;
+	meshId: int;
+	uiMeshId: int;
+	roleBody: string;
+	uiScenePerformanceABP: string;
+	footStepState: string;
+	payShopPreviewRoleTexturePath: string;
+	payShopPreviewRoleTextureBgPath: string;
+	payShopPreviewWeaponTexturePath: string;
+	payShopPreviewBuyRoleTexturePath: string;
+	payShopPreviewBuyRoleSuitWeaponTexturePath: string;
+	shareTexturePath: string;
+	spineSkeletonData: string;
+	smallSpineAtlas: string;
+}
+
+table SkillVehicleButton {
+	id: int;
+	pbDataId: int;
+	name: string;
+	buttonType: int;
+	actionType: int;
+	skillId: int;
+	skillIdTagMap: [DicIntInt];
+	skillIcon: string;
+	skillIconTags: [int];
+	enableTags: [int];
+	disableTags: [int];
+	disableSkillIdTags: [DicIntIntArray];
+	isCdVisible: bool = true;
+	isLongPressControlCamera: bool;
+	longPressTime: int = 500;
+	dynamicEffectTagMap: [DicIntInt];
+	showLongPress: bool;
+}
+
+table SignalDecodeTabColor {
+	id: int;
+	activeColor: string;
+	defaultColor: string;
+	vacancyColor: string;
+	highlightColor: string;
+}
+
+table ServerLimit {
+	id: string;
+	countryCodes: string;
+}
+
+table RoleSkinTrialInfo {
+	id: int;
+	roleId: int;
+	trialRoleId: int;
+	previewSkinId: int;
+	instanceId: int;
+	accessId: int;
+	dropId: int;
+	roleIcon: string;
+	introduction: string;
+	uiConfigId: int;
+}
+
+table SkillButton {
+	id: int;
+	roleId: int;
+	name: string;
+	buttonType: int;
+	actionType: int;
+	skillId: int;
+	skillIdTagMap: [DicIntInt];
+	skillIconTags: [int];
+	enableTags: [int];
+	disableTags: [int];
+	disableSkillIdTags: [DicIntIntArray];
+	hiddenTags: [int];
+	isCdVisible: bool = true;
+	attributeId: int;
+	maxAttributeId: int;
+	attributeIdTagMap: [DicIntIntArray];
+	attributeEnableTags: [int];
+	maxAttributeBurstEffectId: int;
+	cdCompletedEffectId: int;
+	isLongPressControlCamera: bool;
+	longPressTime: int;
+	dynamicEffectTagMap: [DicIntInt];
+	customHandleId: int;
+	showLongPressTags: [int];
+}
+
+table SilentAreaDetection {
+	id: int;
+	name: string;
+	guideId: int;
+	levelPlayList: [int];
+	instanceSubTypeDescription: string;
+	dangerType: int = 1;
+	secondary: int;
+	typeDescription2: int;
+	matType: int;
+	attributesDescriptionLock: string;
+	attributesDescriptionUnlock: string;
+	bigIcon: string;
+	icon: string;
+	lockBigIcon: string;
+	temporaryIconUnLock: string;
+	temporaryIconlock: string;
+	showReward: int;
+	showRewardMap: [DicIntInt];
+	beginTimeStamp: int;
+	preOpenId: int;
+	markId: int;
+	lockCon: int;
+	phantomId: [int];
+	firstDropId: int;
+	additionalId: int;
+	sortId: int;
+	newContent: string;
+}
+
+table SecondaryGuideData {
+	id: int;
+	sortNumber: int;
+	conditionGroupId: int;
+	text: string;
+	subText: string;
+	icon: string;
+	helpGroupId: int;
+	showDropDown: bool;
+}
+
+table SetAccount {
+	id: int;
+	packageType: int;
+	language: [string];
+	packageId: [string];
+	channel: [int];
+	adress: string;
+}
+
+table RougeMiraclecreation {
+	id: int;
+	category: int;
+	defaultLevel: int;
+	level: int;
+	maxLevel: int;
+	icon: string;
+	name: string;
+	briefDescribe: string;
+	describe: string;
+	storyDescribe: string;
+}
+
+table ShopBankInfo {
+	id: int;
+	bankId: int;
+	itemId: int;
+	weight: int;
+	itemNum: int;
+	limitNum: int;
+	originalPrice: [DicIntInt];
+	price: [DicIntInt];
+	show: bool = true;
+	label: string;
+}
+
+table SkillDescription {
+	id: int;
+	skillLevelGroupId: int;
+	attributeName: string;
+	skillDetailNum: [StringArray];
+	description: string;
+	order: int;
+}
+
+table SpecialCook {
+	id: int;
+	roleId: int;
+	formulaId: int;
+	cookProbability: int;
+	itemId: int;
+	attributesDescription: string;
+}
+
+table RogueCharacterBuff {
+	id: int;
+	buffId: double;
+	buffIds: [double];
+	affixDesc: string;
+	affixDescParam: [string];
+	affixDescSimple: string;
+	affixTitle: string;
+	affixIcon: string;
+}
+
+table RoleBattleViewInfo {
+	id: int;
+	miniMapVisible: bool = true;
+	topButtonVisible: bool = true;
+	homeButtonVisible: bool = true;
+	roleStateVisible: bool = true;
+	chatVisible: bool = true;
+	formationVisible: bool = true;
+	joystickType: int;
+}
+
+table SkillIcon {
+	id: int;
+	tag: int;
+	iconPath: string;
+	name: string;
+}
+
+table ScratchCardTimesRe {
+	taskId: int;
+	taskName: string;
+	taskType: int;
+	taskTypeName: string;
+	taskReward: int;
+	taskParams: [int];
+	refreshTimesLimit: int;
+}
+
+table SlashBuffToItem {
+	id: int;
+	season: int;
+	itemId: int;
+	tips: int;
+	unlimited: bool;
+	buffIds: [long];
+}
+
+table SoundAreaPlayInfo {
+	id: int;
+	buffTitle: string;
+	maxCountType: int;
+	buffDescription: string;
+	showTitle: bool = true;
+	time: int = 3;
+	maxCount: int;
+}
+
+table SkillFollowerButton {
+	id: int;
+	pbDataId: int;
+	name: string;
+	buttonType: int;
+	actionType: int;
+	skillId: int;
+	skillIdTagMap: [DicIntInt];
+	skillIcon: string;
+	skillIconTags: [int];
+	disableTags: [int];
+	disableSkillIdTags: [DicIntIntArray];
+	isVisible: bool = true;
+	notOccupyTags: [int];
+	elementId: int = 1;
+	attributeId: int;
+	maxAttributeId: int;
+	attributeIdTagMap: [DicIntIntArray];
+	attributeEnableTags: [int];
+	isLongPressControlCamera: bool;
+	longPressTime: int;
+	dynamicEffectTagMap: [DicIntInt];
+	customHandleId: int;
+}
+
+table SkillButtonEffect {
+	id: int;
+	name: string;
+	niagaraPath: string;
+	elementId: int;
+	color: string;
+}
+
+table SkillType {
+	id: int;
+	typeName: string;
+}
+
+table SkillButtonIndex {
+	id: int;
+	desktopButtonTypeList: [int];
+	padButtonTypeList: [int];
+	tagList: [GameplayTagArray];
+	tagDesktopButtonTypeList: [IntArray];
+	tagPadButtonTypeList: [IntArray];
+	desktopButtonTypeMap: [DicIntIntArray];
+	padButtonTypeMap: [DicIntIntArray];
+	gamepadButtonTypeMap: [DicIntIntArray];
+}
+
+table SoarChallenge {
+	id: int;
+	levelPlayId: int;
+	name: string;
+	needScore: int;
+	reward: int;
+	scoreText: string;
+	jumpId: int;
+	unlockTravelLevel: int;
+	unlockQuestId: int;
+	lockTips: string;
+}
+
+table RogueWeeklyReward {
+	id: int;
+	cycleId: int;
+	targetName: string;
+	targetReward: int;
+	score: int;
+}
+
+table SignalDecodeGamePlay {
+	id: string;
+	name: string;
+	signalData1: int;
+	signalData2: int;
+	signalData3: int;
+	signalData4: int;
+}
+
+table SlashTowerTagInfo {
+	id: int;
+	name: string;
+	desc: string;
+	path: string;
+	color: string;
+}
+
+table RoleSkinTrialUiConfig {
+	id: int;
+	color1: string;
+	color2: string;
+	color3: string;
+	color4: string;
+	color5: string;
+}
+
+table SkillLevel {
+	id: int;
+	skillLevelGroupId: int;
+	skillId: int;
+	levelNewDescribe: string;
+	consume: [DicIntInt];
+	condition: int;
+}
+
+table RoleExpItem {
+	id: int;
+	basicExp: int;
+}
+
+table SlashTowerStageInfo {
+	id: int;
+	instId: int;
+	monsterId: [int];
+	buffId: [int];
+}
+
+table TemplateDataPreload {
+	id: int;
+	actorClass: [string];
+	animations: [string];
+	effects: [string];
+	audios: [string];
+	meshes: [string];
+	materials: [string];
+	animationBlueprints: [string];
+	others: [string];
+}
+
+table Skybox {
+	id: int;
+	name: string;
+	staticSkybox: string;
+	dynamicSkybox: string;
+}
+
+table RoleInfluence {
+	id: int;
+	title: string;
+	backGround: string;
+	influenceId: int;
+	countryId: int;
+	filterIcon: string;
+	role: IntArray;
+}
+
+table Speaker {
+	id: int;
+	nameStringKey: int;
+	name: int;
+	titleStringKey: int;
+	cameraBindTag: string;
+	headIconAsset: string;
+	headRoundIconAsset: string;
+	rolePileIconAsset: string;
+	title: int;
+	timberId: int;
+}
+
+table SubtitleText {
+	id: int;
+	rowName: int;
+	datatableName: string;
+	characterName: int;
+	roleId: int;
+	subtitles1: int;
+	subtitles2: int;
+	subtitles3: int;
+	subtitles4: int;
+	subtitles5: int;
+	option1: int;
+	option2: int;
+	option3: int;
+	option4: int;
+	option5: int;
+	audio1: string;
+	audio2: string;
+	audio3: string;
+	audio4: string;
+	audio5: string;
+	oSList: string;
+}
+
+table Skill {
+	id: int;
+	skillGroupId: int;
+	skillType: int;
+	upgradeCondition: int;
+	upgradeSkillId: int;
+	skillName: string;
+	skillLevelGroupId: int;
+	leftSkillEffect: int;
+	maxSkillLevel: int;
+	skillInfoList: [int];
+	buffList: [double];
+	damageList: [double];
+	icon: string;
+	effectSkillPath: string;
+	sortIndex: int;
+	skillDescribe: string;
+	skillResume: string;
+	skillTagList: [int];
+	skillDetailNum: [string];
+	skillResumeNum: [string];
+	multiSkillDescribe: string;
+	multiSkillDetailNum: [string];
+}
+
+table SkillInput {
+	id: int;
+	inputArray: [string];
+	skillArray: [int];
+	description: string;
+}
+
+table RoleInfo {
+	id: int;
+	qualityId: int;
+	roleType: int;
+	isTrial: bool;
+	name: string;
+	nickName: string;
+	introduction: string;
+	tag: [int];
+	parentId: int;
+	priority: int;
+	propertyId: int;
+	showProperty: [int];
+	elementId: int;
+	skinId: int;
+	roleHeadIconCircle: string;
+	roleHeadIconLarge: string;
+	roleHeadIconBig: string;
+	card: string;
+	roleHeadIcon: string;
+	formationRoleCard: string;
+	roleStand: string;
+	rolePortrait: string;
+	spilloverItem: [DicIntInt];
+	meshId: int;
+	uiMeshId: int;
+	roleBody: string;
+	breachModel: int;
+	specialEnergyBarId: int;
+	cameraConfig: string;
+	cameraFloatHeight: float;
+	entityProperty: int;
+	maxLevel: int;
+	levelConsumeId: int;
+	breachId: int;
+	skillId: int;
+	skillTreeGroupId: int;
+	resonanceId: int;
+	resonantChainGroupId: int;
+	isShow: bool = true;
+	exchangeConsume: [DicIntInt];
+	initWeaponItemId: int;
+	weaponType: int;
+	skillDAPath: string;
+	skillLockDAPath: string;
+	uiScenePerformanceABP: string;
+	lockOnDefaultId: int;
+	lockOnLookOnId: int;
+	skillEffectDA: string;
+	footStepState: string;
+	partyId: int;
+	attributesDescription: string;
+	icon: string;
+	itemQualityId: int;
+	obtainedShowDescription: string;
+	numLimit: int;
+	showInBag: bool = true;
+	weaponScale: [float];
+	intervene: bool;
+	characterVoice: string;
+	trialRole: int;
+	isAim: bool;
+	roleGuide: int;
+	redDotDisableRule: int;
+	skinDamage: [string];
+	hideHuLu: bool;
+}
+
+table ScratchCardRoundRe {
+	roundId: int;
+	activityId: int;
+	preRoundId: int;
+	size: int;
+	rewardSortList: [int];
+	yellowRoundIcon: string;
+	blackRoundIcon: string;
+	togRoundIcon: string;
+}
+
+table TimePointRewardActivity {
+	id: int;
+	activityId: int;
+	rewardItem: [DicIntInt];
+}
+
+table SlashAndTowerCfg {
+	id: int;
+	season: int;
+	endLess: bool;
+	instIds: [int];
+	preLevel: [int];
+	passScore: int;
+	levelPassReward: int;
+	title: string;
+	desc: string;
+	targetScore: [int];
+	scoreStage: [string];
+}
+
+table SkillCondition {
+	id: int;
+	conditionType: int;
+	conditionParam: [DicIntInt];
+	description: string;
+}
+
+table SummonCfg {
+	id: int;
+	blueprintType: string;
+	survivalTime: int = 3;
+	inheritLevelType: int;
+	inheritLevelParam: int;
+	attributeType: int;
+	inheritAttributeBaseType: int;
+	inheritSummonerAttribute: [DicIntIntArray];
+	unCalculateBuffAttributes: [int];
+	followSummonerAttr: [int];
+	bornBuffId: [double];
+	shareDamage: bool;
+}
+
+table SpringSign {
+	id: int;
+	activityId: int;
+	resourceTypeId: int;
+}
+
+table SpringResource {
+	id: int;
+	roleType: int;
+	isClientOnly: int;
+	roleName: string;
+	dialogData: int;
+	dialogDataList: [int];
+	mailIcon: string;
+	letterContent: string;
+	letterTitle: string;
+	letterTab: string;
+	leftSpineAtlas: string;
+	leftSpineSkeletonData: string;
+	rightSpineAtlas: string;
+	rightSpineSkeletonData: string;
+	leftDialog: string;
+	rightDialog: string;
+}
+
+table Sort {
+	id: int;
+	frontSortList: [int];
+	baseSortList: [int];
+	attributeSortList: [int];
+	lastSortList: [int];
+	limitNum: int;
+	dataId: int;
+}
+
+table SoundBoxMark {
+	markId: int;
+	markPic: string;
+	markTitle: string;
+	markDesc: string;
+	showPriority: int;
+	showRange: [int];
+	scale: float = 1.0;
+}
+
+table ShareReward {
+	id: int;
+	shareType: int;
+	shareReward: [DicIntInt];
+	updateType: int;
+}
+
+table SpecialFormation {
+	id: int;
+	type: int;
+	characterId: [int];
+}
+
+table SkillButtonCustom {
+	id: int;
+	type: int;
+	tagIds: [int];
+	buffIds: [double];
+}
+
+table SkillButtonText {
+	id: int;
+	name: string;
+}
+
+table TeamParKOurReward {
+	id: int;
+	activityId: int;
+	reward: int;
+	rewardThreshold: int;
+	taskTitle: string;
+}
+
+table SkillPriorityButton {
+	id: int;
+	buttonType: int;
+	name: string;
+	skillIdTagMap: [DicIntInt];
+	disableTags: [int];
+	disableSkillIdTags: [DicIntIntArray];
+	dynamicEffectTagMap: [DicIntInt];
+}
+
+table State {
+	stateId: int;
+	stateName: string;
+	countryId: string;
+	audioName: string;
+}
+
+table SpineBackground {
+	id: int;
+	remark: string;
+	uiPrefabId: string;
+	animationName: string;
+	uiPrefabIdMaleVariant: string;
+	animationNameMaleVariant: string;
+}
+
+table RoleAudio {
+	id: int;
+	name: string;
+	footstepEvent: string;
+	foleyEvent: string;
+	fastClimbEvent: string;
+	visionMorphEvent: string;
+	visionSummonEvent: string;
+	openTreasureBoxEvent: string;
+	scanTreasureBoxEvent: string;
+	joinTeamEvent: string;
+	lostHealthEventMap: [DicIntString];
+	deathEvent: string;
+	lowStrengthEventList: [string];
+	lowStrengthEvent: string;
+	breakUpEventList: [string];
+	extremeDodgeEvent: string;
+	parryEvent: string;
+	enterBattleEvent: string;
+	underAttackEvent: string;
+	knockUpEvent: string;
+	enterGlideEvent: string;
+	useExploreHookEvent: string;
+	climbLeapEvent: string;
+}
+
+table SynthesisSkill {
+	id: int;
+	extraItemId: int;
+	effectiveProbability: int;
+	typeld: int;
+	skillDescription: int;
+}
+
+table Slide {
+	id: string;
+	fallingLateralFrictions: [DicIntFloat];
+	slideFriction: float = 2.0;
+	slideAccel: float = 1.0;
+	slideAccelUp: float = 1.0;
+	slideAccelDown: float = 1.0;
+	maxSlideHorizontalSeed: float = 500.0;
+	slideModeSwitchRange: FloatRange;
+	ski: bool;
+	skiMaxSpHor: float = 2000.0;
+	skiMaxSpVer: float = 2000.0;
+	jumpRate: float = 1.0;
+	turnSpeed: float = 720.0;
+	skiHorizontalInputSpeedThreshold: FloatRange;
+	speedReduceCurve: string;
+}
+
+table SortRule {
+	id: int;
+	dataId: int;
+	name: string;
+	icon: string;
+	attributeId: int;
+	addType: int;
+}
+
+table TemplateConfig {
+	id: int;
+	blueprintType: string;
+	name: string;
+	componentsData: string;
+}
+
+table Teleporter {
+	id: int;
+	mapId: int;
+	objectId: int;
+	fogId: int;
+	type: int;
+	teleportEntityConfigId: int;
+	plot: string;
+	afterNetworkAction: int;
+	showWorldMap: bool;
+}
+
+table RougePopularEntrie {
+	id: int;
+	category: int;
+	rate: int;
+	insts: [int];
+	icon: string;
+	title: string;
+	describe: string;
+	descriptionParam: [string];
+}
+
+table SlashAndTowerReward {
+	id: int;
+	belongToSeason: int;
+	sumScore: int;
+	rewardId: int;
+	desc: string;
+	endLessReward: bool;
+}
+
+table SkillCommonButton {
+	id: int;
+	name: string;
+	buttonType: int;
+	actionType: int;
+	skillId: int;
+	skillIdTagMap: [DicIntInt];
+	skillIconTags: [int];
+	enableTags: [int];
+	disableTags: [int];
+	disableSkillIdTags: [DicIntIntArray];
+	hiddenTags: [int];
+	isCdVisible: bool = true;
+	attributeId: int;
+	maxAttributeId: int;
+	attributeIdTagMap: [DicIntIntArray];
+	attributeEnableTags: [int];
+	maxAttributeBurstEffectId: int;
+	cdCompletedEffectId: int;
+	isLongPressControlCamera: bool;
+	longPressTime: int;
+	dynamicEffectTagMap: [DicIntInt];
+	showLongPressTags: [int];
+}
+
+table TeamParKOurCfg {
+	id: int;
+	activityId: int;
+	instId: int;
+	openDay: int;
+	titleText: string;
+	descPicPath: string;
+	romePath: string;
+	taskList: [int];
+}
+
+table TrackMoonMemory {
+	id: int;
+	classify: int;
+	title: string;
+	iconPath: string;
+	sort: int;
+}
+
+table SpringReward {
+	id: int;
+	taskThreshold: int;
+	activityId: int;
+	taskReward: int;
+	taskTitle: string;
+}
+
+table Swim {
+	id: string;
+	sprintZOffsetRate: float = 0.2;
+	sprintZOffsetSpeed: float = 100.0;
+}
+
+table SpecialItem {
+	id: int;
+	useButtonAdditionParam: [int];
+	specialItemType: int;
+	parameters: [string];
+	useInMultiMode: bool;
+	useInstance: bool;
+	banTags: [string];
+	allowTags: [string];
+	summonConfigId: int;
+	needShowNum: bool;
+}
+
+table TimeOfDay {
+	id: int;
+	initTime: int;
+	rate: int;
+	stateSpan: [DicIntInt];
+	a: int;
+	v: int;
+	banTag: [string];
+	timePreset: [DicIntString];
+}
+
+table TowerBuff {
+	id: double;
+	name: string;
+	desc: string;
+	icon: string;
+}
+
+table Text {
+	id: string;
+	text: string;
+}
+
+table SkillTree {
+	id: int;
+	nodeIndex: int;
+	nodeGroup: int;
+	parentNodes: [int];
+	nodeType: int;
+	coordinate: int;
+	condition: [int];
+	skillId: int;
+	propertyNodeTitle: string;
+	propertyNodeDescribe: string;
+	propertyNodeParam: [string];
+	propertyNodeIcon: string;
+	property: [ConfigPropValue];
+	consume: [DicIntInt];
+	unLockCondition: int;
+}
+
+table TowerTarget {
+	id: int;
+	targetType: int;
+	params: [int];
+	desText: string;
+}
+
+table SynthesisLevel {
+	id: int;
+	name: string;
+	completeness: int;
+	effect: int;
+	attributesDescription: string;
+	dropIds: int;
+}
+
+table TowerDefenseConfig {
+	id: int;
+	showDifferent: bool;
+	activityType: int = 1;
+	entranceId: int;
+}
+
+table TemporaryTeleportMark {
+	markId: int;
+	markPic: string;
+	markTitle: string;
+	markDesc: string;
+	showPriority: int;
+	showRange: [int];
+	scale: float = 1.0;
+	trackHudEnable: int;
+	trackAutoCancelDistance: float = -1.0;
+}
+
+table TrackMoonPhaseActivity {
+	id: int;
+	roleTrialId: int;
+	dropId: int;
+	popularityNeed: int;
+}
+
+table SwimBuff {
+	id: int;
+	buffId: int;
+}
+
+table TowerDefencePhantomLevel {
+	id: int;
+	groupId: int;
+	level: int;
+	skillId: [double];
+	title: string;
+	description: string;
+	expLevel: int;
+}
+
+table TalkOptionIcon {
+	id: int;
+	type: string;
+	icon: string;
+}
+
+table TimePointRewardConfig {
+	activityId: int;
+	uiPrefab: string;
+}
+
+table TurntableTask {
+	taskId: int;
+	activityId: int;
+	taskDescription: string;
+	taskReward: int;
+	taskSort: int;
+}
+
+table TakeWeedsDifficulty {
+	id: int;
+	magnification: int;
+	recommendedLevel: int;
+	reward: int;
+	desc: string;
+}
+
+table Soar {
+	id: string;
+	hangSocket: string;
+	scale: float = 1.0;
+}
+
+table SpecialHateAndSense {
+	id: int;
+	descText: string;
+	aiHateId: int;
+	firstAiSenseId: int;
+}
+
+table StateMachinePreload {
+	id: int;
+	fsmKey: string;
+	actorClass: [string];
+	animations: [string];
+	effects: [string];
+	audios: [string];
+	meshes: [string];
+	materials: [string];
+	animationBlueprints: [string];
+	others: [string];
+}
+
+table TowerConfig {
+	id: int;
+	season: int;
+	difficulty: int;
+	areaNum: int;
+	floor: int;
+	instanceId: int;
+	areaName: string;
+	cost: int;
+	recommendElement: [int];
+	showMonsters: [int];
+	showMonstersAndLevel: [IntPair];
+	showBuffs: [double];
+	roleBuff: [double];
+	monsterBuff: [double];
+	target: [int];
+	targetConfig: [int];
+	bgPath: string;
+	itemBgPath: string;
+}
+
+table TaskMark {
+	markId: int;
+	questId: int;
+	markPic: string;
+	markAcceptablePic: string;
+	npcTaskIcon: string;
+	iconDistant: int = 20000;
+	trackTextStartEffectColor: string;
+	showRange: [int];
+	showPriority: int;
+	scale: float = 1.0;
+	fxScale: float = 1.0;
+}
+
+table TrackMoonActivity {
+	id: int;
+	activityReward: bool;
+	permanentTarget: bool;
+	activityButtonType: int;
+	rewardList: [int];
+	focusMarkId: int;
+	stageQuestTips: string;
+	stageQuestId: int;
+}
+
+table TrackMoonTarget {
+	id: int;
+	targetName: string;
+	type: int;
+	targetReward: int;
+	targetFunc: int;
+}
+
+table TeamConfig {
+	id: int;
+	buffId: int;
+	inviteEffectTime: int;
+	violationOperationTimes: int;
+	violationOperationBanTime: int;
+	banTimesCheck: int;
+	bBanTime: int;
+	cBanTime: int;
+	inviteCD: int;
+	nearbrPlayerCount: int;
+	nearbrPlayerCountRefreshCD: int;
+	violationOperationTimeLimit: int;
+}
+
+table TrainRoleDialog {
+	id: int;
+	roleId: int;
+	trainType: int;
+	dialog: string;
+}
+
+table VideoCaption {
+	captionId: int;
+	cgName: string;
+	showMoment: int;
+	duration: int;
+	captionText: string;
+	showMomentEn: int;
+	durationEn: int;
+	showMomentKo: int;
+	durationKo: int;
+	showMomentJa: int;
+	durationJa: int;
+}
+
+table TowerDefenceInstance {
+	id: int;
+	instanceId: int;
+	activityId: int;
+	groupId: int = 999;
+	difficulty: int;
+	sortId: int;
+	optionalBuff: [int];
+	openDay: int;
+	condition: int;
+	rewardId: int;
+	rewardScore: int;
+	levelRewardDesc: string;
+	baseEntityId: int;
+	unlockScoreLimit: int;
+	isDifficult: bool;
+}
+
+table SpringChat {
+	id: int;
+	contentList: [string];
+	posList: [int];
+	animNameList: [string];
+	leftSpineAtlas: string;
+	leftSpineSkeletonData: string;
+	rightSpineAtlas: string;
+	rightSpineSkeletonData: string;
+}
+
+table TowerDifficulty {
+	difficulty: int;
+	reward: [IntPair];
+}
+
+table TrackMoonTargetType {
+	id: int;
+	name: string;
+}
+
+table TrackMoonActivityReward {
+	id: int;
+	targetName: string;
+	targetReward: int;
+	targetFunc: int;
+}
+
+table UiFloatConfig {
+	viewName: string;
+	area: string;
+	priority: int;
+	onlyShowInMain: bool;
+	rootItemIndex: int = 1;
+	isWaitNormal: bool = true;
+	hideInPureMode: bool;
+}
+
+table TowerDefenceMark {
+	activityId: int;
+	markId: int;
+}
+
+table TowerDefenseSettle {
+	id: int;
+	isTotalRatio: bool;
+	baseTitle: string;
+	title: string;
+}
+
+table TowerDefencePhantom {
+	id: int;
+	phantomItemId: int;
+	phantomName: string;
+	typeTextId: string;
+	typeIcon: string;
+	markHex: string;
+	skillGroup: int;
+	activityId: int;
+}
+
+table TravelTaskArea {
+	id: int;
+	activityId: int;
+	unLockCondition: int;
+	unlockAccessId: int;
+	sort: int;
+}
+
+table SynthesisFormula {
+	id: int;
+	formulaItemId: int;
+	itemId: int;
+	formulaType: int = 3;
+	itemGroup: int;
+	name: string;
+	consumeItems: [OneItemConfig];
+	sortId: int;
+	unlockCondition: int;
+	proficiency: int;
+	maxProficiencyCount: int;
+	typeId: int;
+	unlock: bool = true;
+	limitCount: int;
+	permanentLimit: bool;
+	roleList: [int];
+	composeContent: string;
+	composeBackground: string;
+}
+
+table UniversalActivity {
+	id: int;
+	uiResource: string;
+	functionType: int;
+	functionParams: [string];
+}
+
+table UiCameraMapping {
+	id: int;
+	viewName: string;
+	defaultUiCameraSettingsName: string;
+	isCheckSpecialState: bool;
+	specialStateCameraSettingName: string;
+	bPlayLoadingCameraAnimation: bool = true;
+	bodyTargetType: int;
+	bodyCameraSettingsNameMap: [DicStringString];
+	defaultCameraBlendName: string;
+	uiCameraBlendNameMap: [DicStringString];
+	uiCameraDelayTime: int;
+}
+
+table TrialPhantomPropItem {
+	id: int;
+	prop: ConfigPropValue;
+}
+
+table UiShow {
+	viewName: string;
+	type: string;
+	loadAsync: bool = true;
+	showCursorType: int;
+	obstructUi: [string];
+	effectStart: string;
+	effectBone: string;
+	montageStart: string;
+	audioEvent: string;
+	openAudioEvent: string;
+	closeAudioEvent: string;
+	delayTime: int;
+	effectDelayTime: int;
+	setMaskActive: bool = true;
+	timeDilation: float = 1.0;
+	isAllowFightInput: bool;
+	canOpenViewByShortcutKey: bool;
+	isShortKeysExitView: bool;
+	scenePointTag: string;
+	needGC: bool;
+	isFullScreen: bool;
+	commonPopBg: int = -1;
+	commonPopBgKey: string;
+	scenePath: string;
+	isPermanent: bool;
+	startBlackScreen: BlackScreen;
+	closeBlackScreen: BlackScreen;
+	skipAnim: bool;
+	partialBlur: bool;
+	audioFilter: string;
+}
+
+table TravelTask {
+	taskId: int;
+	activityId: int;
+	name: string;
+	taskReward: int;
+	areaId: int;
+	jumpId: int;
+}
+
+table WeaponVisibleConfig {
+	id: int;
+	baseType: [int];
+	visibleTags: [string];
+	hiddenTags: [string];
+}
+
+table WeaponConf {
+	itemId: int;
+	weaponName: string;
+	qualityId: int;
+	weaponType: int;
+	modelId: int;
+	transformId: int;
+	models: [int];
+	resonLevelLimit: int;
+	firstPropId: ConfigPropValue;
+	firstCurve: int;
+	secondPropId: ConfigPropValue;
+	secondCurve: int;
+	resonId: int;
+	levelId: int;
+	breachId: int;
+	desc: string;
+	descParams: [StringArray];
+	typeDescription: string;
+	attributesDescription: string;
+	bgDescription: string;
+	icon: string;
+	iconMiddle: string;
+	iconSmall: string;
+	mesh: string;
+	maxCapcity: int = 999999999;
+	itemAccess: [int];
+	obtainedShow: int;
+	obtainedShowDescription: string;
+	numLimit: int;
+	showInBag: bool = true;
+	sortIndex: int;
+	resonanceIcon: string;
+	hiddenTime: float = 10.0;
+	destructible: bool;
+	redDotDisableRule: int;
+}
+
+table TreasureBoxMark {
+	markId: int;
+	markPic: string;
+	markTitle: string;
+	markDesc: string;
+	showPriority: int;
+	showRange: [int];
+	scale: float = 1.0;
+}
+
+table TrackMoonEntrust {
+	id: int;
+	title: string;
+	content: string;
+	unlockCondition: int;
+	guaranteed: bool;
+	jumpType: int;
+	jumpParam: int;
+	capacityMap: [DicIntInt];
+	consume: [DicIntInt];
+	star: int;
+	entrustType: int;
+	ideaSuccRatio: [DicIntInt];
+	ideaSuccMul: [int];
+	attributionSuccRatio: [int];
+	attributeMaxValue: int;
+	investLimit: int;
+}
+
+table TurntableActivity {
+	id: int;
+	activityId: int;
+	coinQuestId: int;
+	questDesc: string;
+}
+
+table VideoData {
+	cgId: int;
+	cgName: string;
+	girlOrBoy: int = 2;
+	cgFile: string;
+	canSkip: bool = true;
+	aspect: float = 2.38;
+}
+
+table TrailPhantomProp {
+	id: int;
+	level: int;
+	mainProp: ConfigPropValue;
+	breachProp: ConfigPropValue;
+	subProp: [ConfigPropValue];
+	mainProps: [int];
+	mainPropGrowth: int = 1;
+	subProps: [IntArray];
+	subPropList: [int];
+	fetterGroupId: int = 1;
+	skinItemId: int;
+}
+
+table TrialRoleInfo {
+	id: int;
+	groupId: int;
+	worldLevel: int = 1;
+	onlyTrial: bool;
+	hideTrialLabel: bool;
+	parentId: int;
+	level: int;
+	resonanceLevel: int;
+	unlockSkillLevel: int = 1;
+	unlockSkillNodeList: [int];
+	roleSkin: int;
+	trailWeapon: int;
+	phantomEquipList: [IntPair];
+}
+
+table TreasureBoxDetectorMark {
+	markId: int;
+	markPic: string;
+	markTitle: string;
+	markDesc: string;
+	showPriority: int;
+	showRange: [int];
+	scale: float = 1.0;
+}
+
+table TypeInfo {
+	id: int;
+	typeDescription: string;
+	lock: bool;
+	deprecate: bool;
+	sortIndex: int;
+	itemInfoDisplayType: int;
+}
+
+table TowerDefenceMapMark {
+	activityId: int;
+	markId: int;
+}
+
+table TrainDec {
+	roleLevel: int;
+}
+
+table ToughCalcRatio {
+	id: double;
+	ratioNormal: int;
+	ratioSpecial: int;
+}
+
+table TrialWeaponInfo {
+	id: int;
+	weaponId: int;
+	weaponLevel: int;
+	weaponSkinId: int;
+	weaponResonanceLevel: int;
+	fullLevelTrialId: int;
+}
+
+table TowerGuide {
+	id: int;
+	difficulty: int;
+	rewardItem: [DicIntInt];
+	trialRoleId: int;
+	mapMark: int;
+}
+
+table TravelPhantomQuest {
+	id: int;
+	activityId: int;
+	mapMarkId: int;
+	sort: int;
+	areaId: int;
+	questId: int;
+	name: string;
+	lockName: string;
+	questReward: int;
+	texture: string;
+	unlockTips: string;
+	mapDesc: string;
+}
+
+table UiNormalConfig {
+	viewName: string;
+	sortIndex: int = -1;
+}
+
+table WeaponBreach {
+	id: int;
+	breachId: int;
+	level: int;
+	conditionId: int;
+	levelLimit: int;
+	consume: [DicIntInt];
+	goldConsume: int;
+}
+
+table TurntableInfo {
+	id: int;
+	costItemId: int;
+	costItemCount: int;
+	turntableType: int;
+}
+
+table WeaponHandBook {
+	id: int;
+	level: int;
+	breach: int;
+	resonance: int;
+}
+
+table WeaponModelTransform {
+	id: int;
+	location: Vector;
+	rotation: Vector;
+	size: float = 1.0;
+	rotateTime: int;
+	scabbardOffset: Vector;
+	showScabbard: bool = true;
+	axisRotate: Vector;
+}
+
+table TrackMoonHandbookReward {
+	id: int;
+	goal: int;
+	rewardInfo: int;
+}
+
+table TowerDefenceReward {
+	id: int;
+	activityId: int;
+	score: int;
+	rewardId: int;
+}
+
+table VideoSound {
+	captionId: int;
+	cgName: string;
+	girlOrBoy: int = 2;
+	eventPath: string;
+}
+
+table WorldNewJourney {
+	id: int;
+	sort: int = 10;
+	sourceType: int;
+	sourceId: int;
+	sourceTitle: string;
+	sourceDesc: string;
+	conditionId: int;
+	jumpTo: [DicIntString];
+}
+
+table WeaponExpItem {
+	id: int;
+	cost: int;
+	basicExp: int;
+}
+
+table UiPlayItem {
+	id: int;
+	type: string;
+	uiPlayKey: string;
+	finishItem: int;
+}
+
+table UiResource {
+	id: string;
+	path: string;
+	pcPath: string;
+}
+
+table WorldLevel {
+	id: int;
+	playerLevelMax: int;
+	conditionGroupId: int;
+	aiTeamLevelId: int;
+	trainingLevel: int;
+}
+
+table VideoQte {
+	id: int;
+	cgName: string;
+	qteId: int;
+	showMoment: int;
+	showMomentEn: int;
+	showMomentKo: int;
+	showMomentJa: int;
+}
+
+table Weather {
+	id: int;
+	weatherType: int;
+	type: int;
+	dAPath: string;
+}
+
+table WeaponPropertyGrowth {
+	id: int;
+	curveId: int;
+	level: int;
+	breachLevel: int;
+	curveValue: int;
+}
+
+table TurntableAwards {
+	id: int;
+	activityId: int;
+	groupId: int;
+	rewardItem: [DicIntInt];
+	isSpecial: bool;
+}
+
+table UiWeaponVisibleConfig {
+	id: int;
+	visibleList: [bool];
+}
+
+table WeaponSkin {
+	id: int;
+	weaponSkinType: int;
+	name: string;
+	hideInSkinView: bool;
+	qualityId: int;
+	modelId: int;
+	transformId: int;
+	models: [int];
+	typeDescription: string;
+	attributesDescription: string;
+	bgDescription: string;
+	cardIconPath: string;
+	icon: string;
+	iconMiddle: string;
+	iconSmall: string;
+	mesh: string;
+	maxCapcity: int = 99;
+	itemAccess: [int];
+	obtainedShow: int;
+	obtainedShowDescription: string;
+	numLimit: int;
+	showInBag: bool = true;
+	sortIndex: int;
+	hiddenTime: float = 10.0;
+	destructible: bool;
+	redDotDisableRule: int;
+}
+
+table WeaponReson {
+	id: int;
+	resonId: int;
+	level: int;
+	name: string;
+	effect: [double];
+	consume: int;
+	goldConsume: int;
+	alternativeConsume: [int];
+}
+
+table WeaponLevel {
+	id: int;
+	levelId: int;
+	level: int;
+	exp: int;
+}
+
+table UiDynamicTab {
+	id: int;
+	parentViewName: string;
+	childViewName: string;
+	tabName: string;
+	tabIndex: int;
+	functionId: int;
+	uiCameraSettingsName: string;
+	uiCameraBlendName: string;
+	backViewBlendName: string;
+	icon: string;
+	lightSequence: string;
+}
+
+table WeaponHideConfig {
+	id: int;
+	hideWeaponTags: [string];
+}
+
+table WeaponQualityInfo {
+	id: int;
+	name: string;
+	qualityColor: string;
+	levelLimit: int;
+	cost: int;
+	basicExp: int;
+}
+
+table IntVector2D {
+	x: int;
+	y: int;
+}
+
+table ConfigPropValue {
+	id: int;
+	value: float;
+	isRatio: bool;
+}
+
+table InitPhantomConfig {
+	itemId: int;
+	randGroupId: int;
+	randNum: int;
+}
+
+table DicIntString {
+	key: int;
+	value: string;
+}
+
+table DicStringFloat {
+	key: string;
+	value: float;
+}
+
+table Color {
+	r: float;
+	g: float;
+	b: float;
+	a: float;
+}
+
+table CycleTimeLang {
+	cycleType: int;
+	cycleParam: int;
+	timeParam: int;
+}
+
+table PhantomEquipConfig {
+	itemId: int;
+	level: int;
+}
+
+table BlackScreenLang {
+	showAnimName: int;
+	hideAnimName: int;
+}
+
+table SCreatureGenAreaExportDefine {
+	shapeType: int;
+	transforms: [IntVector];
+	weight: float;
+}
+
+table PhantomItemConfig {
+	itemId: int;
+	level: int;
+	mainType: int;
+	mainVal: int;
+	subProperty: int;
+	subVal: int;
+}
+
+table BlackScreen {
+	showAnimName: string;
+	hideAnimName: string;
+}
+
+table DicIntIntArray {
+	key: int;
+	value: IntArray;
+}
+
+table SCreatureGenBlackboardMapsLang {
+	mapString: [DicStringInt];
+	mapInt: [DicStringInt];
+	mapBool: [DicStringBool];
+}
+
+table RogueRandomGood {
+	goodsPoolWeight: [DicStringInt];
+	discount: int;
+}
+
+table FloatRange {
+	min: float;
+	max: float;
+}
+
+table DicStringInt {
+	key: string;
+	value: int;
+}
+
+table IntArray {
+	arrayInt: [int];
+}
+
+table SCreatureGenNavAssistFileExportDefine {
+	areas: [SCreatureGenNavAssistAreaExportDefine];
+}
+
+table LongArray {
+	arrayLong: [long];
+}
+
+table DicIntInt {
+	key: int;
+	value: int;
+}
+
+table CostConfig {
+	cost: [DicIntInt];
+}
+
+table DicIntFloat {
+	key: int;
+	value: float;
+}
+
+table FloatArray {
+	arrayFloat: [float];
+}
+
+table IntIntMap {
+	mapIntInt: [DicIntInt];
+}
+
+table DicStringString {
+	key: string;
+	value: string;
+}
+
+table OneItemConfig {
+	itemId: int;
+	count: int;
+}
+
+table Long54Array {
+	arrayLong: [double];
+}
+
+table GameplayTagArray {
+	arrayString: [string];
+}
+
+table CycleTime {
+	cycleType: int;
+	cycleParam: int;
+	timeParam: string;
+}
+
+table DicIntIntIntMap {
+	key: int;
+	value: IntIntMap;
+}
+
+table DicStringBool {
+	key: string;
+	value: bool;
+}
+
+table IntPair {
+	item1: int;
+	item2: int;
+}
+
+table DungeonEntrance {
+	dungeonId: int;
+	entranceEntityId: int;
+}
+
+table PhantomPropRandom {
+	randGroupId: int;
+	randNum: int;
+}
+
+table SCreatureGenNavAssistAreaExportDefine {
+	points: [IntVector];
+}
+
+table IntVector {
+	x: int;
+	y: int;
+	z: int;
+}
+
+table SCreatureGenBlackboardMaps {
+	mapString: [DicStringString];
+	mapInt: [DicStringInt];
+	mapBool: [DicStringBool];
+}
+
+table SkillDescribeStruct {
+	title: string;
+	content: string;
+}
+
+table SkillDescribeStructLang {
+	title: int;
+	content: int;
+}
+
+table StringArray {
+	arrayString: [string];
+}
+
+table SListenEventExportDefine {
+	listenConfigIds: [int];
+	listenRange: float;
+}
+
+table StringArrayLang {
+	arrayString: [int];
+}
+
+table Vector {
+	x: float;
+	y: float;
+	z: float;
+}
+
+table SpecialBarSizeInfo {
+	index: int;
+	sizeX: int;
+	sizeY: int;
+}
+
+table SpecialBarEffectPercentInfoLang {
+	minPercent: int;
+	maxPercent: int;
+	minValue: float;
+	maxValue: float;
+	floatParameterName: int;
+}
+
+table SpecialBarEffectPercentInfo {
+	minPercent: int;
+	maxPercent: int;
+	minValue: float;
+	maxValue: float;
+	floatParameterName: string;
+}
+
+table SpecialBarOffsetInfo {
+	minPercent: int;
+	maxPercent: int;
+	minOffsetX: int;
+	minOffsetY: int;
+	maxOffsetX: int;
+	maxOffsetY: int;
+}
